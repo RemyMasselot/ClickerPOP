@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
                     {
                         // Faire pop un popcorn
                         popcornBucket.GetComponent<PopcornBucket>().FillTheBucket();
-                        //Debug.Log("CLICK");
+                        //zDebug.Log("CLICK");
                     }
                 }
             }
