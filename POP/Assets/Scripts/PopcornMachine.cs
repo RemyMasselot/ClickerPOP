@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PopcornMachine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject popcorn;
+    [SerializeField] Transform target;
+    [SerializeField] Vector2 popcornSpawn;
 
-    // Update is called once per frame
-    void Update()
+    public void PopAPopcorn()
     {
-        
+        Instantiate(popcorn, target.position, Quaternion.identity);
+
+        Debug.Log("POPCORN");
     }
 }
