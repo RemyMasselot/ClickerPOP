@@ -24,12 +24,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Vérifier si le clic gauche de la souris est enfoncé
-        //Click.performed += ctx => ExecuteAction();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            ExecuteAction();
-        }
+        Click.performed += ctx => ExecuteAction();
     }
 
     private void ExecuteAction()

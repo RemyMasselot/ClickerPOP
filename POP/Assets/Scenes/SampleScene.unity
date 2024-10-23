@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 971732081}
   m_Layer: 0
   m_Name: PopcornMachinePan
-  m_TagString: Untagged
+  m_TagString: Pan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,16 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192c9a16b0257d04895b592c8d27bcaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Click:
-    m_Name: Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c6aa37d5-cf03-442e-9032-e977903b1a80
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  popcornMachine: {fileID: 0}
   NumPopcorn: 0
   Sprites: []
 --- !u!212 &1288018789
@@ -653,37 +643,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
   m_PrefabInstance: {fileID: 1747312028}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1626144389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1626144390}
-  m_Layer: 0
-  m_Name: Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1626144390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626144389}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.945, y: -1.453, z: -0.04473883}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633984185
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,10 +757,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
-    - target: {fileID: 1278098815130930911, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1626144390}
     - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Name
       value: PopcornMachine
@@ -913,4 +868,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1921064454}
   - {fileID: 1633984189}
-  - {fileID: 1626144390}

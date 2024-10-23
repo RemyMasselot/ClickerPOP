@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopcornBucket : Player
+public class PopcornBucket : MonoBehaviour
 {
     public int NumPopcorn;
     [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
