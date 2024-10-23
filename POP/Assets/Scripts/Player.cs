@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public InputAction Click;
 
     [SerializeField] private GameObject popcornMachine;
-    //[SerializeField] private GameObject popcornBucket;
+    [SerializeField] private GameObject popcornBucket;
 
     // Start is called before the first frame update
     void Start()
@@ -44,16 +44,24 @@ public class Player : MonoBehaviour
             {
                 // Faire pop un popcorn
                 popcornMachine.GetComponent<PopcornMachine>().PopAPopcorn();
-                Debug.Log("CLICK");
+                //Debug.Log("CLICK");
             }
 
-            // Si le joueur a appuyé sur une Popcorn Bucket
-            //if (hit.collider.gameObject == popcornBucket)
-            //{
-            //    // Faire pop un popcorn
-            //    popcornMachine.GetComponent<PopcornMachine>().PopAPopcorn();
-            //    Debug.Log("CLICK");
-            //}
+            // Si il y a des popcorns dans la Popcorn Machine
+            PopcornMachine _popcornMachineScript = popcornMachine.GetComponent<PopcornMachine>();
+            if (_popcornMachineScript.PopcornList.Count > 0)
+            {
+                if (hit.collider.gameObject == popcornBucket)
+                {
+                    PopcornBucket _popcornBucketScript = popcornBucket.GetComponent<PopcornBucket>();
+                    if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
+                    {
+                        // Faire pop un popcorn
+                        popcornBucket.GetComponent<PopcornBucket>().FillTheBucket();
+                        //Debug.Log("CLICK");
+                    }
+                }
+            }
         }
     }
 }

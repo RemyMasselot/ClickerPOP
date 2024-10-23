@@ -36,6 +36,6 @@ public class PopcornMachine : MonoBehaviour
         float _y = Random.Range(popcornAngleYmin, popcornAngleYmax);
         popcornAngle = new Vector2(_x, _y);
         _rb.AddForce(popcornAngle * popcornForce, ForceMode2D.Impulse);
-        Debug.Log("POPCORN");
+        //Debug.Log("POPCORN");
     }
 }

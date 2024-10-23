@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 62271684}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -211, y: -166, z: -12527.02}
+  m_LocalPosition: {x: -211, y: -194, z: -12527.02}
   m_LocalScale: {x: 48.117672, y: 48.117672, z: 48.117672}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -392,7 +392,7 @@ Transform:
   m_GameObject: {fileID: 545944485}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62635094, y: -574.851, z: -12527.02}
+  m_LocalPosition: {x: 0.62635094, y: -600, z: -12527.02}
   m_LocalScale: {x: 42.21662, y: 42.21662, z: 42.21662}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -476,7 +476,7 @@ Transform:
   m_GameObject: {fileID: 971732079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 126.999985, y: -82, z: -12527.02}
+  m_LocalPosition: {x: 126.999985, y: -104, z: -12527.02}
   m_LocalScale: {x: 35.80033, y: 35.80033, z: 35.80033}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -544,7 +544,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1288018787}
   - component: {fileID: 1288018789}
-  - component: {fileID: 1288018788}
+  - component: {fileID: 1288018790}
+  - component: {fileID: 1288018791}
   m_Layer: 0
   m_Name: PopcornBucket
   m_TagString: Untagged
@@ -561,26 +562,12 @@ Transform:
   m_GameObject: {fileID: 1288018786}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -212, y: -547, z: -12527.02}
+  m_LocalPosition: {x: -212, y: -556, z: -12527.02}
   m_LocalScale: {x: 40.364838, y: 40.364838, z: 40.364838}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633984189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1288018788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288018786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192c9a16b0257d04895b592c8d27bcaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StorageLimit: 0
-  Sprites: []
 --- !u!212 &1288018789
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -633,6 +620,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1288018790
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288018786}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.69262546}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 5.64}
+    newSize: {x: 3.68, y: 3.95}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.68, y: 4.1649494}
+  m_EdgeRadius: 0
+--- !u!114 &1288018791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288018786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192c9a16b0257d04895b592c8d27bcaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopcornMachine: {fileID: 1463052335}
+  Sprites:
+  - {fileID: 21300000, guid: 478c996089d9608489054b784514b58b, type: 3}
+  - {fileID: 21300000, guid: 03978467ccffbc145b266cacbf0bc5e4, type: 3}
+  - {fileID: 21300000, guid: be18c1211706d484bae60bd31cb938ca, type: 3}
+  - {fileID: 21300000, guid: 8f9006ecbaee0a942ac27a0c8e9f6323, type: 3}
+  NumberOfPopcornsCurrent: 0
+  NumberOfPopcornsLimit: 10
 --- !u!1 &1463052330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
@@ -643,6 +695,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
   m_PrefabInstance: {fileID: 1747312028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1463052335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+  m_PrefabInstance: {fileID: 1747312028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463052330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6ce089e3df72c42a0227dba474e25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1633984185
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
+    - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Name
       value: PopcornMachine
@@ -767,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -204
+      value: -226
       objectReference: {fileID: 0}
     - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_LocalPosition.z
@@ -845,6 +912,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   popcornMachine: {fileID: 1463052330}
+  popcornBucket: {fileID: 1288018786}
 --- !u!4 &1921064454
 Transform:
   m_ObjectHideFlags: 0
