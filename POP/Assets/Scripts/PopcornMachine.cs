@@ -18,6 +18,8 @@ public class PopcornMachine : MonoBehaviour
     private Vector2 popcornAngle;
     [SerializeField] private float popcornForce = 3;
 
+    public List<GameObject> PopcornList;
+
     public void PopAPopcorn()
     {
         // Instancier le popcorn
@@ -25,6 +27,9 @@ public class PopcornMachine : MonoBehaviour
         target = new Vector3(_xPos, target1.position.y, 0);
         GameObject _popcorn = Instantiate(popcorn, target, Quaternion.identity);
         
+        // Ajouter le popcorn instancié à la liste de popcorns contenus dans la Popcorn Machine
+        PopcornList.Add(_popcorn);
+
         // Donner une trajectoire random au popcorn instancié
         Rigidbody2D _rb = _popcorn.GetComponent<Rigidbody2D>();
         float _x = Random.Range(popcornAngleXmin, popcornAngleXmax);

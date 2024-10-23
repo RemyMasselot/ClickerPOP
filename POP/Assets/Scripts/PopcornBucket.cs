@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopcornBucket : MonoBehaviour
 {
-    public int NumPopcorn;
+    public int StorageLimit;
     [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
     
     // Start is called before the first frame update
