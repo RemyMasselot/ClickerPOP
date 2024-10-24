@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class PopcornMachine : MonoBehaviour
 {
     [SerializeField] private GameObject popcorn;
-    [SerializeField] private Transform target1;
-    [SerializeField] private Transform target2;
+    [SerializeField] private Transform PopcornSpawnTarget1;
+    [SerializeField] private Transform PopcornSpawnTarget2;
     private Vector3 target;
 
     [Header("TRAJECTOIRE")]
@@ -18,13 +18,15 @@ public class PopcornMachine : MonoBehaviour
     private Vector2 popcornAngle;
     [SerializeField] private float popcornForce = 3;
 
+    [Header("TRAJECTOIRE")]
     public List<GameObject> PopcornList;
+
 
     public void PopAPopcorn()
     {
         // Instancier le popcorn
-        float _xPos = Random.Range(target1.position.x, target2.position.x);
-        target = new Vector3(_xPos, target1.position.y, 0);
+        float _xPos = Random.Range(PopcornSpawnTarget1.position.x, PopcornSpawnTarget2.position.x);
+        target = new Vector3(_xPos, PopcornSpawnTarget1.position.y, 0);
         GameObject _popcorn = Instantiate(popcorn, target, Quaternion.identity);
         
         // Ajouter le popcorn instancié à la liste de popcorns contenus dans la Popcorn Machine

@@ -13,6 +13,9 @@ public class PopcornBucket : MonoBehaviour
     public int NumberOfPopcornsCurrent = 0;
     public int NumberOfPopcornsLimit = 10;
 
+    [SerializeField] private Hands handLeft;
+    [SerializeField] private Hands handRight;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,6 +35,8 @@ public class PopcornBucket : MonoBehaviour
         if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
         {
             spriteRenderer.sprite = Sprites[3];
+            handLeft.GoToTarget2();
+            handRight.GoToTarget2();
         }
         if (NumberOfPopcornsCurrent <= NumberOfPopcornsLimit / 1.5f)
         {
@@ -48,7 +53,7 @@ public class PopcornBucket : MonoBehaviour
 
         if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
         {
-            ChangeTheBucket();
+            //ChangeTheBucket();
         }
     }
 
