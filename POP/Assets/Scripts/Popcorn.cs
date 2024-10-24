@@ -10,9 +10,9 @@ public class Popcorn : MonoBehaviour
     void Update()
     {
         // Passer l'ordre du calque devant celui de la casserole lorsque le popcorn retombe
-        if (rb.velocity.y < 0 && spriteRenderer.sortingOrder == -4)
+        if (rb.velocity.y < 0 && spriteRenderer.sortingOrder == -5)
         {
-            spriteRenderer.sortingOrder = -2;
+            spriteRenderer.sortingOrder = -3;
         }
 
         if (rb.velocity.y == 0)
