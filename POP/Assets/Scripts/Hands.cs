@@ -15,13 +15,18 @@ public class Hands : MonoBehaviour
         transform.position = target1.position;
     }
 
+    public void GoToTarget1()
+    {
+        transform.position = target1.position;
+    }
+
     public void GoToTarget2()
     {
-        transform.DOMove(target2.position, 0.5f);
+        transform.DOMove(target2.position, 0.2f);
     }
 
     public void GoToTarget3()
     {
-        transform.DOMove(target3.position, 0.5f);
+        transform.DOMove(target3.position, 0.3f);
     }
 }

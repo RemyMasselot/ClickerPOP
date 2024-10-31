@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.Events;
 
 public class PopcornBucket : MonoBehaviour
 {
+    private Vector3 _startPos;
+    
     public PopcornMachine PopcornMachine;
 
     private SpriteRenderer spriteRenderer;
@@ -16,9 +21,22 @@ public class PopcornBucket : MonoBehaviour
     [SerializeField] private Hands handLeft;
     [SerializeField] private Hands handRight;
 
+    private Slider _slider;
+    private CanvasGroup canvasGroup;
+    [SerializeField] private float _alphaSpeed = 1;
+
+    [SerializeField] private SpriteRenderer _spriteRendererBucket;
+    [SerializeField] private SpriteRenderer _spriteRendererShadow;
+    [SerializeField] private Image _timer;
+    public float TimerDuration = 2f;
+
     private void Start()
     {
+        _startPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _slider = GetComponentInChildren<Slider>();
+        SliderUpdate();
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
     }
 
     public void FillTheBucket()
@@ -30,35 +48,101 @@ public class PopcornBucket : MonoBehaviour
         Destroy(_popcornRemoved);
 
         NumberOfPopcornsCurrent ++;
+        _slider.value = NumberOfPopcornsCurrent;
 
         // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
         if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
         {
             spriteRenderer.sprite = Sprites[3];
-            handLeft.GoToTarget2();
-            handRight.GoToTarget2();
+            ChangeTheBucket();
+            return;
         }
-        if (NumberOfPopcornsCurrent <= NumberOfPopcornsLimit / 1.5f)
+        else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)
+        {
+            HandsReady();
+            return;
+        }
+        else if(NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
         {
             spriteRenderer.sprite = Sprites[2];
+            return;
         }
-        if (NumberOfPopcornsCurrent <= NumberOfPopcornsLimit / 2)
+        else if(NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
         {
             spriteRenderer.sprite = Sprites[1];
+            return;
         }
-        if (NumberOfPopcornsCurrent <= NumberOfPopcornsLimit / 4)
-        {
-            spriteRenderer.sprite = Sprites[0];
-        }
+    }
 
-        if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
-        {
-            //ChangeTheBucket();
-        }
+    private void SliderUpdate()
+    {
+        _slider.maxValue = NumberOfPopcornsLimit;
+    }
+
+    public void SliderHide()
+    {
+        DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, _alphaSpeed)
+            .OnComplete(() =>
+            {
+                DOVirtual.DelayedCall(0.3f, () =>
+                {
+                    Vector2 endMove = new Vector2(transform.position.x, transform.position.y + 0.3f);
+                    transform.DOMove(endMove, 0.3f)
+                    .OnComplete(() =>
+                    {
+                        _spriteRendererShadow.DOFade(0, 0.2f);
+                        Vector2 endMove = new Vector2(transform.position.x, transform.position.y - 2.5f);
+                        transform.DOMove(endMove, 0.2f)
+                        .OnComplete(() =>
+                         {
+                             ReplaceBucket();
+                             Reload();
+                         });
+                    });
+                });
+            });
+    }
+
+    private void HandsReady()
+    {
+        handLeft.GoToTarget2();
+        handRight.GoToTarget2();
     }
 
     private void ChangeTheBucket()
     {
+        handLeft.GoToTarget3();
+        handRight.GoToTarget3();
+        SliderHide();
+    }
 
+    private void ReplaceBucket()
+    {
+        Color colorBucket = _spriteRendererBucket.color;
+        colorBucket.a = 0;
+        _spriteRendererBucket.color = colorBucket;
+        transform.position = _startPos;
+        handLeft.GoToTarget1();
+        handRight.GoToTarget1();
+    }
+    
+    private void Reload()
+    {
+        _timer.DOFade(1, 0.3f)
+            .OnComplete(() =>
+            {
+                DOTween.To(() => _timer.fillAmount, x => _timer.fillAmount = x, 1, TimerDuration)
+                .OnComplete(() =>
+                {
+                    _timer.DOFade(0, 0.3f);
+                    _timer.fillAmount = 0;
+                    NumberOfPopcornsCurrent = 0;
+                    _spriteRendererBucket.DOFade(1, 0.3f);
+                    _spriteRendererShadow.DOFade(1, 0.3f);
+                    _slider.value = NumberOfPopcornsCurrent;
+                    DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, _alphaSpeed);
+                    spriteRenderer.sprite = Sprites[0];
+                });
+            });
     }
 }
