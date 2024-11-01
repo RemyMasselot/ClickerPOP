@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.Events;
 
 public class PopcornBucket : MonoBehaviour
 {
@@ -30,6 +29,10 @@ public class PopcornBucket : MonoBehaviour
     [SerializeField] private Image _timer;
     public float TimerDuration = 2f;
 
+    private Player _player;
+    public int BucketPrice = 5;
+    [SerializeField] private TextMoney _textMoney;
+
     private void Start()
     {
         _startPos = transform.position;
@@ -37,6 +40,8 @@ public class PopcornBucket : MonoBehaviour
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
         canvasGroup = GetComponentInChildren<CanvasGroup>();
+
+        _player = FindAnyObjectByType<Player>();
     }
 
     public void FillTheBucket()
@@ -79,7 +84,7 @@ public class PopcornBucket : MonoBehaviour
         _slider.maxValue = NumberOfPopcornsLimit;
     }
 
-    public void SliderHide()
+    public void BucketLeave()
     {
         DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, _alphaSpeed)
             .OnComplete(() =>
@@ -90,7 +95,6 @@ public class PopcornBucket : MonoBehaviour
                     transform.DOMove(endMove, 0.3f)
                     .OnComplete(() =>
                     {
-                        _spriteRendererShadow.DOFade(0, 0.2f);
                         Vector2 endMove = new Vector2(transform.position.x, transform.position.y - 2.5f);
                         transform.DOMove(endMove, 0.2f)
                         .OnComplete(() =>
@@ -99,6 +103,9 @@ public class PopcornBucket : MonoBehaviour
                              Reload();
                          });
                     });
+                    _spriteRendererShadow.DOFade(0, 0.2f);
+                    _player.GainMoney(BucketPrice);
+                    _textMoney.Appeared();
                 });
             });
     }
@@ -113,7 +120,7 @@ public class PopcornBucket : MonoBehaviour
     {
         handLeft.GoToTarget3();
         handRight.GoToTarget3();
-        SliderHide();
+        BucketLeave();
     }
 
     private void ReplaceBucket()

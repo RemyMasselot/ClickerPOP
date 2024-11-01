@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using TMPro;
+using System.Text;
 
 public class Player : MonoBehaviour
 {
     Controls controls;
     public InputAction Click;
 
+    public int Money;
+    public float MoneyBonus = 1;
+    [SerializeField] private TextMeshProUGUI _textMoney;
     [SerializeField] private GameObject popcornMachine;
-    [SerializeField] private GameObject popcornBucket;
+    [SerializeField] private List<GameObject> popcornBuckets;
 
     // Start is called before the first frame update
     void Start()
@@ -51,17 +55,32 @@ public class Player : MonoBehaviour
             PopcornMachine _popcornMachineScript = popcornMachine.GetComponent<PopcornMachine>();
             if (_popcornMachineScript.PopcornList.Count > 0)
             {
-                if (hit.collider.gameObject == popcornBucket)
+                if (popcornBuckets.Contains(hit.collider.gameObject) == true)
                 {
-                    PopcornBucket _popcornBucketScript = popcornBucket.GetComponent<PopcornBucket>();
+                    PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
                     if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
                     {
                         // Faire pop un popcorn
-                        popcornBucket.GetComponent<PopcornBucket>().FillTheBucket();
-                        //zDebug.Log("CLICK");
+                        hit.collider.gameObject.GetComponent<PopcornBucket>().FillTheBucket();
                     }
                 }
             }
         }
+    }
+
+    public void GainMoney(int bucketPrice)
+    {
+        Money += (int)(bucketPrice * MoneyBonus);
+        string money = Money.ToString();
+        StringBuilder resultat = new StringBuilder();
+        for (int i = 0; i < money.Length; i++)
+        {
+            if (i > 0 && i % 3 == 0)
+            {
+                resultat.Insert(0, '.');
+            }
+            resultat.Insert(0, money[money.Length - 1 - i]);
+        }
+        _textMoney.text = resultat + " €";
     }
 }

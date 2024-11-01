@@ -324,6 +324,11 @@ MonoBehaviour:
   NumberOfPopcornsLimit: 10
   handLeft: {fileID: 8893488773954769811}
   handRight: {fileID: 4447481483340841398}
+  _alphaSpeed: 0.2
+  _spriteRendererBucket: {fileID: 359928470024640894}
+  _spriteRendererShadow: {fileID: 1486255701862490431}
+  _timer: {fileID: 0}
+  TimerDuration: 2
 --- !u!1 &3150967417250320769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,8 +1127,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3324415744449721282, guid: 935bbff81da38954688c80c22ce1044e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5328726741651418634}
   m_SourcePrefab: {fileID: 100100000, guid: 935bbff81da38954688c80c22ce1044e, type: 3}
+--- !u!1 &726321213678314833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3324415744449721282, guid: 935bbff81da38954688c80c22ce1044e, type: 3}
+  m_PrefabInstance: {fileID: 2609514695333533331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &5328726741651418634
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726321213678314833}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &5348989592507736082 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7930195160869844609, guid: 935bbff81da38954688c80c22ce1044e, type: 3}
