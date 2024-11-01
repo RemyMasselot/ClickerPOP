@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     public int Money;
     public float MoneyBonus = 1;
-    [SerializeField] private TextMeshProUGUI _textMoney;
+    public TextMeshProUGUI TextMoney;
     [SerializeField] private GameObject popcornMachine;
     [SerializeField] private List<GameObject> popcornBuckets;
 
@@ -81,6 +81,6 @@ public class Player : MonoBehaviour
             }
             resultat.Insert(0, money[money.Length - 1 - i]);
         }
-        _textMoney.text = resultat + " €";
+        TextMoney.text = resultat + " €";
     }
 }

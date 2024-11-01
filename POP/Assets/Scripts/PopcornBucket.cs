@@ -31,7 +31,7 @@ public class PopcornBucket : MonoBehaviour
 
     private Player _player;
     public int BucketPrice = 5;
-    [SerializeField] private TextMoney _textMoney;
+    [SerializeField] private TextMoneyGained _textMoney;
 
     private void Start()
     {
@@ -46,11 +46,23 @@ public class PopcornBucket : MonoBehaviour
 
     public void FillTheBucket()
     {
-        // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
-        GameObject _popcornRemoved = PopcornMachine.PopcornList[PopcornMachine.PopcornList.Count - 1];
-        PopcornMachine.PopcornList.RemoveAt(PopcornMachine.PopcornList.Count - 1);
-        // Détruire ce popcorn
-        Destroy(_popcornRemoved);
+        if (PopcornMachine.PopcornList.Count > 2)
+        {
+            // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
+            GameObject popcornRemoved = PopcornMachine.PopcornList[PopcornMachine.PopcornList.Count - 2];
+            PopcornMachine.PopcornList.RemoveAt(PopcornMachine.PopcornList.Count - 2);
+            // Détruire ce popcorn
+            Destroy(popcornRemoved);
+        }
+        else
+        {
+            // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
+            GameObject popcornRemoved = PopcornMachine.PopcornList[PopcornMachine.PopcornList.Count - 1];
+            PopcornMachine.PopcornList.RemoveAt(PopcornMachine.PopcornList.Count - 1);
+            // Détruire ce popcorn
+            Destroy(popcornRemoved);
+        }
+        
 
         NumberOfPopcornsCurrent ++;
         _slider.value = NumberOfPopcornsCurrent;
