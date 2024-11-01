@@ -13,8 +13,9 @@ public class Player : MonoBehaviour
     public int Money;
     public float MoneyBonus = 1;
     public TextMeshProUGUI TextMoney;
-    [SerializeField] private GameObject popcornMachine;
+    [SerializeField] private PopcornMachine _popcornMachine;
     [SerializeField] private List<GameObject> popcornBuckets;
+    public float TimerAutoclick = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -38,30 +39,32 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Lancer un Raycast à la position de la souris
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
 
         // Si le joueur a appuyé sur un object
-        if (hit.collider != null)
+        foreach (RaycastHit2D hit in hits)
         {
-            // Si le joueur a appuyé sur la Popcorn Machine
-            if (hit.collider.gameObject == popcornMachine)
+            if (hit.collider != null)
             {
-                // Faire pop un popcorn
-                popcornMachine.GetComponent<PopcornMachine>().PopAPopcorn();
-                //Debug.Log("CLICK");
-            }
-
-            // Si il y a des popcorns dans la Popcorn Machine
-            PopcornMachine _popcornMachineScript = popcornMachine.GetComponent<PopcornMachine>();
-            if (_popcornMachineScript.PopcornList.Count > 0)
-            {
-                if (popcornBuckets.Contains(hit.collider.gameObject) == true)
+                // Si le joueur a appuyé sur la Popcorn Machine
+                if (hit.collider.gameObject.layer == 3)
                 {
-                    PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
-                    if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
+                    // Faire pop un popcorn
+                    _popcornMachine.PopAPopcorn();
+                    //Debug.Log("CLICK");
+                }
+
+                // Si le joueur a appuyé sur un bucket
+                if (_popcornMachine.PopcornList.Count > 0)
+                {
+                    if (popcornBuckets.Contains(hit.collider.gameObject) == true)
                     {
-                        // Faire pop un popcorn
-                        hit.collider.gameObject.GetComponent<PopcornBucket>().FillTheBucket();
+                        PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
+                        if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
+                        {
+                            // Faire pop un popcorn
+                            hit.collider.gameObject.GetComponent<PopcornBucket>().FillTheBucket();
+                        }
                     }
                 }
             }
@@ -82,5 +85,12 @@ public class Player : MonoBehaviour
             resultat.Insert(0, money[money.Length - 1 - i]);
         }
         TextMoney.text = resultat + " €";
+    }
+
+    public IEnumerator StartAutoclick()
+    {
+        _popcornMachine.PopAPopcorn();
+        yield return new WaitForSeconds(TimerAutoclick);
+        StartCoroutine(StartAutoclick());
     }
 }

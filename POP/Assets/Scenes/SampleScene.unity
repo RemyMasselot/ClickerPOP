@@ -122,6 +122,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28672640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28672642}
+  - component: {fileID: 28672641}
+  m_Layer: 0
+  m_Name: Background1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &28672641
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28672640}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -9
+  m_Sprite: {fileID: 21300000, guid: 30dcff222f5160b4a9bbb7eb52c24801, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16.68, y: 12.38}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &28672642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28672640}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -453, z: -12527.02}
+  m_LocalScale: {x: 45, y: 45, z: 45}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1633984189}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &52943804
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +1009,90 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &281289967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281289969}
+  - component: {fileID: 281289968}
+  m_Layer: 0
+  m_Name: Background2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &281289968
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281289967}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -10
+  m_Sprite: {fileID: 21300000, guid: e88c3699bf975b44f942f6b90f5b7a0d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16.685682, y: 23.88}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &281289969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281289967}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -15.3108015, z: -12527.02}
+  m_LocalScale: {x: 62.635094, y: 62.635094, z: 62.635094}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1633984189}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315170484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,11 +1580,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412830867}
   m_CullTransparentMesh: 1
---- !u!4 &437528686 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2374968403406167047, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-  m_PrefabInstance: {fileID: 1747312028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510992108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,95 +2883,6 @@ RectTransform:
   m_AnchoredPosition: {x: -204.30002, y: -603}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &960606774 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3365659319293287039, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-  m_PrefabInstance: {fileID: 1747312028}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &971732079
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 971732080}
-  - component: {fileID: 971732081}
-  m_Layer: 0
-  m_Name: PopcornMachinePan
-  m_TagString: Pan
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &971732080
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971732079}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1463052331}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &971732081
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971732079}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: 8c6fb079626669b43bdb9078f1001411, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.35, y: 3.86}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &978251468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2437989279337524324, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
@@ -3589,19 +3663,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1201044042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1201044045}
-        m_TargetAssemblyTypeName: MachineAutoClick, Assembly-CSharp
-        m_MethodName: UnlockAutoclick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1201044042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3681,10 +3743,11 @@ MonoBehaviour:
   _popcornMachine: {fileID: 1463052335}
   _player: {fileID: 1921064453}
   _price: 10
-  _timerAutoclick: 1
   _txTitle: {fileID: 1542816700}
   _txDesc: {fileID: 982745133}
   _txPrice: {fileID: 1777308766}
+  _txFirstUpgrade: Les popcorns se cuisinent tout seuls !
+  _txNextUpgrades: Les popcorns se cuisinent plus vite !
 --- !u!1 &1208874239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,11 +4977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431877441}
   m_CullTransparentMesh: 1
---- !u!1 &1463052330 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-  m_PrefabInstance: {fileID: 1747312028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1463052331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
@@ -4929,7 +4987,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
   m_PrefabInstance: {fileID: 1747312028}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463052330}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f6ce089e3df72c42a0227dba474e25b, type: 3}
@@ -5497,6 +5555,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 28672642}
+  - {fileID: 281289969}
   - {fileID: 726338248}
   - {fileID: 1037106801}
   - {fileID: 1573415243}
@@ -5664,53 +5724,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
-    - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Name
       value: PopcornMachine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374968403406167047, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.93221
-      objectReference: {fileID: 0}
-    - target: {fileID: 3353623349791482588, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5900004
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365659319293287039, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.93221
-      objectReference: {fileID: 0}
-    - target: {fileID: 3973331042730714949, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248066954176857787, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Name
-      value: PopcornSpawnTarget2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5147076363386699271, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.8899996
-      objectReference: {fileID: 0}
-    - target: {fileID: 5678894510607864197, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Size.x
-      value: 11.16403
-      objectReference: {fileID: 0}
-    - target: {fileID: 5678894510607864197, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Size.y
-      value: 15.583311
-      objectReference: {fileID: 0}
-    - target: {fileID: 5678894510607864197, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.16798496
-      objectReference: {fileID: 0}
-    - target: {fileID: 5678894510607864197, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Offset.y
-      value: 3.8150244
       objectReference: {fileID: 0}
     - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5752,24 +5768,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: PopcornSpawnTarget1
-      value: 
-      objectReference: {fileID: 437528686}
-    - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: PopcornSpawnTarget2
-      value: 
-      objectReference: {fileID: 960606774}
-    - target: {fileID: 7150505898627429899, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_Name
-      value: PopcornSpawnTarget1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 971732080}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
 --- !u!1 &1777308764
@@ -5829,7 +5830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "100 \u20AC"
+  m_text: "10 \u20AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6087,7 +6088,7 @@ GameObject:
   - component: {fileID: 1921064454}
   - component: {fileID: 1921064453}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6117,11 +6118,12 @@ MonoBehaviour:
   Money: 0
   MoneyBonus: 1
   TextMoney: {fileID: 726338249}
-  popcornMachine: {fileID: 1463052330}
+  _popcornMachine: {fileID: 1463052335}
   popcornBuckets:
   - {fileID: 1288018786}
   - {fileID: 978251468}
   - {fileID: 1864270413}
+  TimerAutoclick: 1
 --- !u!4 &1921064454
 Transform:
   m_ObjectHideFlags: 0
