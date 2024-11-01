@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PopcornMachine _popcornMachine;
     [SerializeField] private List<GameObject> popcornBuckets;
     public float TimerAutoclick = 1;
+    public int PopNumber = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,10 @@ public class Player : MonoBehaviour
                 if (hit.collider.gameObject.layer == 3)
                 {
                     // Faire pop un popcorn
-                    _popcornMachine.PopAPopcorn();
+                    for (int i = 0; i < PopNumber; i++)
+                    {
+                        _popcornMachine.PopAPopcorn();
+                    }
                     //Debug.Log("CLICK");
                 }
 
