@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     public List<GameObject> PopcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
-    public int FillNumber = 1;
     public int BucketsSold = 0;
 
     // Start is called before the first frame update

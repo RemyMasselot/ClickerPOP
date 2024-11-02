@@ -37,6 +37,7 @@ public class PopcornBucket : MonoBehaviour
     public int LvFill;
     public int LvStorage;
     public CanvasGroup CanvaLevels;
+    public int FillNumber = 1;
 
     private void Start()
     {
@@ -51,7 +52,7 @@ public class PopcornBucket : MonoBehaviour
 
     public void RepeatFillTheBucket()
     {
-        for (int i = 0; i < _player.FillNumber; i++)
+        for (int i = 0; i < FillNumber; i++)
         {
             FillTheBucket();
         }

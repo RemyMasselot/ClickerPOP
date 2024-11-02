@@ -6,6 +6,7 @@ using UnityEngine;
 public class BucketFill : MonoBehaviour
 {
     private Player _player;
+    [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private int _priceMultiplyer = 3;
     [SerializeField] private TextMeshProUGUI _txPrice;
@@ -20,7 +21,8 @@ public class BucketFill : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _player.FillNumber ++;
+            PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
+            _bucket.FillNumber ++;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price *= _priceMultiplyer;
