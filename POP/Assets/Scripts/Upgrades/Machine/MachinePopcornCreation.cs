@@ -10,7 +10,7 @@ public class MachinePopcornCreation : MonoBehaviour
     [SerializeField] private int _priceMultiplyer = 3;
     [SerializeField] private TextMeshProUGUI _txPrice;
 
-    private void Start()
+    private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _txPrice.text = _price.ToString() + " €";

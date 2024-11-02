@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BucketReload : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class BucketReload : MonoBehaviour
     [SerializeField] private int _priceMultiplyer = 3;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private Button button;
 
-    private void Start()
+    private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _txPrice.text = _price.ToString() + " €";
+        button = GetComponent<Button>();
+        button.onClick.AddListener(DecreaseReloadTime);
     }
 
     public void DecreaseReloadTime()

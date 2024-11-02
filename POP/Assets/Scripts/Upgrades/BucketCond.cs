@@ -11,7 +11,7 @@ public class BucketCond : MonoBehaviour
     private Player _player;
     private TextMeshProUGUI _text;
 
-    private void Start()
+    private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _button = GetComponentInParent<Button>();
@@ -19,6 +19,7 @@ public class BucketCond : MonoBehaviour
         _text = GetComponentInChildren<TextMeshProUGUI>();
         _text.text = _player.BucketsSold + "/" + NumBucketsToSell.ToString();
     }
+
 
     public void CheckNumBuckets()
     {

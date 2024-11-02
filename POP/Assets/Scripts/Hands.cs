@@ -10,7 +10,7 @@ public class Hands : MonoBehaviour
     [SerializeField] private Transform target2;
     [SerializeField] private Transform target3;
 
-    private void Start()
+    private void Awake()
     {
         transform.position = target1.position;
     }
@@ -27,6 +27,6 @@ public class Hands : MonoBehaviour
 
     public void GoToTarget3()
     {
-        transform.DOMove(target3.position, 0.3f);
+        transform.DOMove(target3.position, 0.15f);
     }
 }

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public int BucketsSold = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Set input actions
         controls = new Controls();
@@ -90,6 +90,15 @@ public class Player : MonoBehaviour
             resultat.Insert(0, money[money.Length - 1 - i]);
         }
         TextMoney.text = resultat + " €";
+    }
+
+    public void CheckBucketLimits()
+    {
+        BucketCond[] obj = FindObjectsOfType<BucketCond>();
+        foreach (BucketCond item in obj)
+        {
+            item.CheckNumBuckets();
+        }
     }
 
     public IEnumerator StartAutoclickMachine()

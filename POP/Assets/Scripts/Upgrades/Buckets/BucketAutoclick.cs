@@ -18,7 +18,7 @@ public class BucketAutoclick : MonoBehaviour
     [SerializeField] private string _txNextUpgrades;
     private Button button;
 
-    private void Start()
+    private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _txPrice.text = _price.ToString() + " €";

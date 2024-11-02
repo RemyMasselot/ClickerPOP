@@ -36,10 +36,9 @@ public class PopcornBucket : MonoBehaviour
     public int LvAutoclick;
     public int LvFill;
     public int LvStorage;
-    public CanvasGroup CanvaLevels;
     public int FillNumber = 1;
 
-    private void Start()
+    private void Awake()
     {
         _startPos = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -79,11 +78,7 @@ public class PopcornBucket : MonoBehaviour
                     spriteRenderer.sprite = Sprites[3];
                     ChangeTheBucket();
                     _player.BucketsSold++;
-                    BucketCond[] obj = FindObjectsOfType<BucketCond>();
-                    foreach (BucketCond item in obj)
-                    {
-                        item.CheckNumBuckets();
-                    }
+                    _player.CheckBucketLimits();
                     return;
                 }
                 else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)
@@ -116,10 +111,10 @@ public class PopcornBucket : MonoBehaviour
         DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, _alphaSpeed)
             .OnComplete(() =>
             {
-                DOVirtual.DelayedCall(0.3f, () =>
+                DOVirtual.DelayedCall(0.1f, () =>
                 {
                     Vector2 endMove = new Vector2(transform.position.x, transform.position.y + 0.3f);
-                    transform.DOMove(endMove, 0.3f)
+                    transform.DOMove(endMove, 0.2f)
                     .OnComplete(() =>
                     {
                         Vector2 endMove = new Vector2(transform.position.x, transform.position.y - 2.5f);
@@ -178,14 +173,5 @@ public class PopcornBucket : MonoBehaviour
                     spriteRenderer.sprite = Sprites[0];
                 });
             });
-    }
-
-    private void OnMouseEnter()
-    {
-        CanvaLevels.DOFade(1, 0.5f);
-    }
-    private void OnMouseExit()
-    {
-        CanvaLevels.DOFade(0, 0.5f);
     }
 }
