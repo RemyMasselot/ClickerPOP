@@ -72,6 +72,12 @@ public class PopcornBucket : MonoBehaviour
         {
             spriteRenderer.sprite = Sprites[3];
             ChangeTheBucket();
+            _player.BucketsSold++;
+            BucketCond[] obj = FindObjectsOfType<BucketCond>();
+            foreach (BucketCond item in obj)
+            {
+                item.CheckNumBuckets();
+            }
             return;
         }
         else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)

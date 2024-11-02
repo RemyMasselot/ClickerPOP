@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class MachineAutoClick : MonoBehaviour
 {
-    [SerializeField] private PopcornMachine _popcornMachine;
-    [SerializeField] private Player _player;
+    private Player _player;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
@@ -18,6 +17,7 @@ public class MachineAutoClick : MonoBehaviour
 
     private void Start()
     {
+        _player = FindObjectOfType<Player>();
         _txPrice.text = _price.ToString() + " €";
         button = GetComponent<Button>();
         button.onClick.AddListener(UnlockAutoclick);

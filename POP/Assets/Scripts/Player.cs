@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<GameObject> popcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
+    public int BucketsSold = 0;
 
     // Start is called before the first frame update
     void Start()
