@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BucketFill : MonoBehaviour
+public class BucketStorage : MonoBehaviour
 {
     private Player _player;
-    [SerializeField] private int _price = 10;
+    [SerializeField] private int _index = 0;
+    [SerializeField] private int _storageMultiplyer = 2;
     [SerializeField] private int _priceMultiplyer = 3;
+    [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
 
     private void Start()
@@ -16,11 +18,13 @@ public class BucketFill : MonoBehaviour
         _txPrice.text = _price.ToString() + " €";
     }
 
-    public void FillBucket()
+    public void IncreaseStorage()
     {
         if (_player.Money >= _price)
         {
-            _player.FillNumber ++;
+            PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
+            _bucket.NumberOfPopcornsLimit *= _storageMultiplyer;
+            _bucket.SliderUpdate();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price *= _priceMultiplyer;

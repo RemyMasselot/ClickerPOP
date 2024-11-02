@@ -105,7 +105,7 @@ public class PopcornBucket : MonoBehaviour
         }
     }
 
-    private void SliderUpdate()
+    public void SliderUpdate()
     {
         _slider.maxValue = NumberOfPopcornsLimit;
     }

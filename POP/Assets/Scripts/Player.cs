@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float MoneyBonus = 1;
     public TextMeshProUGUI TextMoney;
     [SerializeField] private PopcornMachine _popcornMachine;
-    [SerializeField] private List<GameObject> popcornBuckets;
+    public List<GameObject> PopcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
     public int FillNumber = 1;
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
                 // Si le joueur a appuyé sur un bucket
                 if (_popcornMachine.PopcornList.Count > 0)
                 {
-                    if (popcornBuckets.Contains(hit.collider.gameObject) == true)
+                    if (PopcornBuckets.Contains(hit.collider.gameObject) == true)
                     {
                         PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
                         if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
     {
         if (_popcornMachine.PopcornList.Count > 0)
         {
-            PopcornBucket _bucket = popcornBuckets[index].GetComponent<PopcornBucket>();
+            PopcornBucket _bucket = PopcornBuckets[index].GetComponent<PopcornBucket>();
             if (_bucket.NumberOfPopcornsCurrent < _bucket.NumberOfPopcornsLimit)
             {
                 _bucket.FillTheBucket();
