@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<GameObject> popcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
+    public int FillNumber = 1;
     public int BucketsSold = 0;
 
     // Start is called before the first frame update
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour
                         if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
                         {
                             // Faire pop un popcorn
-                            hit.collider.gameObject.GetComponent<PopcornBucket>().FillTheBucket();
+                            hit.collider.gameObject.GetComponent<PopcornBucket>().RepeatFillTheBucket();
                         }
                     }
                 }
@@ -92,10 +93,24 @@ public class Player : MonoBehaviour
         TextMoney.text = resultat + " €";
     }
 
-    public IEnumerator StartAutoclick()
+    public IEnumerator StartAutoclickMachine()
     {
         _popcornMachine.PopAPopcorn();
         yield return new WaitForSeconds(TimerAutoclick);
-        StartCoroutine(StartAutoclick());
+        StartCoroutine(StartAutoclickMachine());
+    }
+
+    public IEnumerator StartAutoclickBucket(int index)
+    {
+        if (_popcornMachine.PopcornList.Count > 0)
+        {
+            PopcornBucket _bucket = popcornBuckets[index].GetComponent<PopcornBucket>();
+            if (_bucket.NumberOfPopcornsCurrent < _bucket.NumberOfPopcornsLimit)
+            {
+                _bucket.FillTheBucket();
+            }
+        }
+        yield return new WaitForSeconds(TimerAutoclick);
+        StartCoroutine(StartAutoclickBucket(index));
     }
 }

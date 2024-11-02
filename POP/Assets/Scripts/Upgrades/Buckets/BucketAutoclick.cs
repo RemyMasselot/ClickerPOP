@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class MachineAutoClick : MonoBehaviour
+public class BucketAutoclick : MonoBehaviour
 {
     private Player _player;
+    [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
+    [SerializeField] private float _divider = 2;
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
     [SerializeField] private TextMeshProUGUI _txPrice;
@@ -28,7 +30,7 @@ public class MachineAutoClick : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            StartCoroutine(_player.StartAutoclickMachine());
+            StartCoroutine(_player.StartAutoclickBucket(_index));
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             button.onClick.RemoveAllListeners();
@@ -44,7 +46,7 @@ public class MachineAutoClick : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _player.TimerAutoclick *= 0.5f;
+            _player.TimerAutoclick /= _divider;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price *= 3;

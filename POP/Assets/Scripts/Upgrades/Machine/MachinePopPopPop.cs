@@ -19,7 +19,7 @@ public class MachinePopPopPop : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _player.PopNumber++;
+            _player.PopNumber ++;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price *= 3;

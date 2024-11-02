@@ -26,16 +26,21 @@ public class PopcornBucket : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _spriteRendererBucket;
     [SerializeField] private SpriteRenderer _spriteRendererShadow;
-    [SerializeField] private Image _timer;
+    public Image Timer;
     public float TimerDuration = 2f;
 
     private Player _player;
     public int BucketPrice = 5;
     [SerializeField] private TextMoneyGained _textMoney;
 
+    public int LvAutoclick;
+    public int LvFill;
+    public int LvStorage;
+    public CanvasGroup CanvaLevels;
+
     private void Start()
     {
-        _startPos = transform.position;
+        _startPos = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
@@ -44,56 +49,59 @@ public class PopcornBucket : MonoBehaviour
         _player = FindAnyObjectByType<Player>();
     }
 
+    public void RepeatFillTheBucket()
+    {
+        for (int i = 0; i < _player.FillNumber; i++)
+        {
+            FillTheBucket();
+        }
+    }
+
     public void FillTheBucket()
     {
-        if (PopcornMachine.PopcornList.Count > 2)
+        for (int i = PopcornMachine.PopcornList.Count-1; i >= 0; i--)
         {
-            // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
-            GameObject popcornRemoved = PopcornMachine.PopcornList[PopcornMachine.PopcornList.Count - 2];
-            PopcornMachine.PopcornList.RemoveAt(PopcornMachine.PopcornList.Count - 2);
-            // Détruire ce popcorn
-            Destroy(popcornRemoved);
-        }
-        else
-        {
-            // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
-            GameObject popcornRemoved = PopcornMachine.PopcornList[PopcornMachine.PopcornList.Count - 1];
-            PopcornMachine.PopcornList.RemoveAt(PopcornMachine.PopcornList.Count - 1);
-            // Détruire ce popcorn
-            Destroy(popcornRemoved);
-        }
-        
-
-        NumberOfPopcornsCurrent ++;
-        _slider.value = NumberOfPopcornsCurrent;
-
-        // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
-        if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
-        {
-            spriteRenderer.sprite = Sprites[3];
-            ChangeTheBucket();
-            _player.BucketsSold++;
-            BucketCond[] obj = FindObjectsOfType<BucketCond>();
-            foreach (BucketCond item in obj)
+            Popcorn popcorn = PopcornMachine.PopcornList[i].GetComponent<Popcorn>();
+            if (popcorn.BounceCount > 1)
             {
-                item.CheckNumBuckets();
+                // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
+                GameObject popcornRemoved = PopcornMachine.PopcornList[i];
+                PopcornMachine.PopcornList.RemoveAt(i);
+                // Détruire ce popcorn
+                Destroy(popcornRemoved);
+                NumberOfPopcornsCurrent++;
+                _slider.value = NumberOfPopcornsCurrent;
+
+                // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
+                if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
+                {
+                    spriteRenderer.sprite = Sprites[3];
+                    ChangeTheBucket();
+                    _player.BucketsSold++;
+                    BucketCond[] obj = FindObjectsOfType<BucketCond>();
+                    foreach (BucketCond item in obj)
+                    {
+                        item.CheckNumBuckets();
+                    }
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)
+                {
+                    HandsReady();
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
+                {
+                    spriteRenderer.sprite = Sprites[2];
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
+                {
+                    spriteRenderer.sprite = Sprites[1];
+                    return;
+                }
+                break;
             }
-            return;
-        }
-        else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)
-        {
-            HandsReady();
-            return;
-        }
-        else if(NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
-        {
-            spriteRenderer.sprite = Sprites[2];
-            return;
-        }
-        else if(NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
-        {
-            spriteRenderer.sprite = Sprites[1];
-            return;
         }
     }
 
@@ -146,21 +154,21 @@ public class PopcornBucket : MonoBehaviour
         Color colorBucket = _spriteRendererBucket.color;
         colorBucket.a = 0;
         _spriteRendererBucket.color = colorBucket;
-        transform.position = _startPos;
+        transform.localPosition = _startPos;
         handLeft.GoToTarget1();
         handRight.GoToTarget1();
     }
     
     private void Reload()
     {
-        _timer.DOFade(1, 0.3f)
+        Timer.DOFade(1, 0.3f)
             .OnComplete(() =>
             {
-                DOTween.To(() => _timer.fillAmount, x => _timer.fillAmount = x, 1, TimerDuration)
+                DOTween.To(() => Timer.fillAmount, x => Timer.fillAmount = x, 1, TimerDuration)
                 .OnComplete(() =>
                 {
-                    _timer.DOFade(0, 0.3f);
-                    _timer.fillAmount = 0;
+                    Timer.DOFade(0, 0.3f);
+                    Timer.fillAmount = 0;
                     NumberOfPopcornsCurrent = 0;
                     _spriteRendererBucket.DOFade(1, 0.3f);
                     _spriteRendererShadow.DOFade(1, 0.3f);
@@ -169,5 +177,14 @@ public class PopcornBucket : MonoBehaviour
                     spriteRenderer.sprite = Sprites[0];
                 });
             });
+    }
+
+    private void OnMouseEnter()
+    {
+        CanvaLevels.DOFade(1, 0.5f);
+    }
+    private void OnMouseExit()
+    {
+        CanvaLevels.DOFade(0, 0.5f);
     }
 }
