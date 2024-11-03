@@ -8,7 +8,7 @@ public class MachineAutoClick : MonoBehaviour
 {
     private Player _player;
     [SerializeField] private int _price = 10;
-    [SerializeField] private int _priceMultiplyer = 3;
+    [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
     [SerializeField] private TextMeshProUGUI _txPrice;
@@ -34,7 +34,7 @@ public class MachineAutoClick : MonoBehaviour
             _player.TextMoney.text = _player.Money.ToString() + " €";
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(IncreaseAutoclick);
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
             _txDesc.text = _txNextUpgrades;
             //Debug.Log("oui");
@@ -48,7 +48,7 @@ public class MachineAutoClick : MonoBehaviour
             _player.TimerAutoclick *= 0.5f;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
             //Debug.Log("haha");
         }

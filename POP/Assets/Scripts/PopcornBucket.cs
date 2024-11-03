@@ -31,7 +31,7 @@ public class PopcornBucket : MonoBehaviour
 
     private Player _player;
     public int BucketPrice = 5;
-    [SerializeField] private TextMoneyGained _textMoney;
+    public TextMoneyGained TextMoney;
 
     public int LvAutoclick;
     public int LvFill;
@@ -45,8 +45,8 @@ public class PopcornBucket : MonoBehaviour
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
         canvasGroup = GetComponentInChildren<CanvasGroup>();
-
         _player = FindAnyObjectByType<Player>();
+        BucketPrice = (int)(NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
     }
 
     public void RepeatFillTheBucket()
@@ -127,7 +127,7 @@ public class PopcornBucket : MonoBehaviour
                     });
                     _spriteRendererShadow.DOFade(0, 0.2f);
                     _player.GainMoney(BucketPrice);
-                    _textMoney.Appeared();
+                    TextMoney.Appeared();
                 });
             });
     }

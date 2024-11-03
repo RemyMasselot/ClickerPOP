@@ -9,7 +9,7 @@ public class BucketStorage : MonoBehaviour
     private Player _player;
     [SerializeField] private int _index = 0;
     [SerializeField] private int _storageMultiplyer = 2;
-    [SerializeField] private int _priceMultiplyer = 3;
+    [SerializeField] private float _priceMultiplyer = 1.5f;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
     private Button button;
@@ -29,9 +29,11 @@ public class BucketStorage : MonoBehaviour
             PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
             _bucket.NumberOfPopcornsLimit *= _storageMultiplyer;
             _bucket.SliderUpdate();
+            _bucket.BucketPrice = (int)(_bucket.NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
+            _bucket.TextMoney.UpdateText();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
         }
     }

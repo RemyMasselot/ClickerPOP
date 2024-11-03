@@ -17,6 +17,11 @@ public class TextMoneyGained : MonoBehaviour
         _textMoney.text = "+ " + _popcornBucket.BucketPrice.ToString() + "€";
     }
 
+    public void UpdateText()
+    {
+        _textMoney.text = "+ " + _popcornBucket.BucketPrice.ToString() + "€";
+    }
+
     public void Appeared()
     {
         _textMoney.alpha = 1;

@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     public InputAction Click;
 
     public int Money;
-    public float MoneyBonus = 1;
     public TextMeshProUGUI TextMoney;
     [SerializeField] private PopcornMachine _popcornMachine;
     public List<GameObject> PopcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
     public int BucketsSold = 0;
+    public float ClientTips = 1;
+    public float BucketPriceDivider = 4;
 
     // Start is called before the first frame update
     void Awake()
@@ -78,7 +79,7 @@ public class Player : MonoBehaviour
 
     public void GainMoney(int bucketPrice)
     {
-        Money += (int)(bucketPrice * MoneyBonus);
+        Money += bucketPrice;
         string money = Money.ToString();
         StringBuilder resultat = new StringBuilder();
         for (int i = 0; i < money.Length; i++)

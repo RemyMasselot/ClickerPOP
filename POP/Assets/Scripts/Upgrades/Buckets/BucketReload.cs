@@ -9,7 +9,7 @@ public class BucketReload : MonoBehaviour
     private Player _player;
     [SerializeField] private int _index = 0;
     [SerializeField] private int _timeDivider = 2;
-    [SerializeField] private int _priceMultiplyer = 3;
+    [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
     private Button button;
@@ -30,7 +30,7 @@ public class BucketReload : MonoBehaviour
             _bucket.TimerDuration /= _timeDivider;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
         }
     }

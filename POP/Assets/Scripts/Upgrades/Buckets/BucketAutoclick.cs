@@ -9,7 +9,7 @@ public class BucketAutoclick : MonoBehaviour
     private Player _player;
     [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
-    [SerializeField] private int _priceMultiplyer = 3;
+    [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private float _divider = 2;
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
@@ -36,7 +36,7 @@ public class BucketAutoclick : MonoBehaviour
             _player.TextMoney.text = _player.Money.ToString() + " €";
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(IncreaseAutoclick);
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
             _txDesc.text = _txNextUpgrades;
             //Debug.Log("oui");
@@ -50,7 +50,7 @@ public class BucketAutoclick : MonoBehaviour
             _player.TimerAutoclick /= _divider;
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
-            _price *= _priceMultiplyer;
+            _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
             //Debug.Log("haha");
         }
