@@ -50,9 +50,9 @@ public class PopcornBucket : MonoBehaviour
         BucketPrice = (int)(NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
     }
 
-    public void RepeatFillTheBucket()
+    public void RepeatFillTheBucket(int num)
     {
-        for (int i = 0; i < FillNumber; i++)
+        for (int i = 0; i < num; i++)
         {
             FillTheBucket();
         }

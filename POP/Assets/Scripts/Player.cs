@@ -43,38 +43,41 @@ public class Player : MonoBehaviour
 
     private void ExecuteAction()
     {
-        // Convertir la position de la souris de l'écran à l'espace monde
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Lancer un Raycast à la position de la souris
-        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
-
-        // Si le joueur a appuyé sur un object
-        foreach (RaycastHit2D hit in hits)
+        if (_burnPopcorn.IsBurning == false)
         {
-            if (hit.collider != null)
-            {
-                // Si le joueur a appuyé sur la Popcorn Machine
-                if (hit.collider.gameObject.layer == 3)
-                {
-                    // Faire pop un popcorn
-                    for (int i = 0; i < PopNumber; i++)
-                    {
-                        _popcornMachine.PopAPopcorn();
-                    }
-                    //Debug.Log("CLICK");
-                }
+            // Convertir la position de la souris de l'écran à l'espace monde
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                // Si le joueur a appuyé sur un bucket
-                if (_popcornMachine.PopcornList.Count > 0)
+            // Lancer un Raycast à la position de la souris
+            RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+
+            // Si le joueur a appuyé sur un object
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider != null)
                 {
-                    if (PopcornBuckets.Contains(hit.collider.gameObject) == true)
+                    // Si le joueur a appuyé sur la Popcorn Machine
+                    if (hit.collider.gameObject.layer == 3)
                     {
-                        PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
-                        if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
+                        // Faire pop un popcorn
+                        for (int i = 0; i < PopNumber; i++)
                         {
-                            // Faire pop un popcorn
-                            hit.collider.gameObject.GetComponent<PopcornBucket>().RepeatFillTheBucket();
+                            _popcornMachine.PopAPopcorn();
+                        }
+                        //Debug.Log("CLICK");
+                    }
+
+                    // Si le joueur a appuyé sur un bucket
+                    if (_popcornMachine.PopcornList.Count > 0)
+                    {
+                        if (PopcornBuckets.Contains(hit.collider.gameObject) == true)
+                        {
+                            PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
+                            if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
+                            {
+                                // Faire pop un popcorn
+                                _popcornBucketScript.RepeatFillTheBucket(_popcornBucketScript.FillNumber);
+                            }
                         }
                     }
                 }
