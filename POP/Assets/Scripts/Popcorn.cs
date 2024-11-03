@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Popcorn : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D Rb;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public int BounceCount = 0;
+    public bool CanBurn = false;
     
     void Update()
     {
-        if (spriteRenderer.sortingOrder == -3)
+        if (Rb.IsSleeping() == false)
         {
-            if (rb.velocity.y == 0 && rb.IsSleeping() == false)
+            if (spriteRenderer.sortingOrder == -3)
             {
-                rb.Sleep();
+                if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
+                {
+                    Rb.Sleep();
+                    CanBurn = true;
+                }
             }
-        }
-        else if (rb.velocity.y < 0)
-        {
-            spriteRenderer.sortingOrder = -3;
+            else if (Rb.velocity.y < 0)
+            {
+                spriteRenderer.sortingOrder = -3;
+            }
         }
     }
 

@@ -10,9 +10,11 @@ public class Player : MonoBehaviour
     Controls controls;
     public InputAction Click;
 
+    private PopcornMachine _popcornMachine;
+    private BurnPopcorn _burnPopcorn;
+
     public int Money;
     public TextMeshProUGUI TextMoney;
-    [SerializeField] private PopcornMachine _popcornMachine;
     public List<GameObject> PopcornBuckets;
     public float TimerAutoclick = 1;
     public int PopNumber = 1;
@@ -27,6 +29,9 @@ public class Player : MonoBehaviour
         controls = new Controls();
         controls.Enable();
         Click = controls.Player.Click;
+
+        _popcornMachine = FindObjectOfType<PopcornMachine>();
+        _burnPopcorn = FindObjectOfType<BurnPopcorn>();
     }
 
     // Update is called once per frame
@@ -104,13 +109,21 @@ public class Player : MonoBehaviour
 
     public IEnumerator StartAutoclickMachine()
     {
+        while (_burnPopcorn.IsBurning == true)
+        {
+            yield return null;
+        }
         _popcornMachine.PopAPopcorn();
         yield return new WaitForSeconds(TimerAutoclick);
         StartCoroutine(StartAutoclickMachine());
     }
 
-    public IEnumerator StartAutoclickBucket(int index)
+    public IEnumerator StartAutoclickBucket(int index, float timer)
     {
+        while (_burnPopcorn.IsBurning == true)
+        {
+            yield return null;
+        }
         if (_popcornMachine.PopcornList.Count > 0)
         {
             PopcornBucket _bucket = PopcornBuckets[index].GetComponent<PopcornBucket>();
@@ -119,7 +132,7 @@ public class Player : MonoBehaviour
                 _bucket.FillTheBucket();
             }
         }
-        yield return new WaitForSeconds(TimerAutoclick);
-        StartCoroutine(StartAutoclickBucket(index));
+        yield return new WaitForSeconds(timer);
+        StartCoroutine(StartAutoclickBucket(index, timer));
     }
 }

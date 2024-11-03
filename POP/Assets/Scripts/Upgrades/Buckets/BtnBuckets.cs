@@ -18,7 +18,7 @@ public class BtnBuckets : MonoBehaviour
 
     public void BtnBucket()
     {
-        for (int i = 0; i < _contentBuckets.Count - 1; i++)
+        for (int i = 0; i < _contentBuckets.Count; i++)
         {
             if (i == _contentBucketsIndex)
             {

@@ -31,6 +31,7 @@ public class PopcornBucket : MonoBehaviour
 
     private Player _player;
     public int BucketPrice = 5;
+    public float TimerAutoclick = 1;
     public TextMoneyGained TextMoney;
 
     public int LvAutoclick;
