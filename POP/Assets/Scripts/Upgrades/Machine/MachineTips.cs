@@ -33,7 +33,7 @@ public class MachineTips : MonoBehaviour
                 _popcornBuckets[i].TextMoney.UpdateText();
             }
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.UpdateMoney();
             _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = _price.ToString() + " €";
         }

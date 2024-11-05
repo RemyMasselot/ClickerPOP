@@ -85,9 +85,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GainMoney(int bucketPrice)
+    public void UpdateMoney()
     {
-        Money += bucketPrice;
         string money = Money.ToString();
         StringBuilder resultat = new StringBuilder();
         for (int i = 0; i < money.Length; i++)
