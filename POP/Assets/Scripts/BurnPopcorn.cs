@@ -11,7 +11,9 @@ public class BurnPopcorn : MonoBehaviour
     [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _btnShield;
     [SerializeField] private List<GameObject> _badPopcorns = new List<GameObject>();
+    [SerializeField] private SpriteRenderer _flame;
     [SerializeField] private int _badPopcornLimit = 5;
+    [SerializeField] private int _timeRebuild;
 
     private void Awake()
     {
@@ -74,22 +76,26 @@ public class BurnPopcorn : MonoBehaviour
         _popcornMachine.PopcornList.RemoveAll(popcorn =>
         {
             SpriteRenderer spriteRenderer = popcorn.GetComponent<SpriteRenderer>();
-            spriteRenderer.DOColor(Color.black, 1).OnComplete(() =>
+            spriteRenderer.DOColor(Color.black, 0.8f).OnComplete(() =>
             {
-                Destroy(popcorn);
-                //Debug.Log("destroy");
+                spriteRenderer.DOFade(0, 0.3f)
+                .OnComplete(() =>
+                {
+                    Destroy(popcorn);
+                });
             });
             return true;
         });
-        Invoke("BurnOff", 5);
-        //Debug.Log(IsBurning);
+        _flame.DOFade(1, 1f);
+        StartCoroutine(BurnOff());
     }
 
-    private void BurnOff()
+    IEnumerator BurnOff()
     {
+        yield return new WaitForSeconds(_timeRebuild);
         _badPopcorns.Clear();
         IsBurning = false;
         _btnShield.SetActive(true);
-        //Debug.Log(IsBurning);
+        _flame.DOFade(0, 0.5f);
     }
 }
