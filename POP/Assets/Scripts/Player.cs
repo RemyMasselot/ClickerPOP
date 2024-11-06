@@ -64,6 +64,10 @@ public class Player : MonoBehaviour
                         for (int i = 0; i < PopNumber; i++)
                         {
                             _popcornMachine.PopAPopcorn();
+                            PopcornMachine _popcornMachineScript = hit.collider.gameObject.GetComponent<PopcornMachine>();
+                            Transform visual = _popcornMachineScript.Pan;
+                            visual.DOKill(true);
+                            visual.DOPunchScale(visual.localScale * 0.2f, 0.5f, 10, 0);
                         }
                         //Debug.Log("CLICK");
                     }
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour
                                 _popcornBucketScript.RepeatFillTheBucket(_popcornBucketScript.FillNumber);
                                 Transform visual = _popcornBucketScript.transform.GetChild(0).GetComponent<Transform>();
                                 visual.DOKill(true);
-                                visual.DOPunchScale(visual.localScale * 0.3f, 0.5f, 10, 0);
+                                visual.DOPunchScale(visual.localScale * 0.2f, 0.5f, 10, 0);
                             }
                         }
                     }
@@ -130,6 +134,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
+        yield return new WaitForSeconds(timer);
         if (_popcornMachine.PopcornList.Count > 0)
         {
             PopcornBucket _bucket = PopcornBuckets[index].GetComponent<PopcornBucket>();
@@ -138,7 +143,6 @@ public class Player : MonoBehaviour
                 _bucket.FillTheBucket();
             }
         }
-        yield return new WaitForSeconds(timer);
         StartCoroutine(StartAutoclickBucket(index, timer));
     }
 }

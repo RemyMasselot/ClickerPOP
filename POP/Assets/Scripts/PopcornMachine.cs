@@ -17,6 +17,7 @@ public class PopcornMachine : MonoBehaviour
     [SerializeField] private float _popcornAngleYmax = 1;
     private Vector2 _popcornAngle;
     [SerializeField] private float _popcornForce = 3;
+    [SerializeField] public Transform Pan;
 
     public List<GameObject> PopcornList;
 

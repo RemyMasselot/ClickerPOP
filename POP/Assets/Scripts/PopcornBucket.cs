@@ -11,7 +11,7 @@ public class PopcornBucket : MonoBehaviour
     
     public PopcornMachine PopcornMachine;
 
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
 
     public int NumberOfPopcornsCurrent = 0;
@@ -34,15 +34,12 @@ public class PopcornBucket : MonoBehaviour
     public float TimerAutoclick = 1;
     public TextMoneyGained TextMoney;
 
-    public int LvAutoclick;
-    public int LvFill;
-    public int LvStorage;
     public int FillNumber = 1;
 
     private void Awake()
     {
         _startPos = transform.localPosition;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
         canvasGroup = GetComponentInChildren<CanvasGroup>();
@@ -60,7 +57,7 @@ public class PopcornBucket : MonoBehaviour
 
     public void FillTheBucket()
     {
-        for (int i = PopcornMachine.PopcornList.Count-1; i >= 0; i--)
+        for (int i = 0; i <= PopcornMachine.PopcornList.Count-1; i++)
         {
             Popcorn popcorn = PopcornMachine.PopcornList[i].GetComponent<Popcorn>();
             if (popcorn.BounceCount > 1)
@@ -76,7 +73,7 @@ public class PopcornBucket : MonoBehaviour
                 // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
                 if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
                 {
-                    spriteRenderer.sprite = Sprites[3];
+                    _spriteRendererBucket.sprite = Sprites[3];
                     ChangeTheBucket();
                     _player.BucketsSold++;
                     _player.CheckBucketLimits();
@@ -89,12 +86,12 @@ public class PopcornBucket : MonoBehaviour
                 }
                 else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
                 {
-                    spriteRenderer.sprite = Sprites[2];
+                    _spriteRendererBucket.sprite = Sprites[2];
                     return;
                 }
                 else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
                 {
-                    spriteRenderer.sprite = Sprites[1];
+                    _spriteRendererBucket.sprite = Sprites[1];
                     return;
                 }
                 break;
@@ -172,7 +169,7 @@ public class PopcornBucket : MonoBehaviour
                     _spriteRendererShadow.DOFade(1, 0.3f);
                     _slider.value = NumberOfPopcornsCurrent;
                     DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, _alphaSpeed);
-                    spriteRenderer.sprite = Sprites[0];
+                    _spriteRendererBucket.sprite = Sprites[0];
                 });
             });
     }

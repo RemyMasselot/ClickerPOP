@@ -5918,7 +5918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 179.99995}
+  m_AnchoredPosition: {x: -333.52, y: 179.99998}
   m_SizeDelta: {x: 656.53, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -11063,9 +11063,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
+    - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Name
       value: PopcornMachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11107,6 +11127,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: Pan
+      value: 
+      objectReference: {fileID: 2076342152}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11972,7 +12000,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.3058208
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13061,6 +13089,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064455283}
   m_CullTransparentMesh: 1
+--- !u!4 &2076342152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6724650509059484153, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+  m_PrefabInstance: {fileID: 1747312028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2076359797
 GameObject:
   m_ObjectHideFlags: 0
