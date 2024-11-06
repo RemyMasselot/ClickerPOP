@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -433,7 +433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1006749445549660858, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165477839996408820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _price: 1
-  _priceMultiplyer: 1
+  _priceMultiplyer: 10
   _divider: 2
   _txTitle: {fileID: 25061440}
   _txDesc: {fileID: 25061439}
@@ -1313,6 +1313,10 @@ PrefabInstance:
       propertyPath: PopcornMachine
       value: 
       objectReference: {fileID: 1463052335}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: TimerAutoclick
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1543,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1666,8 +1670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11aa920045bac545a2a3bf7986c70da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 5
-  _priceMultiplyer: 3
+  _price: 10
+  _priceMultiplyer: 5
   _txPrice: {fileID: 235078023}
 --- !u!1 &280018223
 GameObject:
@@ -1975,7 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b9b1e25011e9c4bab64808b50c22f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumBucketsToSell: 10
+  NumBucketsToSell: 40
 --- !u!1 &382220588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,6 +2111,10 @@ PrefabInstance:
       propertyPath: PopcornMachine
       value: 
       objectReference: {fileID: 1463052335}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: TimerAutoclick
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3016,7 +3024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3277,7 +3285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 4
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3409,6 +3417,16 @@ MonoBehaviour:
   _priceMultiplyer: 3
   _price: 10
   _txPrice: {fileID: 608777764}
+--- !u!4 &651448321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+  m_PrefabInstance: {fileID: 1481438798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &651448323 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+  m_PrefabInstance: {fileID: 1481438798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &701702207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3807,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4279,7 +4297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5125,7 +5143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5602,7 +5620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b9b1e25011e9c4bab64808b50c22f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumBucketsToSell: 1
+  NumBucketsToSell: 5
 --- !u!114 &1007960906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5694,8 +5712,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1113881108}
-  - {fileID: 235078022}
   - {fileID: 1686127212}
+  - {fileID: 235078022}
   - {fileID: 561226421}
   m_Father: {fileID: 2064455284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6039,7 +6057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89221a8e99650394787d3114da292c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 1
+  _price: 50
   _txPrice: {fileID: 2140628563}
   _shield: {fileID: 1658278338}
 --- !u!114 &1081500343
@@ -6272,6 +6290,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Les popcorns se cuisinent tout seuls !
       objectReference: {fileID: 0}
+    - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
+      propertyPath: NumBucketsToSell
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6417,6 +6439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _price: 1
   _priceMultiplyer: 10
+  _divider: 2
   _txTitle: {fileID: 1113881111}
   _txDesc: {fileID: 1113881110}
   _txPrice: {fileID: 1113881109}
@@ -6996,7 +7019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b9b1e25011e9c4bab64808b50c22f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumBucketsToSell: 2
+  NumBucketsToSell: 8
 --- !u!1 &1250906373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7206,7 +7229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 1
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7396,11 +7419,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 410}
   m_SizeDelta: {x: 600, y: 461.20947}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &1301505995 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-  m_PrefabInstance: {fileID: 3011077163154125498}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302059206
 GameObject:
   m_ObjectHideFlags: 0
@@ -8548,7 +8566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8733,7 +8751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b9b1e25011e9c4bab64808b50c22f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumBucketsToSell: 2
+  NumBucketsToSell: 15
 --- !u!114 &1429704058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9003,6 +9021,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466200212}
   m_CullTransparentMesh: 1
+--- !u!1001 &1481438798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1633984189}
+    m_Modifications:
+    - target: {fileID: 2585483778635779948, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Name
+      value: Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 124
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -281
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
 --- !u!224 &1526390606 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2288103809097622481, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
@@ -9704,6 +9803,7 @@ RectTransform:
   - {fileID: 1526390606}
   - {fileID: 1463052331}
   - {fileID: 46962985}
+  - {fileID: 651448321}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10297,7 +10397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10599,7 +10699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f985d656b273af4cbd92d6d416beb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 0
+  _price: 10
   _txPrice: {fileID: 1236416603}
   _btnUpgrade: {fileID: 1931929172}
   _popcornBucket: {fileID: 978251470}
@@ -10626,7 +10726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _increaseClientTips: 1.5
-  _price: 10
+  _price: 5
   _priceMultiplyer: 2
   _txPrice: {fileID: 1948565997}
   _popcornBuckets:
@@ -10871,7 +10971,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1006749445549660858, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165477839996408820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
@@ -11153,8 +11253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 2
-  _price: 10
-  _priceMultiplyer: 3
+  _price: 1
+  _priceMultiplyer: 10
   _divider: 2
   _txTitle: {fileID: 1830408052}
   _txDesc: {fileID: 1830408051}
@@ -11743,7 +11843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598758349440243317, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: NumBucketsToSell
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2847708679045847881, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13132,67 +13232,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140628561}
   m_CullTransparentMesh: 1
---- !u!1001 &3011077163154125498
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2585483778635779948, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_Name
-      value: Flame
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
 --- !u!1001 &6265527487602141267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13204,7 +13243,7 @@ PrefabInstance:
     - target: {fileID: 1394337057708247782, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: _flame
       value: 
-      objectReference: {fileID: 1301505995}
+      objectReference: {fileID: 651448323}
     - target: {fileID: 1394337057708247782, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: _shield
       value: 
@@ -13316,7 +13355,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1006749445549660858, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165477839996408820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
@@ -13599,7 +13638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   _price: 1
-  _priceMultiplyer: 1
+  _priceMultiplyer: 10
   _divider: 2
   _txTitle: {fileID: 7880978193248724528}
   _txDesc: {fileID: 7880978193248724527}
@@ -13686,6 +13725,10 @@ PrefabInstance:
       propertyPath: PopcornMachine
       value: 
       objectReference: {fileID: 1463052335}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: TimerAutoclick
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13699,4 +13742,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1921064454}
   - {fileID: 1633984189}
-  - {fileID: 3011077163154125498}

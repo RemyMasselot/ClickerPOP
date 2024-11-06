@@ -60,7 +60,7 @@ public class BurnPopcorn : MonoBehaviour
     private void SaveSomePopcorns()
     {
         _shield.SetActive(false);
-        for (int i = 0; i < _player.PopcornBuckets.Count-1; i++)
+        for (int i = 0; i < _player.PopcornBuckets.Count; i++)
         {
             if (_player.PopcornBuckets[i].activeSelf == true)
             {
