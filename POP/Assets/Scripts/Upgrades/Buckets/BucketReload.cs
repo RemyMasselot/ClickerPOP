@@ -12,6 +12,8 @@ public class BucketReload : MonoBehaviour
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private int _level = 0;
+    [SerializeField] private TextMeshProUGUI _txLevel;
     private Button button;
 
     private void Awake()
@@ -28,6 +30,8 @@ public class BucketReload : MonoBehaviour
         {
             PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
             _bucket.TimerDuration /= _timeDivider;
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price = (int)(_price * _priceMultiplyer);

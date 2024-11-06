@@ -14,6 +14,8 @@ public class BucketAutoclick : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private int _level = 0;
+    [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private string _txFirstUpgrade;
     [SerializeField] private string _txNextUpgrades;
     private Coroutine _coroutine;
@@ -34,6 +36,8 @@ public class BucketAutoclick : MonoBehaviour
         {
             PopcornBucket popcornBucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
             _coroutine = StartCoroutine(_player.StartAutoclickBucket(_index, popcornBucket.TimerAutoclick));
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             button.onClick.RemoveAllListeners();

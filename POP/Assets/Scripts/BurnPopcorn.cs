@@ -14,6 +14,7 @@ public class BurnPopcorn : MonoBehaviour
     [SerializeField] private SpriteRenderer _flame;
     [SerializeField] private int _badPopcornLimit = 5;
     [SerializeField] private int _timeRebuild;
+    [SerializeField] private CanvasGroup _canvaGroupCollider;
 
     private void Awake()
     {
@@ -87,6 +88,7 @@ public class BurnPopcorn : MonoBehaviour
             return true;
         });
         _flame.DOFade(1, 1f);
+        _canvaGroupCollider.DOFade(0, 0.5f);
         StartCoroutine(BurnOff());
     }
 
@@ -97,5 +99,6 @@ public class BurnPopcorn : MonoBehaviour
         IsBurning = false;
         _btnShield.SetActive(true);
         _flame.DOFade(0, 0.5f);
+        _canvaGroupCollider.DOFade(1, 0.5f);
     }
 }

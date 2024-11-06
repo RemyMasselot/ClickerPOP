@@ -13,6 +13,8 @@ public class MachineBurn : MonoBehaviour
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private int _level = 0;
+    [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private Transform _burnLimit;
     [SerializeField] private List<Transform> _burnTargets = new List<Transform>();
     private Button button;
@@ -31,11 +33,14 @@ public class MachineBurn : MonoBehaviour
         {
             _burnLimit.transform.DOMoveY(_burnTargets[_indexTarget].transform.position.y, _timeMove);
             _indexTarget++;
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             if (_indexTarget == _burnTargets.Count)
             {
-                _txPrice.text = "MAX";
+                _txLevel.text = "Nv MAX" + _price.ToString();
+                _txPrice.text = " ";
                 button.onClick.RemoveListener(MoreTips);
                 button.interactable = false;
             }

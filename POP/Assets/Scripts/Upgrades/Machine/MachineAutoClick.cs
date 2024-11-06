@@ -14,6 +14,8 @@ public class MachineAutoClick : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txTitle;
     [SerializeField] private TextMeshProUGUI _txDesc;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private int _level = 0;
+    [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private string _txFirstUpgrade;
     [SerializeField] private string _txNextUpgrades;
     private Button button;
@@ -32,6 +34,8 @@ public class MachineAutoClick : MonoBehaviour
         if (_player.Money >= _price)
         {
             StartCoroutine(_player.StartAutoclickMachine());
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             button.onClick.RemoveAllListeners();
@@ -48,6 +52,8 @@ public class MachineAutoClick : MonoBehaviour
         if (_player.Money >= _price)
         {
             _player.TimerAutoclick /= _divider;
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.TextMoney.text = _player.Money.ToString() + " €";
             _price = (int)(_price * _priceMultiplyer);

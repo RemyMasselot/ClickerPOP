@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System.Text;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -77,6 +78,9 @@ public class Player : MonoBehaviour
                             {
                                 // Faire pop un popcorn
                                 _popcornBucketScript.RepeatFillTheBucket(_popcornBucketScript.FillNumber);
+                                Transform visual = _popcornBucketScript.transform.GetChild(0).GetComponent<Transform>();
+                                visual.DOKill(true);
+                                visual.DOPunchScale(visual.localScale * 0.3f, 0.5f, 10, 0);
                             }
                         }
                     }

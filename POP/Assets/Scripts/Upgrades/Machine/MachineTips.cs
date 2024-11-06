@@ -11,6 +11,8 @@ public class MachineTips : MonoBehaviour
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private TextMeshProUGUI _txPrice;
+    private int _level = 0;
+    [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private List<PopcornBucket> _popcornBuckets;
     private Button button;
 
@@ -32,6 +34,8 @@ public class MachineTips : MonoBehaviour
                 _popcornBuckets[i].BucketPrice = (int)(_popcornBuckets[i].NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
                 _popcornBuckets[i].TextMoney.UpdateText();
             }
+            _level++;
+            _txLevel.text = "Nv " + _price.ToString();
             _player.Money -= _price;
             _player.UpdateMoney();
             _price = (int)(_price * _priceMultiplyer);
