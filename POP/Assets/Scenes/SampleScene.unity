@@ -1341,6 +1341,10 @@ PrefabInstance:
       propertyPath: TimerAutoclick
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: _spriteRendererBucket
+      value: 
+      objectReference: {fileID: 658935242}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2075,6 +2079,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumBucketsToSell: 40
+--- !u!212 &370790224 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6785151232791402323, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+  m_PrefabInstance: {fileID: 8105557729273162207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &382220588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2219,10 @@ PrefabInstance:
       propertyPath: TimerAutoclick
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: _spriteRendererBucket
+      value: 
+      objectReference: {fileID: 1265850773}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3582,6 +3595,11 @@ Transform:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
   m_PrefabInstance: {fileID: 1481438798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &658935242 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6785151232791402323, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+  m_PrefabInstance: {fileID: 155653839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &701702207
 GameObject:
@@ -5900,7 +5918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 180.00002}
+  m_AnchoredPosition: {x: -333.52, y: 179.99995}
   m_SizeDelta: {x: 656.53, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -7614,6 +7632,11 @@ MonoBehaviour:
   _price: 10
   _txPrice: {fileID: 1251790309}
   _txLevel: {fileID: 723325236}
+--- !u!212 &1265850773 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6785151232791402323, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+  m_PrefabInstance: {fileID: 384037146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1287104160 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4182703670160344006, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
@@ -11950,7 +11973,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6116416
+  m_Size: 0.3058208
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14057,6 +14080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3762998595489590592, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5576267623835502082, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14085,6 +14112,10 @@ PrefabInstance:
       propertyPath: TimerAutoclick
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: _spriteRendererBucket
+      value: 
+      objectReference: {fileID: 370790224}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
