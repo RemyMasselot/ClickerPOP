@@ -30,7 +30,10 @@ public class BucketCond : MonoBehaviour
         if (_player.BucketsSold >= NumBucketsToSell)
         {
             _button.interactable = true;
-            _content.SetActive(true);
+            if (_content != null)
+            {
+                _content.SetActive(true);
+            }
             _btnRenderer.DOFade(1, 0.5f);
             gameObject.SetActive(false);
         }

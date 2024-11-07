@@ -654,6 +654,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 8743392229249791685, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9066160720527788147, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6035,7 +6039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumBucketsToSell: 5
   _content: {fileID: 0}
-  _btnRenderer: {fileID: 0}
+  _btnRenderer: {fileID: 814554308}
 --- !u!114 &1007960906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6134,7 +6138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 180.00002}
+  m_AnchoredPosition: {x: -333.52, y: 179.99998}
   m_SizeDelta: {x: 656.53, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -9511,12 +9515,24 @@ PrefabInstance:
       value: Flame
       objectReference: {fileID: 0}
     - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -281
+      value: -277
       objectReference: {fileID: 0}
     - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9549,6 +9565,14 @@ PrefabInstance:
     - target: {fileID: 3801125638207879648, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Size.x
+      value: 7.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Size.y
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11645,6 +11669,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 8743392229249791685, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9066160720527788147, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -11992,8 +12020,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.30582047
+  m_Value: 1.0000002
+  m_Size: 0.3058208
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13587,6 +13615,14 @@ PrefabInstance:
       propertyPath: _btnShield
       value: 
       objectReference: {fileID: 1081500340}
+    - target: {fileID: 1962554725092743369, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962554725092743369, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2288103809097622481, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13670,6 +13706,18 @@ PrefabInstance:
     - target: {fileID: 6200270701815450384, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: m_Name
       value: BurnCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857649357049581658, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857649357049581658, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857649357049581658, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 174
       objectReference: {fileID: 0}
     - target: {fileID: 9137633328994883295, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: m_IsActive
@@ -13887,6 +13935,10 @@ PrefabInstance:
     - target: {fileID: 8724253180812226414, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743392229249791685, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9066160720527788147, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_AnchorMax.y
