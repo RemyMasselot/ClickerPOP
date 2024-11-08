@@ -10,6 +10,7 @@ public class PopcornBucket : MonoBehaviour
     private Vector3 _startPos;
     
     public PopcornMachine PopcornMachine;
+    private BurnPopcorn _burnPopcorn;
 
     //private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
@@ -30,7 +31,7 @@ public class PopcornBucket : MonoBehaviour
     public float TimerDuration = 2f;
 
     private Player _player;
-    public int BucketPrice = 5;
+    public int BucketPrice = 2;
     public float TimerAutoclick = 1;
     public TextMoneyGained TextMoney;
 
@@ -38,6 +39,8 @@ public class PopcornBucket : MonoBehaviour
 
     private void Awake()
     {
+        _burnPopcorn = FindObjectOfType<BurnPopcorn>();
+
         _startPos = transform.localPosition;
         //spriteRenderer = GetComponent<SpriteRenderer>();
         _slider = GetComponentInChildren<Slider>();
@@ -172,5 +175,22 @@ public class PopcornBucket : MonoBehaviour
                     _spriteRendererBucket.sprite = Sprites[0];
                 });
             });
+    }
+
+    public IEnumerator StartAutoclickBucket()
+    {
+        while (_burnPopcorn.IsBurning == true)
+        {
+            yield return null;
+        }
+        if (PopcornMachine.PopcornList.Count > 0)
+        {
+            if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
+            {
+                FillTheBucket();
+            }
+        }
+        yield return new WaitForSeconds(TimerAutoclick);
+        StartCoroutine(StartAutoclickBucket());
     }
 }

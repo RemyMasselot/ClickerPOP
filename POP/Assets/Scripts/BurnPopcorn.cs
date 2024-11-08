@@ -79,6 +79,7 @@ public class BurnPopcorn : MonoBehaviour
             SpriteRenderer spriteRenderer = popcorn.GetComponent<SpriteRenderer>();
             spriteRenderer.DOColor(Color.black, 0.8f).OnComplete(() =>
             {
+                _flame.DOFade(1, 1f);
                 spriteRenderer.DOFade(0, 0.3f)
                 .OnComplete(() =>
                 {
@@ -87,7 +88,6 @@ public class BurnPopcorn : MonoBehaviour
             });
             return true;
         });
-        _flame.DOFade(1, 1f);
         _canvaGroupCollider.DOFade(0, 0.5f);
         StartCoroutine(BurnOff());
     }

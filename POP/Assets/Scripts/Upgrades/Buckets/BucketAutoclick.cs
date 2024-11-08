@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BucketAutoclick : MonoBehaviour
 {
     private Player _player;
+    [SerializeField] private PopcornBucket _popcornBucket;
     [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
@@ -18,7 +19,7 @@ public class BucketAutoclick : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private string _txFirstUpgrade;
     [SerializeField] private string _txNextUpgrades;
-    private Coroutine _coroutine;
+    //private Coroutine _coroutine;
     private Button button;
 
     private void Awake()
@@ -35,8 +36,9 @@ public class BucketAutoclick : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            PopcornBucket popcornBucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
-            _coroutine = StartCoroutine(_player.StartAutoclickBucket(_index, popcornBucket.TimerAutoclick));
+            //PopcornBucket popcornBucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
+            //_coroutine = StartCoroutine(_player.StartAutoclickBucket(_index, popcornBucket.TimerAutoclick));
+            StartCoroutine(_popcornBucket.StartAutoclickBucket());
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
@@ -54,10 +56,10 @@ public class BucketAutoclick : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            PopcornBucket popcornBucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
-            popcornBucket.TimerAutoclick /= _divider;
-            StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(_player.StartAutoclickBucket(_index, popcornBucket.TimerAutoclick));
+            //PopcornBucket popcornBucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
+            _popcornBucket.TimerAutoclick /= _divider;
+            //StopCoroutine(_coroutine);
+            //_coroutine = StartCoroutine(_player.StartAutoclickBucket(_index, popcornBucket.TimerAutoclick));
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
