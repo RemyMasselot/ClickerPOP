@@ -17,7 +17,8 @@ public class MachinePopcornCreation : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txLevel.text = "Nv " + _level.ToString();
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(PopcornCreation);
     }
@@ -28,11 +29,11 @@ public class MachinePopcornCreation : MonoBehaviour
         {
             _player.PopNumber ++;
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = _price.ToString() + " €";
+            _txPrice.text = "$" + _price.ToString();
         }
     }
 }

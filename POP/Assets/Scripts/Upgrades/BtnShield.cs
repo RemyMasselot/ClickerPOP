@@ -15,7 +15,7 @@ public class BtnShield : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(GetShield);
     }
@@ -26,7 +26,7 @@ public class BtnShield : MonoBehaviour
         {
             _shield.SetActive(true);
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             gameObject.SetActive(false);
         }
     }

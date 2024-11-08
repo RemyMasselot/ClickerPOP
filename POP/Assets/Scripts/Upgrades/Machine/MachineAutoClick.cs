@@ -23,7 +23,8 @@ public class MachineAutoClick : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txLevel.text = "Nv " + _level.ToString();
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(UnlockAutoclick);
         _txDesc.text = _txFirstUpgrade;
@@ -35,13 +36,13 @@ public class MachineAutoClick : MonoBehaviour
         {
             StartCoroutine(_player.StartAutoclickMachine());
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(IncreaseAutoclick);
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = _price.ToString() + " €";
+            _txPrice.text = "$" + _price.ToString();
             _txDesc.text = _txNextUpgrades;
             //Debug.Log("oui");
         }
@@ -53,11 +54,11 @@ public class MachineAutoClick : MonoBehaviour
         {
             _player.TimerAutoclick /= _divider;
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = _price.ToString() + " €";
+            _txPrice.text = "$" + _price.ToString();
             //Debug.Log("haha");
         }
     }

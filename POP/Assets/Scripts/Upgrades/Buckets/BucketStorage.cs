@@ -19,7 +19,8 @@ public class BucketStorage : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txLevel.text = "Nv " + _level.ToString();
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(IncreaseStorage);
     }
@@ -34,11 +35,11 @@ public class BucketStorage : MonoBehaviour
             _bucket.BucketPrice = (int)(_bucket.NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
             _bucket.TextMoney.UpdateText();
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = _price.ToString() + " €";
+            _txPrice.text = "$" + _price.ToString();
         }
     }
 }

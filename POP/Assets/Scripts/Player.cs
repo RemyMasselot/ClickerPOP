@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
             }
             resultat.Insert(0, money[money.Length - 1 - i]);
         }
-        TextMoney.text = resultat + " €";
+        TextMoney.text = "$" + resultat;
     }
 
     public void CheckBucketLimits()

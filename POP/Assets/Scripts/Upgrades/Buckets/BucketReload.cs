@@ -19,7 +19,8 @@ public class BucketReload : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txLevel.text = "Nv " + _level.ToString();
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(DecreaseReloadTime);
     }
@@ -31,11 +32,11 @@ public class BucketReload : MonoBehaviour
             PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
             _bucket.TimerDuration /= _timeDivider;
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = _price.ToString() + " €";
+            _txPrice.text = "$" + _price.ToString();
         }
     }
 }

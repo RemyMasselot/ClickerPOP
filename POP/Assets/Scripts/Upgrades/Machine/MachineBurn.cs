@@ -22,7 +22,8 @@ public class MachineBurn : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txPrice.text = _price.ToString() + " €";
+        _txLevel.text = "Nv " + _level.ToString();
+        _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(MoreTips);
     }
@@ -34,20 +35,20 @@ public class MachineBurn : MonoBehaviour
             _burnLimit.transform.DOMoveY(_burnTargets[_indexTarget].transform.position.y, _timeMove);
             _indexTarget++;
             _level++;
-            _txLevel.text = "Nv " + _price.ToString();
+            _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = _player.Money.ToString() + " €";
+            _player.TextMoney.text = "$" + _player.Money.ToString();
             if (_indexTarget == _burnTargets.Count)
             {
-                _txLevel.text = "Nv MAX" + _price.ToString();
-                _txPrice.text = " ";
+                _txLevel.text = "Nv " + _level.ToString();
+                _txPrice.text = "MAX";
                 button.onClick.RemoveListener(MoreTips);
                 button.interactable = false;
             }
             else
             {
                 _price = (int)(_price * _priceMultiplyer);
-                _txPrice.text = _price.ToString() + " €";
+                _txPrice.text = "$" + _price.ToString();
             }
         }
     }

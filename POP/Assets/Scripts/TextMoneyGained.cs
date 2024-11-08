@@ -14,12 +14,12 @@ public class TextMoneyGained : MonoBehaviour
     private void Start()
     {
         _textMoney = GetComponent<TextMeshProUGUI>();
-        _textMoney.text = "+ " + _popcornBucket.BucketPrice.ToString() + "€";
+        _textMoney.text = "$" + _popcornBucket.BucketPrice.ToString();
     }
 
     public void UpdateText()
     {
-        _textMoney.text = "+ " + _popcornBucket.BucketPrice.ToString() + "€";
+        _textMoney.text = "$" + _popcornBucket.BucketPrice.ToString();
     }
 
     public void Appeared()
