@@ -61,50 +61,64 @@ public class Board : MonoBehaviour
     }
     public void BoardExpenssion()
     {
-        for (int i = 0; i < _rects.Count; i++)
-        {
-            if (i == 0)
+        transform.DOKill(true); 
+        transform.DOPunchScale(transform.localScale * 0.2f, 0.3f, 10, 0);
+        transform.DOLocalMoveY(transform.localPosition.y - 8, 0.2f)
+            .OnComplete(() =>
             {
-                _rects[i].DOSizeDelta(_machineEndSize, 0.5f);
-            }
-            else
-            {
-                _rects[i].DOSizeDelta(_bucketsEndSize, 0.5f);
-            }
-        }
-        _board.DOLocalMoveY(_boardEndPosY, 0.5f);
-        DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetEnd, 0.4f);
-        DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeEnd, 0.4f);
+                for (int i = 0; i < _rects.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        _rects[i].DOSizeDelta(_machineEndSize, 0.5f);
+                    }
+                    else
+                    {
+                        _rects[i].DOSizeDelta(_bucketsEndSize, 0.5f);
+                    }
+                }
+                _board.DOLocalMoveY(_boardEndPosY, 0.5f);
+                DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetEnd, 0.4f);
+                DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeEnd, 0.4f);
+                transform.DOLocalMoveY(transform.localPosition.y + 8, 0.05f);
+            });
     }
 
     public void BoardContraction()
     {
-        for (int i = 0; i < _rects.Count; i++)
-        {
+        transform.DOKill(true);
+        transform.DOPunchScale(transform.localScale * 0.2f, 0.3f, 10, 0);
+        transform.DOLocalMoveY(transform.localPosition.y - 10, 0.2f)
+            .OnComplete(() =>
+            {
+                for (int i = 0; i < _rects.Count; i++)
+                {
             
-            if (i == 0)
-            {
-                int y = i;
-                _rects[y].DOSizeDelta(_machineStartSize, 0.5f)
-                    .OnComplete(() =>
+                    if (i == 0)
                     {
-                        Scrollbar scroll = _rects[y].GetComponentInChildren<Scrollbar>();
-                        DOTween.To(() => scroll.value, x => scroll.value = x, 1, 0.35f);
-                    });
-            }
-            else
-            {
-                int y = i;
-                _rects[y].DOSizeDelta(_bucketsStartSize, 0.5f)
-                        .OnComplete(() =>
-                        {
-                            Scrollbar scroll = _rects[y].GetComponentInChildren<Scrollbar>();
-                            DOTween.To(() => scroll.value, x => scroll.value = x, 1, 0.35f);
-                        });
-            }
-        }
-        _board.DOLocalMoveY(_boardStartPosY, 0.5f);
-        DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetStart, 0.5f);
-        DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeStart, 0.5f);
+                        int y = i;
+                        _rects[y].DOSizeDelta(_machineStartSize, 0.5f)
+                            .OnComplete(() =>
+                            {
+                                Scrollbar scroll = _rects[y].GetComponentInChildren<Scrollbar>();
+                                DOTween.To(() => scroll.value, x => scroll.value = x, 1, 0.35f);
+                            });
+                    }
+                    else
+                    {
+                        int y = i;
+                        _rects[y].DOSizeDelta(_bucketsStartSize, 0.5f)
+                                .OnComplete(() =>
+                                {
+                                    Scrollbar scroll = _rects[y].GetComponentInChildren<Scrollbar>();
+                                    DOTween.To(() => scroll.value, x => scroll.value = x, 1, 0.35f);
+                                });
+                    }
+                }
+                _board.DOLocalMoveY(_boardStartPosY, 0.5f);
+                DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetStart, 0.5f);
+                DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeStart, 0.5f);
+                transform.DOLocalMoveY(transform.localPosition.y + 10, 0.05f);
+            });
     }
 }

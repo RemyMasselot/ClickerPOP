@@ -12,7 +12,6 @@ public class PopcornBucket : MonoBehaviour
     public PopcornMachine PopcornMachine;
     private BurnPopcorn _burnPopcorn;
 
-    //private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
 
     public int NumberOfPopcornsCurrent = 0;
@@ -42,7 +41,6 @@ public class PopcornBucket : MonoBehaviour
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
 
         _startPos = transform.localPosition;
-        //spriteRenderer = GetComponent<SpriteRenderer>();
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
         canvasGroup = GetComponentInChildren<CanvasGroup>();

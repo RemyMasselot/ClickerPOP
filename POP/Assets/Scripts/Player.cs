@@ -127,22 +127,4 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(TimerAutoclick);
         StartCoroutine(StartAutoclickMachine());
     }
-
-    //public IEnumerator StartAutoclickBucket(int index, float timer)
-    //{
-    //    while (_burnPopcorn.IsBurning == true)
-    //    {
-    //        yield return null;
-    //    }
-    //    if (_popcornMachine.PopcornList.Count > 0)
-    //    {
-    //        PopcornBucket _bucket = PopcornBuckets[index].GetComponent<PopcornBucket>();
-    //        if (_bucket.NumberOfPopcornsCurrent < _bucket.NumberOfPopcornsLimit)
-    //        {
-    //            _bucket.FillTheBucket();
-    //        }
-    //    }
-    //    yield return new WaitForSeconds(timer);
-    //    StartCoroutine(StartAutoclickBucket(index, timer));
-    //}
 }
