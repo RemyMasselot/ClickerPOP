@@ -4154,8 +4154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: 82}
-  m_SizeDelta: {x: 560, y: 50}
+  m_AnchoredPosition: {x: 122.8, y: 82}
+  m_SizeDelta: {x: 654.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726338249
 MonoBehaviour:
@@ -6461,7 +6461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b9b1e25011e9c4bab64808b50c22f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumBucketsToSell: 1
+  NumBucketsToSell: 5
   _content: {fileID: 0}
   _btnRenderer: {fileID: 814554308}
 --- !u!114 &1007960906
@@ -6562,7 +6562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 180.00002}
+  m_AnchoredPosition: {x: -333.52, y: 179.99998}
   m_SizeDelta: {x: 656.53, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -6609,7 +6609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037106801
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12634,8 +12634,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.30582047
+  m_Value: 1.0000002
+  m_Size: 0.6116416
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
