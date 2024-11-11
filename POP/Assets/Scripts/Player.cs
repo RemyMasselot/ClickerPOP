@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private PopcornMachine _popcornMachine;
     private BurnPopcorn _burnPopcorn;
 
+    public bool ShieldActivated = false;
     public int Money;
     public TextMeshProUGUI TextMoney;
     public List<GameObject> PopcornBuckets;

@@ -9,7 +9,8 @@ public class BtnShield : MonoBehaviour
     private Player _player;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
-    [SerializeField] private GameObject _shield;
+    [SerializeField] private SpriteRenderer _pop;
+    [SerializeField] private Sprite _popBoue;
     private Button button;
 
     private void Awake()
@@ -24,7 +25,8 @@ public class BtnShield : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _shield.SetActive(true);
+            _pop.sprite = _popBoue;
+            _player.ShieldActivated = true;
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();
             gameObject.SetActive(false);

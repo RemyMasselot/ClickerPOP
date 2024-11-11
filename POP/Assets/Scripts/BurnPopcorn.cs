@@ -7,8 +7,9 @@ public class BurnPopcorn : MonoBehaviour
 {
     private PopcornMachine _popcornMachine;
     private Player _player;
+    [SerializeField] private SpriteRenderer _pop;
+    [SerializeField] private Sprite _popDefault;
     public bool IsBurning;
-    [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _btnShield;
     [SerializeField] private List<GameObject> _badPopcorns = new List<GameObject>();
     [SerializeField] private SpriteRenderer _flame;
@@ -47,7 +48,7 @@ public class BurnPopcorn : MonoBehaviour
 
     private void CheckShield()
     {
-        if (_shield.activeSelf == true)
+        if (_player.ShieldActivated == true)
         {
             SaveSomePopcorns();
             BurnAllPopcorn();
@@ -60,7 +61,8 @@ public class BurnPopcorn : MonoBehaviour
 
     private void SaveSomePopcorns()
     {
-        _shield.SetActive(false);
+        _player.ShieldActivated = false;
+        _pop.sprite = _popDefault;
         for (int i = 0; i < _player.PopcornBuckets.Count; i++)
         {
             if (_player.PopcornBuckets[i].activeSelf == true)
