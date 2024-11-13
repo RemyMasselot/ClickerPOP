@@ -5,15 +5,23 @@ using UnityEngine;
 public class Popcorn : MonoBehaviour
 {
     public Rigidbody2D Rb;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRendererMachine;
     public int BounceCount = 0;
     public bool CanBurn = false;
-    
+
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+
     void Update()
     {
         if (Rb.IsSleeping() == false)
         {
-            if (spriteRenderer.sortingOrder == -3)
+            if (spriteRenderer.sortingOrder == spriteRendererMachine.sortingOrder - 1)
             {
                 if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
                 {
@@ -23,7 +31,7 @@ public class Popcorn : MonoBehaviour
             }
             else if (Rb.velocity.y < 0)
             {
-                spriteRenderer.sortingOrder = -3;
+                spriteRenderer.sortingOrder = spriteRendererMachine.sortingOrder - 1;
             }
         }
     }

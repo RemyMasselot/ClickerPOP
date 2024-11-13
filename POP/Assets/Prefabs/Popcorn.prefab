@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rb: {fileID: 3216251926276904025}
-  spriteRenderer: {fileID: 5046856599508805739}
+  spriteRendererMachine: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
   BounceCount: 0
   CanBurn: 0

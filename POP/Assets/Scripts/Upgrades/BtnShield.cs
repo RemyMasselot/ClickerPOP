@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BtnShield : MonoBehaviour
 {
     private Player _player;
+    private PopAnims _popAnims;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
     [SerializeField] private SpriteRenderer _pop;
@@ -16,6 +17,7 @@ public class BtnShield : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _popAnims = FindObjectOfType<PopAnims>();
         _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(GetShield);
@@ -25,7 +27,8 @@ public class BtnShield : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _pop.sprite = _popBoue;
+            //Anim Boue
+            _popAnims.UpdateAnim("HaveBoue", "IsSaving", "IsBlowing");
             _player.ShieldActivated = true;
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();

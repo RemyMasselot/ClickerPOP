@@ -1080,6 +1080,7 @@ GameObject:
   - component: {fileID: 62271685}
   - component: {fileID: 62271686}
   - component: {fileID: 62271687}
+  - component: {fileID: 62271688}
   m_Layer: 0
   m_Name: Pop
   m_TagString: Untagged
@@ -1142,7 +1143,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 29697268cd3603e4584219bbacfad7ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1175,6 +1176,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &62271688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62271684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bda8b9729162e4aa18bc4bbc87369b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &110958635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1361,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 10338342}
     m_Modifications:
+    - target: {fileID: 813416343491866573, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2437989279337524324, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_Name
       value: PopcornBucket (1)
@@ -1403,6 +1420,10 @@ PrefabInstance:
     - target: {fileID: 4427345507291796210, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576267623835502082, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5622043519913469916, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: Timer
@@ -2988,7 +3009,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6c44428dfdacff740b962689b3159eb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6584,7 +6605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 180.00002}
+  m_AnchoredPosition: {x: -333.52, y: 179.99998}
   m_SizeDelta: {x: 656.53, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -10215,6 +10236,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10892,17 +10917,17 @@ RectTransform:
   - {fileID: 281289969}
   - {fileID: 1794435124}
   - {fileID: 1296466908}
-  - {fileID: 1081500341}
-  - {fileID: 62271685}
-  - {fileID: 545944486}
   - {fileID: 1660141684}
   - {fileID: 382220589}
   - {fileID: 999742852}
   - {fileID: 535412082}
+  - {fileID: 545944486}
   - {fileID: 1526390606}
   - {fileID: 1463052331}
   - {fileID: 46962985}
   - {fileID: 651448321}
+  - {fileID: 62271685}
+  - {fileID: 1081500341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11675,8 +11700,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
+    - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987829856336430150, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2066943160927013450, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
@@ -12584,7 +12617,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.6116416
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14802,6 +14835,10 @@ PrefabInstance:
     - target: {fileID: 4427345507291796210, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348989592507736082, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -247.74
       objectReference: {fileID: 0}
     - target: {fileID: 5576267623835502082, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_AnchorMax.y

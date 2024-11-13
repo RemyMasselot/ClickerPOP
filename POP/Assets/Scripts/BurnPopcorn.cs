@@ -7,6 +7,7 @@ public class BurnPopcorn : MonoBehaviour
 {
     private PopcornMachine _popcornMachine;
     private Player _player;
+    private PopAnims _popAnims;
     [SerializeField] private SpriteRenderer _pop;
     [SerializeField] private Sprite _popDefault;
     public bool IsBurning;
@@ -21,6 +22,7 @@ public class BurnPopcorn : MonoBehaviour
     {
         _popcornMachine = FindObjectOfType<PopcornMachine>();
         _player = FindObjectOfType<Player>();
+        _popAnims = FindObjectOfType<PopAnims>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -62,7 +64,8 @@ public class BurnPopcorn : MonoBehaviour
     private void SaveSomePopcorns()
     {
         _player.ShieldActivated = false;
-        _pop.sprite = _popDefault;
+        //Anim Save
+        _popAnims.UpdateAnim("IsSaving", "HaveBoue", "IsBlowing");
         for (int i = 0; i < _player.PopcornBuckets.Count; i++)
         {
             if (_player.PopcornBuckets[i].activeSelf == true)
@@ -79,9 +82,11 @@ public class BurnPopcorn : MonoBehaviour
         _popcornMachine.PopcornList.RemoveAll(popcorn =>
         {
             SpriteRenderer spriteRenderer = popcorn.GetComponent<SpriteRenderer>();
-            spriteRenderer.DOColor(Color.black, 0.8f).OnComplete(() =>
+            spriteRenderer.DOColor(Color.black, 1.5f).OnComplete(() =>
             {
                 _flame.DOFade(1, 1f);
+                //Anim Blow
+                _popAnims.UpdateAnim("IsBlowing", "IsSaving", "HaveBoue");
                 spriteRenderer.DOFade(0, 0.3f)
                 .OnComplete(() =>
                 {
@@ -100,7 +105,13 @@ public class BurnPopcorn : MonoBehaviour
         _badPopcorns.Clear();
         IsBurning = false;
         _btnShield.SetActive(true);
-        _flame.DOFade(0, 0.5f);
-        _canvaGroupCollider.DOFade(1, 0.5f);
+        _flame.DOFade(0, 0.5f)
+            .OnComplete(() =>
+            {
+                //Anim Default
+                _popAnims.UpdateAnim("IsSaving", "IsBlowing", "HaveBoue");
+                
+                _canvaGroupCollider.DOFade(1, 0.5f);
+            });
     }
 }
