@@ -52,7 +52,7 @@ public class BurnPopcorn : MonoBehaviour
     {
         if (_player.ShieldActivated == true)
         {
-            SaveSomePopcorns();
+            SaveAnim();
             BurnAllPopcorn();
         }
         else
@@ -61,11 +61,15 @@ public class BurnPopcorn : MonoBehaviour
         }
     }
 
+    private void SaveAnim()
+    {
+        //Anim Save
+        _popAnims.UpdateAnim("IsSaving", "HaveBoue", "IsBlowing");
+    }
+
     private void SaveSomePopcorns()
     {
         _player.ShieldActivated = false;
-        //Anim Save
-        _popAnims.UpdateAnim("IsSaving", "HaveBoue", "IsBlowing");
         for (int i = 0; i < _player.PopcornBuckets.Count; i++)
         {
             if (_player.PopcornBuckets[i].activeSelf == true)
@@ -79,20 +83,26 @@ public class BurnPopcorn : MonoBehaviour
 
     private void BurnAllPopcorn()
     {
+        if (_player.ShieldActivated == true)
+        {
+            SaveSomePopcorns();
+        }
         _popcornMachine.PopcornList.RemoveAll(popcorn =>
         {
+            
             SpriteRenderer spriteRenderer = popcorn.GetComponent<SpriteRenderer>();
-            spriteRenderer.DOColor(Color.black, 1.5f).OnComplete(() =>
-            {
-                _flame.DOFade(1, 1f);
-                //Anim Blow
-                _popAnims.UpdateAnim("IsBlowing", "IsSaving", "HaveBoue");
-                spriteRenderer.DOFade(0, 0.3f)
+            spriteRenderer.DOColor(Color.black, 1.5f)
                 .OnComplete(() =>
                 {
-                    Destroy(popcorn);
+                    _flame.DOFade(1, 1f);
+                    //Anim Blow
+                    _popAnims.UpdateAnim("IsBlowing", "IsSaving", "HaveBoue");
+                    spriteRenderer.DOFade(0, 0.3f)
+                        .OnComplete(() =>
+                        {
+                            Destroy(popcorn);
+                        });
                 });
-            });
             return true;
         });
         _canvaGroupCollider.DOFade(0, 0.5f);
@@ -104,14 +114,16 @@ public class BurnPopcorn : MonoBehaviour
         yield return new WaitForSeconds(_timeRebuild);
         _badPopcorns.Clear();
         IsBurning = false;
-        _btnShield.SetActive(true);
         _flame.DOFade(0, 0.5f)
             .OnComplete(() =>
             {
                 //Anim Default
                 _popAnims.UpdateAnim("IsSaving", "IsBlowing", "HaveBoue");
-                
-                _canvaGroupCollider.DOFade(1, 0.5f);
+                DOVirtual.DelayedCall(1, () =>
+                {
+                    _canvaGroupCollider.DOFade(1, 0.5f);
+                    _btnShield.SetActive(true);
+                });
             });
     }
 }
