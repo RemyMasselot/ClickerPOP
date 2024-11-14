@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BtnShield : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class BtnShield : MonoBehaviour
     private PopAnims _popAnims;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
-    [SerializeField] private SpriteRenderer _pop;
-    [SerializeField] private Sprite _popBoue;
+    [SerializeField] private GameObject _btnShield;
+    [SerializeField] private ShowInfo _showInfo;
+    //[SerializeField] private SpriteRenderer _pop;
+    //[SerializeField] private Sprite _popBoue;
     private Button button;
 
     private void Awake()
@@ -25,14 +28,16 @@ public class BtnShield : MonoBehaviour
 
     public void GetShield()
     {
+        Debug.Log("ger");
         if (_player.Money >= _price)
         {
             //Anim Boue
             _popAnims.UpdateAnim("HaveBoue", "IsSaving", "IsBlowing");
+            _showInfo.ShowMore();
+            _btnShield.SetActive(false);
             _player.ShieldActivated = true;
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();
-            gameObject.SetActive(false);
         }
     }
 }

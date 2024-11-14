@@ -12,6 +12,7 @@ public class BurnPopcorn : MonoBehaviour
     [SerializeField] private Sprite _popDefault;
     public bool IsBurning;
     [SerializeField] private GameObject _btnShield;
+    [SerializeField] private CanvasGroup _toolTip;
     [SerializeField] private List<GameObject> _badPopcorns = new List<GameObject>();
     [SerializeField] private SpriteRenderer _flame;
     [SerializeField] private int _badPopcornLimit = 5;
@@ -40,6 +41,7 @@ public class BurnPopcorn : MonoBehaviour
                         {
                             IsBurning = true;
                             _btnShield.SetActive(false);
+                            _toolTip.DOFade(0, 0.5f);
                             CheckShield();
                         }
                     }

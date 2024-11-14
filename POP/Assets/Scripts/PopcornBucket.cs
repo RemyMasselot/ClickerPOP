@@ -12,7 +12,7 @@ public class PopcornBucket : MonoBehaviour
     public PopcornMachine PopcornMachine;
     private BurnPopcorn _burnPopcorn;
 
-    [SerializeField] private List<Sprite> Sprites = new List<Sprite>();
+    [SerializeField] private List<Texture> Images = new List<Texture>();
 
     public int NumberOfPopcornsCurrent = 0;
     public int NumberOfPopcornsLimit = 10;
@@ -24,8 +24,8 @@ public class PopcornBucket : MonoBehaviour
     private CanvasGroup canvasGroup;
     [SerializeField] private float _alphaSpeed = 1;
 
-    [SerializeField] private SpriteRenderer _spriteRendererBucket;
-    [SerializeField] private SpriteRenderer _spriteRendererShadow;
+    [SerializeField] private RawImage _rawImageBucket;
+    [SerializeField] private RawImage _rawImageShadow;
     public Image Timer;
     public float TimerDuration = 2f;
 
@@ -74,7 +74,7 @@ public class PopcornBucket : MonoBehaviour
                 // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
                 if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
                 {
-                    _spriteRendererBucket.sprite = Sprites[3];
+                    _rawImageBucket.texture = Images[3];
                     ChangeTheBucket();
                     _player.BucketsSold++;
                     _player.CheckBucketLimits();
@@ -87,12 +87,12 @@ public class PopcornBucket : MonoBehaviour
                 }
                 else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
                 {
-                    _spriteRendererBucket.sprite = Sprites[2];
+                    _rawImageBucket.texture = Images[2];
                     return;
                 }
                 else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
                 {
-                    _spriteRendererBucket.sprite = Sprites[1];
+                    _rawImageBucket.texture = Images[1];
                     return;
                 }
                 break;
@@ -124,7 +124,7 @@ public class PopcornBucket : MonoBehaviour
                              Reload();
                          });
                     });
-                    _spriteRendererShadow.DOFade(0, 0.2f);
+                    _rawImageShadow.DOFade(0, 0.2f);
                     _player.Money += BucketPrice;
                     _player.UpdateMoney();
                     TextMoney.Appeared();
@@ -147,9 +147,9 @@ public class PopcornBucket : MonoBehaviour
 
     private void ReplaceBucket()
     {
-        Color colorBucket = _spriteRendererBucket.color;
+        Color colorBucket = _rawImageBucket.color;
         colorBucket.a = 0;
-        _spriteRendererBucket.color = colorBucket;
+        _rawImageBucket.color = colorBucket;
         transform.localPosition = _startPos;
         handLeft.GoToTarget1();
         handRight.GoToTarget1();
@@ -166,11 +166,11 @@ public class PopcornBucket : MonoBehaviour
                     Timer.DOFade(0, 0.3f);
                     Timer.fillAmount = 0;
                     NumberOfPopcornsCurrent = 0;
-                    _spriteRendererBucket.DOFade(1, 0.3f);
-                    _spriteRendererShadow.DOFade(1, 0.3f);
+                    _rawImageBucket.DOFade(1, 0.3f);
+                    _rawImageShadow.DOFade(1, 0.3f);
                     _slider.value = NumberOfPopcornsCurrent;
                     DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, _alphaSpeed);
-                    _spriteRendererBucket.sprite = Sprites[0];
+                    _rawImageBucket.texture = Images[0];
                 });
             });
     }
