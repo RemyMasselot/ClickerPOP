@@ -63,6 +63,13 @@ public class PopcornBucket : MonoBehaviour
             Popcorn popcorn = PopcornMachine.PopcornList[i].GetComponent<Popcorn>();
             if (popcorn.BounceCount > 1)
             {
+                //Anim bucket
+                Transform visualShadow = _rawImageShadow.GetComponent<Transform>();
+                Transform visualBucket = _rawImageBucket.GetComponent<Transform>();
+                visualShadow.DOKill(true);
+                visualShadow.DOPunchScale(visualShadow.localScale * 0.6f, 0.5f, 10, 0.8f);
+                visualBucket.DOKill(true);
+                visualBucket.DOPunchScale(visualBucket.localScale * 0.2f, 0.5f, 10, 0.5f);
                 // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
                 GameObject popcornRemoved = PopcornMachine.PopcornList[i];
                 PopcornMachine.PopcornList.RemoveAt(i);

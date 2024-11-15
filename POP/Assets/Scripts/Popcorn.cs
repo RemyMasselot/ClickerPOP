@@ -5,15 +5,16 @@ using UnityEngine;
 public class Popcorn : MonoBehaviour
 {
     public Rigidbody2D Rb;
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private SpriteRenderer spriteRendererMachine;
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRendererMachine;
     public int BounceCount = 0;
     public bool CanBurn = false;
+    [SerializeField] private Color _newColor;
 
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -21,7 +22,7 @@ public class Popcorn : MonoBehaviour
     {
         if (Rb.IsSleeping() == false)
         {
-            if (spriteRenderer.sortingOrder == spriteRendererMachine.sortingOrder - 1)
+            if (_spriteRenderer.sortingOrder == _spriteRendererMachine.sortingOrder - 1)
             {
                 if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
                 {
@@ -31,7 +32,7 @@ public class Popcorn : MonoBehaviour
             }
             else if (Rb.velocity.y < 0)
             {
-                spriteRenderer.sortingOrder = spriteRendererMachine.sortingOrder - 1;
+                _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
                 //Debug.Log(spriteRenderer.sortingOrder);
             }
         }
@@ -41,5 +42,9 @@ public class Popcorn : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         BounceCount++;
+        if (BounceCount == 2)
+        {
+            _spriteRenderer.color = _newColor;
+        }
     }
 }

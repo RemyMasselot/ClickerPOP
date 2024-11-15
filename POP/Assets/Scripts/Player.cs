@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Color _mousePressCantBuy;
     [SerializeField] private List<Image> _MainButtons = new List<Image>();
     [SerializeField] private List<Image> _BucketButtons = new List<Image>();
+    [SerializeField] private CanvasGroup _toolTipBucket;
 
     // Start is called before the first frame update
     void Awake()
@@ -79,29 +80,39 @@ public class Player : MonoBehaviour
                             _popcornMachine.PopAPopcorn();
                             PopcornMachine _popcornMachineScript = hit.collider.gameObject.GetComponent<PopcornMachine>();
                             Transform visual = _popcornMachineScript.Pan;
+                            Transform visualMachine = _popcornMachineScript.GetComponent<Transform>();
                             visual.DOKill(true);
-                            visual.DOPunchScale(visual.localScale * 0.2f, 0.5f, 10, 0);
+                            visualMachine.DOKill(true);
+                            visual.DOPunchScale(visual.localScale * 0.15f, 0.5f, 10, 0.8f);
+                            visualMachine.DOPunchScale(visualMachine.localScale * 0.03f, 0.5f, 10, 0.4f);
                         }
                         //Debug.Log("CLICK");
                     }
 
                     // Si le joueur a appuyé sur un bucket
-                    if (_popcornMachine.PopcornList.Count > 0)
+                    if (PopcornBuckets.Contains(hit.collider.gameObject) == true)
                     {
-                        if (PopcornBuckets.Contains(hit.collider.gameObject) == true)
+                        if (_popcornMachine.PopcornList.Count > 0)
                         {
                             PopcornBucket _popcornBucketScript = hit.collider.gameObject.GetComponent<PopcornBucket>();
                             if (_popcornBucketScript.NumberOfPopcornsCurrent < _popcornBucketScript.NumberOfPopcornsLimit)
                             {
                                 // Faire pop un popcorn
                                 _popcornBucketScript.RepeatFillTheBucket(_popcornBucketScript.FillNumber);
-                                Transform visualShadow = _popcornBucketScript.transform.GetChild(0).GetComponent<Transform>();
-                                Transform visualBucket = _popcornBucketScript.transform.GetChild(1).GetComponent<Transform>();
-                                visualShadow.DOKill(true);
-                                visualShadow.DOPunchScale(visualShadow.localScale * 0.5f, 0.5f, 10, 0);
-                                visualBucket.DOKill(true);
-                                visualBucket.DOPunchScale(visualBucket.localScale * 0.2f, 0.5f, 10, 0);
                             }
+                        }
+                        else
+                        {
+                            _toolTipBucket.DOKill();
+                            _toolTipBucket.DOFade(1, 0.5f)
+                                .OnComplete(() =>
+                                {
+                                    _toolTipBucket.DOKill();
+                                    DOVirtual.DelayedCall(2,() =>
+                                    {
+                                        _toolTipBucket.DOFade(0, 0.5f);
+                                    });
+                                });
                         }
                     }
                 }
@@ -124,11 +135,11 @@ public class Player : MonoBehaviour
         TextMoney.text = "$" + resultat;
         if (fromUpgrade == true)
         {
-            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * 0.05f, 0.3f, 8, 0);
+            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * 0.05f, 0.3f, 8);
         }
         else
         {
-            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * -0.1f, 0.5f, 6, 0.4f);
+            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * -0.1f, 0.5f, 6);
         }
     }
 

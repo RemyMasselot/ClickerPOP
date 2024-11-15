@@ -37,7 +37,7 @@ public class BtnShield : MonoBehaviour
             _btnShield.SetActive(false);
             _player.ShieldActivated = true;
             _player.Money -= _price;
-            _player.TextMoney.text = "$" + _player.Money.ToString();
+            _player.UpdateMoney(true);
         }
     }
 }
