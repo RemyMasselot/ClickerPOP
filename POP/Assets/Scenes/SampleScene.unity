@@ -6667,8 +6667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333.52, y: 179.99998}
-  m_SizeDelta: {x: 656.53, y: 588.58}
+  m_AnchoredPosition: {x: -339.49988, y: 179.99995}
+  m_SizeDelta: {x: 668.49, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
 MonoBehaviour:
@@ -7271,6 +7271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BtnAutoclick
       objectReference: {fileID: 0}
+    - target: {fileID: 1634852588715253295, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1808789009347233996, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7551,7 +7555,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 481663876714872678, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -12210,12 +12215,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1633984189}
     m_Modifications:
     - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
-      propertyPath: m_SortingOrder
-      value: -3
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_SortingOrder
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1987829856336430150, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_IsActive
@@ -13126,8 +13135,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.3058208
+  m_Value: 1
+  m_Size: 0.6116416
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13685,6 +13694,10 @@ MonoBehaviour:
   BucketsSold: 0
   ClientTips: 1
   BucketPriceDivider: 4
+  _default: {r: 1, g: 1, b: 1, a: 1}
+  _mouseEnter: {r: 0.972549, g: 0.8039216, b: 0.33333334, a: 1}
+  _mousePressCanBuy: {r: 0.2509804, g: 0.8784314, b: 0.4392157, a: 1}
+  _mousePressCantBuy: {r: 0.73333335, g: 0.20784314, b: 0.20392157, a: 1}
 --- !u!4 &1921064454
 Transform:
   m_ObjectHideFlags: 0
@@ -15289,6 +15302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1544810083}
     m_Modifications:
+    - target: {fileID: 775935400356389799, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 813416343491866573, guid: 98cc92fab564f2e4687381fab0a72b85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

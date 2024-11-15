@@ -14,10 +14,12 @@ public class BucketFill : MonoBehaviour
     private int _level = 0;
     [SerializeField] private TextMeshProUGUI _txLevel;
     private Button button;
+    private Image _imageBtn;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _imageBtn = GetComponent<Image>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
@@ -36,6 +38,13 @@ public class BucketFill : MonoBehaviour
             _player.TextMoney.text = "$" + _player.Money.ToString();
             _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = "$" + _price.ToString();
+            
+            //Visual
+            _player.UpdateVisualCanBuy(_imageBtn);
+        }
+        else
+        {
+            _player.UpdateVisualCantBuy(_imageBtn);
         }
     }
 }

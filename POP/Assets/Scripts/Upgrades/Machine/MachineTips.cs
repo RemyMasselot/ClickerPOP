@@ -15,10 +15,12 @@ public class MachineTips : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txLevel;
     [SerializeField] private List<PopcornBucket> _popcornBuckets;
     private Button button;
+    private Image _imageBtn;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _imageBtn = GetComponent<Image>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
@@ -41,6 +43,13 @@ public class MachineTips : MonoBehaviour
             _player.UpdateMoney();
             _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = "$" + _price.ToString();
+            
+            //Visual
+            _player.UpdateVisualCanBuy(_imageBtn);
+        }
+        else
+        {
+            _player.UpdateVisualCantBuy(_imageBtn);
         }
     }
 }

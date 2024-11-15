@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.Text;
 using DG.Tweening;
+using static UnityEditorInternal.ReorderableList;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +25,11 @@ public class Player : MonoBehaviour
     public int BucketsSold = 0;
     public float ClientTips = 1;
     public float BucketPriceDivider = 4;
+
+    [SerializeField] private Color _default;
+    [SerializeField] private Color _mouseEnter;
+    [SerializeField] private Color _mousePressCanBuy;
+    [SerializeField] private Color _mousePressCantBuy;
 
     // Start is called before the first frame update
     void Awake()
@@ -83,9 +90,12 @@ public class Player : MonoBehaviour
                             {
                                 // Faire pop un popcorn
                                 _popcornBucketScript.RepeatFillTheBucket(_popcornBucketScript.FillNumber);
-                                Transform visual = _popcornBucketScript.transform.GetChild(0).GetComponent<Transform>();
-                                visual.DOKill(true);
-                                visual.DOPunchScale(visual.localScale * 0.2f, 0.5f, 10, 0);
+                                Transform visualShadow = _popcornBucketScript.transform.GetChild(0).GetComponent<Transform>();
+                                Transform visualBucket = _popcornBucketScript.transform.GetChild(1).GetComponent<Transform>();
+                                visualShadow.DOKill(true);
+                                visualShadow.DOPunchScale(visualShadow.localScale * 0.5f, 0.5f, 10, 0);
+                                visualBucket.DOKill(true);
+                                visualBucket.DOPunchScale(visualBucket.localScale * 0.2f, 0.5f, 10, 0);
                             }
                         }
                     }
@@ -128,4 +138,28 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(TimerAutoclick);
         StartCoroutine(StartAutoclickMachine());
     }
+
+    //Visual buttons upgrades
+    public void UpdateVisualCanBuy(Image image)
+    {
+        image.gameObject.transform.DOKill(true);
+        image.DOColor(_mousePressCanBuy, 0.2f);
+        image.gameObject.transform.DOPunchScale(transform.localScale * -0.2f, 0.5f, 10, 0)
+        .OnComplete(() =>
+        {
+            image.DOColor(_default, 0.2f);
+            });
+    }
+
+    public void UpdateVisualCantBuy(Image image)
+    {
+        image.gameObject.transform.DOKill(true);
+        image.DOColor(_mousePressCantBuy, 0.2f);
+        image.gameObject.transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0)
+        .OnComplete(() =>
+        {
+            image.DOColor(_default, 0.2f);
+            });
+    }
+
 }
