@@ -32,7 +32,7 @@ public class Popcorn : MonoBehaviour
             else if (Rb.velocity.y < 0)
             {
                 spriteRenderer.sortingOrder = spriteRendererMachine.sortingOrder - 1;
-                Debug.Log(spriteRenderer.sortingOrder);
+                //Debug.Log(spriteRenderer.sortingOrder);
             }
         }
     }

@@ -18,12 +18,11 @@ public class MachineBurn : MonoBehaviour
     [SerializeField] private Transform _burnLimit;
     [SerializeField] private List<Transform> _burnTargets = new List<Transform>();
     private Button button;
-    private Image _imageBtn;
+    [SerializeField] private Image _imageBtn;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _imageBtn = GetComponent<Image>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
@@ -39,7 +38,7 @@ public class MachineBurn : MonoBehaviour
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = "$" + _player.Money.ToString();
+            _player.UpdateMoney(true);
             if (_indexTarget == _burnTargets.Count)
             {
                 _txLevel.text = "Nv " + _level.ToString();
@@ -54,11 +53,11 @@ public class MachineBurn : MonoBehaviour
             }
 
             //Visual
-            _player.UpdateVisualCanBuy(_imageBtn);
+            _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
         }
         else
         {
-            _player.UpdateVisualCantBuy(_imageBtn);
+            _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
         }
     }
 }

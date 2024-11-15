@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.UI;
 
 public class BtnBuckets : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _contentBuckets = new List<GameObject>();
     [SerializeField] private int _contentBucketsIndex;
+    [SerializeField] private Image _imageBtn;
     private Player _player;
 
     private void Awake()
@@ -30,5 +29,6 @@ public class BtnBuckets : MonoBehaviour
                 _contentBuckets[i].SetActive(false);
             }
         }
+        _player.UpdateVisualBucketButtons(_imageBtn);
     }
 }

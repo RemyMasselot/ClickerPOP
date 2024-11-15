@@ -22,11 +22,15 @@ public class ShowInfo : MonoBehaviour
         {
             _selected = true;
             _toolTip.DOFade(1, 0.5f);
+            transform.DOKill();
+            transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
         }
         else
         {
             _selected = false;
             _toolTip.DOFade(0, 0.5f);
+            transform.DOKill();
+            transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
         }
     }
 }

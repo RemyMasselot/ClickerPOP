@@ -27,6 +27,7 @@ public class NewBucket : MonoBehaviour
         {
             _popcornBucket.gameObject.SetActive(true);
             _btnUpgrade.interactable = true;
+            _btnUpgrade.GetComponent<Image>().color = _player.Default;
             gameObject.SetActive(false);
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();

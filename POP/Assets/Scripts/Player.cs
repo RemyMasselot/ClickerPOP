@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.Text;
 using DG.Tweening;
-using static UnityEditorInternal.ReorderableList;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class Player : MonoBehaviour
 {
@@ -26,10 +27,14 @@ public class Player : MonoBehaviour
     public float ClientTips = 1;
     public float BucketPriceDivider = 4;
 
-    [SerializeField] private Color _default;
+    public Color Default;
+    public Color NoColor;
     [SerializeField] private Color _mouseEnter;
+    [SerializeField] private Color _selected;
     [SerializeField] private Color _mousePressCanBuy;
     [SerializeField] private Color _mousePressCantBuy;
+    [SerializeField] private List<Image> _MainButtons = new List<Image>();
+    [SerializeField] private List<Image> _BucketButtons = new List<Image>();
 
     // Start is called before the first frame update
     void Awake()
@@ -104,7 +109,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UpdateMoney()
+    public void UpdateMoney(bool fromUpgrade)
     {
         string money = Money.ToString();
         StringBuilder resultat = new StringBuilder();
@@ -117,6 +122,14 @@ public class Player : MonoBehaviour
             resultat.Insert(0, money[money.Length - 1 - i]);
         }
         TextMoney.text = "$" + resultat;
+        if (fromUpgrade == true)
+        {
+            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * 0.05f, 0.3f, 8, 0);
+        }
+        else
+        {
+            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * -0.1f, 0.5f, 6, 0.4f);
+        }
     }
 
     public void CheckBucketLimits()
@@ -139,27 +152,64 @@ public class Player : MonoBehaviour
         StartCoroutine(StartAutoclickMachine());
     }
 
-    //Visual buttons upgrades
-    public void UpdateVisualCanBuy(Image image)
+    //Visual buttons
+    public void UpdateVisualCanBuy(Transform transform, Image image)
     {
-        image.gameObject.transform.DOKill(true);
+        transform.DOKill(true);
         image.DOColor(_mousePressCanBuy, 0.2f);
-        image.gameObject.transform.DOPunchScale(transform.localScale * -0.2f, 0.5f, 10, 0)
+        transform.DOPunchScale(transform.localScale * -0.2f, 0.5f, 10, 0)
         .OnComplete(() =>
         {
-            image.DOColor(_default, 0.2f);
+            image.DOColor(NoColor, 0.2f);
             });
     }
 
-    public void UpdateVisualCantBuy(Image image)
+    public void UpdateVisualCantBuy(Transform transform, Image image)
     {
-        image.gameObject.transform.DOKill(true);
+        transform.DOKill(true);
         image.DOColor(_mousePressCantBuy, 0.2f);
-        image.gameObject.transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0)
+        transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0)
         .OnComplete(() =>
         {
-            image.DOColor(_default, 0.2f);
+            image.DOColor(NoColor, 0.2f);
             });
     }
 
+    public void UpdateVisualMainButtons(Image image)
+    {
+        TextMeshProUGUI text = new();
+        foreach (var item in _MainButtons)
+        {
+            if (item.gameObject.GetComponent<Button>().interactable == true)
+            {
+                item.color = Default;
+                text = item.gameObject.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                text.color = Default;
+            }
+        }
+        image.gameObject.transform.DOKill(true);
+        image.DOColor(_selected, 0.2f);
+        text = image.gameObject.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        text.DOColor(_selected, 0.2f);
+        image.gameObject.transform.DOPunchScale(image.gameObject.transform.localScale * -0.1f, 0.5f, 10, 0);
+    }
+
+    public void UpdateVisualBucketButtons(Image image)
+    {
+        TextMeshProUGUI text = new();
+        foreach (var item in _BucketButtons)
+        {
+            if (item.gameObject.GetComponent<Button>().interactable == true)
+            {
+                item.color = Default;
+                text = item.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                text.color = Default;
+            }
+        }
+        image.gameObject.transform.DOKill(true);
+        image.DOColor(_selected, 0.2f);
+        text = image.gameObject.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        text.DOColor(_selected, 0.2f);
+        image.gameObject.transform.DOPunchScale(image.gameObject.transform.localScale * -0.1f, 0.5f, 10, 0);
+    }
 }

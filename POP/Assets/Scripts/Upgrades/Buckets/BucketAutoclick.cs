@@ -20,12 +20,11 @@ public class BucketAutoclick : MonoBehaviour
     [SerializeField] private string _txFirstUpgrade;
     [SerializeField] private string _txNextUpgrades;
     private Button button;
-    private Image _imageBtn;
+    [SerializeField] private Image _imageBtn;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _imageBtn = GetComponent<Image>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         button = GetComponent<Button>();
@@ -41,7 +40,7 @@ public class BucketAutoclick : MonoBehaviour
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = "$" + _player.Money.ToString();
+            _player.UpdateMoney(true);
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(IncreaseAutoclick);
             _price = (int)(_price * _priceMultiplyer);
@@ -49,11 +48,11 @@ public class BucketAutoclick : MonoBehaviour
             _txDesc.text = _txNextUpgrades;
             
             //Visual
-            _player.UpdateVisualCanBuy(_imageBtn);
+            _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
         }
         else
         {
-            _player.UpdateVisualCantBuy(_imageBtn);
+            _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
         }
     }
 
@@ -65,16 +64,16 @@ public class BucketAutoclick : MonoBehaviour
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
             _player.Money -= _price;
-            _player.TextMoney.text = "$" + _player.Money.ToString();
+            _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);
             _txPrice.text = "$" + _price.ToString();
             
             //Visual
-            _player.UpdateVisualCanBuy(_imageBtn);
+            _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
         }
         else
         {
-            _player.UpdateVisualCantBuy(_imageBtn);
+            _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
         }
     }
 }

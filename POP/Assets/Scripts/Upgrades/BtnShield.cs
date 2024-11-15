@@ -28,7 +28,7 @@ public class BtnShield : MonoBehaviour
 
     public void GetShield()
     {
-        Debug.Log("ger");
+        //Debug.Log("ger");
         if (_player.Money >= _price)
         {
             //Anim Boue

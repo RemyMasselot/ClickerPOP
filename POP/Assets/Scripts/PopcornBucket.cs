@@ -126,7 +126,7 @@ public class PopcornBucket : MonoBehaviour
                     });
                     _rawImageShadow.DOFade(0, 0.2f);
                     _player.Money += BucketPrice;
-                    _player.UpdateMoney();
+                    _player.UpdateMoney(false);
                     TextMoney.Appeared();
                 });
             });
