@@ -21,6 +21,7 @@ public class ShowInfo : MonoBehaviour
         if (_selected == false)
         {
             _selected = true;
+            _toolTip.gameObject.SetActive(true);
             _toolTip.DOFade(1, 0.5f);
             transform.DOKill();
             transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
@@ -28,6 +29,7 @@ public class ShowInfo : MonoBehaviour
         else
         {
             _selected = false;
+            _toolTip.gameObject.SetActive(false);
             _toolTip.DOFade(0, 0.5f);
             transform.DOKill();
             transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);

@@ -29,6 +29,7 @@ public class TextMoneyGained : MonoBehaviour
             .OnComplete(() =>
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                gameObject.SetActive(false);
             });
         transform.DOMoveY(transform.position.y + 0.5f, _alphaSpeed);
     }

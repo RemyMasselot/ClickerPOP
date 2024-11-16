@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class PopcornMachine : MonoBehaviour
 {
+    private Button _button;
+    private Player _player;
+    private BurnPopcorn _burnPopcorn;
+
     [SerializeField] private GameObject _popcorn;
     [SerializeField] private Transform _popcornSpawnTarget1;
     [SerializeField] private Transform _popcornSpawnTarget2;
@@ -21,6 +26,29 @@ public class PopcornMachine : MonoBehaviour
 
     public List<GameObject> PopcornList;
 
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(CickOnMachine);
+        _burnPopcorn = FindObjectOfType<BurnPopcorn>();
+        _player = FindObjectOfType<Player>();
+    }
+
+    public void CickOnMachine()
+    {
+        if (_burnPopcorn.IsBurning == false)
+        {
+            // Faire pop un popcorn
+            for (int i = 0; i < _player.PopNumber; i++)
+            {
+                PopAPopcorn();
+                Pan.DOKill(true);
+                Pan.DOPunchScale(Pan.localScale * 0.15f, 0.5f, 10, 0.8f);
+                transform.DOKill(true);
+                transform.DOPunchScale(transform.localScale * 0.03f, 0.5f, 10, 0.4f);
+            }
+        }
+    }
 
     public void PopAPopcorn()
     {

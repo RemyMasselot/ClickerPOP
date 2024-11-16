@@ -8,7 +8,6 @@ public class BucketAutoclick : MonoBehaviour
 {
     private Player _player;
     [SerializeField] private PopcornBucket _popcornBucket;
-    [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private float _divider = 2;

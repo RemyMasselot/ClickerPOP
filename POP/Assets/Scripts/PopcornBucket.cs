@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
 public class PopcornBucket : MonoBehaviour
 {
-    private Vector3 _startPos;
-    
-    public PopcornMachine PopcornMachine;
+    private Button _button;
+    private Player _player;
     private BurnPopcorn _burnPopcorn;
+    private Vector3 _startPos;
+    public PopcornMachine PopcornMachine;
 
     [SerializeField] private List<Texture> Images = new List<Texture>();
 
@@ -29,15 +29,17 @@ public class PopcornBucket : MonoBehaviour
     public Image Timer;
     public float TimerDuration = 2f;
 
-    private Player _player;
     public int BucketPrice = 2;
     public float TimerAutoclick = 1;
     public TextMoneyGained TextMoney;
 
     public int FillNumber = 1;
+    [SerializeField] private CanvasGroup _toolTipBucket;
 
     private void Awake()
     {
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(CickOnBucket);
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
 
         _startPos = transform.localPosition;
@@ -46,6 +48,39 @@ public class PopcornBucket : MonoBehaviour
         canvasGroup = GetComponentInChildren<CanvasGroup>();
         _player = FindAnyObjectByType<Player>();
         BucketPrice = (int)(NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
+    }
+
+    public void CickOnBucket()
+    {
+        if (_burnPopcorn.IsBurning == false)
+        {
+            if (PopcornMachine.PopcornList.Count > 0)
+            {
+                if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
+                {
+                    // Prendre un popcorn
+                    RepeatFillTheBucket(FillNumber);
+                }
+            }
+            else
+            {
+                _toolTipBucket.gameObject.SetActive(true);
+                _toolTipBucket.DOKill();
+                _toolTipBucket.DOFade(1, 0.5f)
+                    .OnComplete(() =>
+                    {
+                        _toolTipBucket.DOKill();
+                        DOVirtual.DelayedCall(2, () =>
+                        {
+                            _toolTipBucket.DOFade(0, 0.5f)
+                            .OnComplete(() =>
+                            {
+                                _toolTipBucket.gameObject.SetActive(false);
+                            });
+                        });
+                    });
+            }
+        }
     }
 
     public void RepeatFillTheBucket(int num)
@@ -134,6 +169,7 @@ public class PopcornBucket : MonoBehaviour
                     _rawImageShadow.DOFade(0, 0.2f);
                     _player.Money += BucketPrice;
                     _player.UpdateMoney(false);
+                    TextMoney.gameObject.SetActive(true);
                     TextMoney.Appeared();
                 });
             });

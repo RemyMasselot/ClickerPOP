@@ -6,8 +6,6 @@ using TMPro;
 using System.Text;
 using DG.Tweening;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class Player : MonoBehaviour
 {
@@ -35,7 +33,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Color _mousePressCantBuy;
     [SerializeField] private List<Image> _MainButtons = new List<Image>();
     [SerializeField] private List<Image> _BucketButtons = new List<Image>();
-    [SerializeField] private CanvasGroup _toolTipBucket;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,9 +50,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Vérifier si le clic gauche de la souris est enfoncé
-        Click.performed += ctx => ExecuteAction();
+        //Click.performed += ctx => ExecuteAction();
     }
-
+    /*
     private void ExecuteAction()
     {
         if (_burnPopcorn.IsBurning == false)
@@ -119,7 +116,7 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    */
     public void UpdateMoney(bool fromUpgrade)
     {
         string money = Money.ToString();

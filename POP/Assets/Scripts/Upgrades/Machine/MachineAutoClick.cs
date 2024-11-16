@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
-using static UnityEditorInternal.ReorderableList;
 
 public class MachineAutoClick : MonoBehaviour
 {
