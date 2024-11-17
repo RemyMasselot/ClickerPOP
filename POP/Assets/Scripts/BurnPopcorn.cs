@@ -13,7 +13,7 @@ public class BurnPopcorn : MonoBehaviour
     public bool IsBurning;
     [SerializeField] private GameObject _btnShield;
     [SerializeField] private CanvasGroup _toolTip;
-    [SerializeField] private List<GameObject> _badPopcorns = new List<GameObject>();
+    public List<GameObject> BadPopcorns = new List<GameObject>();
     [SerializeField] private SpriteRenderer _flame;
     [SerializeField] private int _badPopcornLimit = 5;
     [SerializeField] private int _timeRebuild;
@@ -32,10 +32,10 @@ public class BurnPopcorn : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Popcorn>().CanBurn == true)
             {
-                if (_badPopcorns.Contains(collision.gameObject) == false)
+                if (BadPopcorns.Contains(collision.gameObject) == false)
                 {
-                    _badPopcorns.Add(collision.gameObject);
-                    if (_badPopcorns.Count >= _badPopcornLimit)
+                    BadPopcorns.Add(collision.gameObject);
+                    if (BadPopcorns.Count >= _badPopcornLimit)
                     {
                         if (IsBurning == false)
                         {
@@ -44,6 +44,23 @@ public class BurnPopcorn : MonoBehaviour
                             _toolTip.DOFade(0, 0.5f);
                             CheckShield();
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Popcorn>() == true)
+        {
+            if (collision.gameObject.GetComponent<Popcorn>().CanBurn == true)
+            {
+                if (BadPopcorns.Contains(collision.gameObject) == true)
+                {
+                    if (IsBurning == false)
+                    {
+                        BadPopcorns.Remove(collision.gameObject);
                     }
                 }
             }
@@ -114,7 +131,7 @@ public class BurnPopcorn : MonoBehaviour
     IEnumerator BurnOff()
     {
         yield return new WaitForSeconds(_timeRebuild);
-        _badPopcorns.Clear();
+        BadPopcorns.Clear();
         IsBurning = false;
         _flame.DOFade(0, 0.5f)
             .OnComplete(() =>

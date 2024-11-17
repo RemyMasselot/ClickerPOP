@@ -15,7 +15,5 @@ public class BtnMachine : MonoBehaviour
     public void OnMachine()
     {
         _popcornMachine.CickOnMachine();
-
-        Debug.Log("OnMachine");
     }
 }

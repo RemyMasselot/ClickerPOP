@@ -8,10 +8,9 @@ public class BtnBucket : MonoBehaviour
 
     public void OnBcuket()
     {
-        if ( _popcornBucket.gameObject.activeSelf == true)
+        if (_popcornBucket.gameObject.activeSelf == true)
         {
             _popcornBucket.CickOnBucket();
         }
-        Debug.Log("OnBucket");
     }
 }

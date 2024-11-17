@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Popcorn : MonoBehaviour
 {
+    private Player _player;
     public Rigidbody2D Rb;
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private SpriteRenderer _spriteRendererMachine;
@@ -14,30 +15,9 @@ public class Popcorn : MonoBehaviour
 
     private void Awake()
     {
+        _player = FindAnyObjectByType<Player>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-
-    void Update()
-    {
-        if (Rb.IsSleeping() == false)
-        {
-            if (_spriteRenderer.sortingOrder == _spriteRendererMachine.sortingOrder - 1)
-            {
-                if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
-                {
-                    Rb.Sleep();
-                    CanBurn = true;
-                }
-            }
-            else if (Rb.velocity.y < 0)
-            {
-                _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
-                //Debug.Log(spriteRenderer.sortingOrder);
-            }
-        }
-    }
-
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -45,6 +25,48 @@ public class Popcorn : MonoBehaviour
         if (BounceCount == 2)
         {
             _spriteRenderer.color = _newColor;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (_player.UsePhysic == true)
+        {
+            if (Rb.IsSleeping() == false)
+            {
+                if (_spriteRenderer.sortingOrder == _spriteRendererMachine.sortingOrder - 1)
+                {
+                    if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
+                    {
+                        Rb.Sleep();
+                        CanBurn = true;
+                    }
+                }
+                else if (Rb.velocity.y < 0)
+                {
+                    _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
+                    //Debug.Log(spriteRenderer.sortingOrder);
+                }
+            }
+        }
+        else
+        {
+            if (Rb.bodyType != RigidbodyType2D.Kinematic)
+            {
+                if (_spriteRenderer.sortingOrder == _spriteRendererMachine.sortingOrder - 1)
+                {
+                    if (Mathf.Abs(Rb.velocity.y) <= 0.0005)
+                    {
+                        Rb.bodyType = RigidbodyType2D.Kinematic;
+                        Rb.velocity = new Vector3 (0,0,0);
+                        Rb.angularVelocity = 0;
+                        CanBurn = true;
+                    }
+                }
+                else if (Rb.velocity.y < 0)
+                {
+                    _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
+                }
+            }
         }
     }
 }

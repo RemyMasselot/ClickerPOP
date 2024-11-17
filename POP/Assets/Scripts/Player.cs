@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     Controls controls;
     public InputAction Click;
 
+    public bool UsePhysic = false;
+
     private PopcornMachine _popcornMachine;
     private BurnPopcorn _burnPopcorn;
 
@@ -132,11 +134,15 @@ public class Player : MonoBehaviour
         TextMoney.text = "$" + resultat;
         if (fromUpgrade == true)
         {
-            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * 0.05f, 0.3f, 8);
+            RectTransform rect = TextMoney.gameObject.GetComponent<RectTransform>();
+            rect.transform.DOKill(true);
+            rect.transform.DOPunchScale(rect.transform.localScale * 0.05f, 0.3f, 8);
         }
         else
         {
-            TextMoney.gameObject.GetComponent<Transform>().DOPunchScale(transform.localScale * -0.1f, 0.5f, 6);
+            RectTransform rect = TextMoney.gameObject.GetComponent<RectTransform>();
+            rect.transform.DOKill(true);
+            rect.transform.DOPunchScale(rect.transform.localScale * -0.1f, 0.5f, 6);
         }
     }
 

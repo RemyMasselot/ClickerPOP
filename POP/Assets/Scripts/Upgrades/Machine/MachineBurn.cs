@@ -20,6 +20,10 @@ public class MachineBurn : MonoBehaviour
     private Button button;
     [SerializeField] private Image _imageBtn;
 
+    [SerializeField] private BtnShield _btnShield;
+    [SerializeField] private TextMeshProUGUI _priceTextShield;
+    [SerializeField] private int _priceShieldMultiplyer = 5;
+
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
@@ -33,27 +37,32 @@ public class MachineBurn : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
-            _burnLimit.transform.DOMoveY(_burnTargets[_indexTarget].transform.position.y, _timeMove);
-            _indexTarget++;
-            _level++;
-            _txLevel.text = "Nv " + _level.ToString();
-            _player.Money -= _price;
-            _player.UpdateMoney(true);
-            if (_indexTarget == _burnTargets.Count)
+            if (_indexTarget < _burnTargets.Count)
             {
+                _burnLimit.transform.DOMoveY(_burnTargets[_indexTarget].transform.position.y, _timeMove);
+                _btnShield.Price *= _priceShieldMultiplyer;
+                _priceTextShield.text = _btnShield.Price.ToString();
+                _indexTarget++;
+                _level++;
                 _txLevel.text = "Nv " + _level.ToString();
-                _txPrice.text = "MAX";
-                button.onClick.RemoveListener(MoreTips);
-                button.interactable = false;
-            }
-            else
-            {
-                _price = (int)(_price * _priceMultiplyer);
-                _txPrice.text = "$" + _price.ToString();
-            }
+                _player.Money -= _price;
+                _player.UpdateMoney(true);
+                if (_indexTarget == _burnTargets.Count)
+                {
+                    _txLevel.text = "Nv " + _level.ToString();
+                    _txPrice.text = "MAX";
+                    button.onClick.RemoveListener(MoreTips);
+                    button.interactable = false;
+                }
+                else
+                {
+                    _price = (int)(_price * _priceMultiplyer);
+                    _txPrice.text = "$" + _price.ToString();
+                }
 
-            //Visual
-            _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+                //Visual
+                _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+            }
         }
         else
         {

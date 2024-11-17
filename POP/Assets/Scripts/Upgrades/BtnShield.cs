@@ -9,7 +9,7 @@ public class BtnShield : MonoBehaviour
 {
     private Player _player;
     private PopAnims _popAnims;
-    [SerializeField] private int _price = 10;
+    public int Price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
     [SerializeField] private GameObject _btnShield;
     [SerializeField] private ShowInfo _showInfo;
@@ -21,7 +21,7 @@ public class BtnShield : MonoBehaviour
     {
         _player = FindObjectOfType<Player>();
         _popAnims = FindObjectOfType<PopAnims>();
-        _txPrice.text = "$" + _price.ToString();
+        _txPrice.text = "$" + Price.ToString();
         button = GetComponent<Button>();
         button.onClick.AddListener(GetShield);
     }
@@ -29,14 +29,14 @@ public class BtnShield : MonoBehaviour
     public void GetShield()
     {
         //Debug.Log("ger");
-        if (_player.Money >= _price)
+        if (_player.Money >= Price)
         {
             //Anim Boue
             _popAnims.UpdateAnim("HaveBoue", "IsSaving", "IsBlowing");
             _showInfo.ShowMore();
             _btnShield.SetActive(false);
             _player.ShieldActivated = true;
-            _player.Money -= _price;
+            _player.Money -= Price;
             _player.UpdateMoney(true);
         }
     }

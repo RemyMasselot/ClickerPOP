@@ -8,7 +8,7 @@ public class BucketStorage : MonoBehaviour
 {
     private Player _player;
     [SerializeField] private int _index = 0;
-    [SerializeField] private float _storageMultiplyer = 2;
+    [SerializeField] private float _storageIncrease = 2;
     [SerializeField] private float _priceMultiplyer = 1.5f;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;
@@ -31,7 +31,7 @@ public class BucketStorage : MonoBehaviour
         if (_player.Money >= _price)
         {
             PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
-            _bucket.NumberOfPopcornsLimit = (int)(_bucket.NumberOfPopcornsLimit * _storageMultiplyer);
+            _bucket.NumberOfPopcornsLimit = (int)(_bucket.NumberOfPopcornsLimit + _storageIncrease);
             _bucket.SliderUpdate();
             _bucket.BucketPrice = (int)(_bucket.NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
             _bucket.TextMoney.UpdateText();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Runtime.CompilerServices;
 
 public class PopcornBucket : MonoBehaviour
 {
@@ -56,11 +57,7 @@ public class PopcornBucket : MonoBehaviour
         {
             if (PopcornMachine.PopcornList.Count > 0)
             {
-                if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
-                {
-                    // Prendre un popcorn
-                    RepeatFillTheBucket(FillNumber);
-                }
+                RepeatFillTheBucket(FillNumber);
             }
             else
             {
@@ -87,17 +84,98 @@ public class PopcornBucket : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            FillTheBucket();
+            if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
+            {
+                // Prendre un popcorn
+                FillTheBucket();
+            }
+            else
+            {
+                break;
+            }
         }
     }
 
     public void FillTheBucket()
     {
-        for (int i = 0; i <= PopcornMachine.PopcornList.Count-1; i++)
+        if (_player.UsePhysic == true)
+        {
+            FillWithPhysic();
+        }
+        else
+        {
+            FillWithoutPhysic();
+        }
+    }
+
+    private void FillWithPhysic()
+    {
+        for (int i = 0; i <= PopcornMachine.PopcornList.Count - 1; i++)
         {
             Popcorn popcorn = PopcornMachine.PopcornList[i].GetComponent<Popcorn>();
             if (popcorn.BounceCount > 1)
             {
+                //Supprimer le popcorn de la liste burncollider
+                if (_burnPopcorn.BadPopcorns.Contains(popcorn.gameObject))
+                {
+                    _burnPopcorn.BadPopcorns.Remove(popcorn.gameObject);
+                }
+                //Anim bucket
+                Transform visualShadow = _rawImageShadow.GetComponent<Transform>();
+                Transform visualBucket = _rawImageBucket.GetComponent<Transform>();
+                visualShadow.DOKill(true);
+                visualShadow.DOPunchScale(visualShadow.localScale * 0.6f, 0.5f, 10, 0.8f);
+                visualBucket.DOKill(true);
+                visualBucket.DOPunchScale(visualBucket.localScale * 0.2f, 0.5f, 10, 0.5f);
+                // Supprimer le popcorn de la liste des popcorn contenus dans la Popcorn Machine
+                GameObject popcornRemoved = PopcornMachine.PopcornList[i];
+                PopcornMachine.PopcornList.RemoveAt(i);
+                // Détruire ce popcorn
+                Destroy(popcornRemoved);
+                NumberOfPopcornsCurrent++;
+                _slider.value = NumberOfPopcornsCurrent;
+
+                // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
+                if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
+                {
+                    _rawImageBucket.texture = Images[3];
+                    ChangeTheBucket();
+                    _player.BucketsSold++;
+                    _player.CheckBucketLimits();
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.3f)
+                {
+                    HandsReady();
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 1.5f)
+                {
+                    _rawImageBucket.texture = Images[2];
+                    return;
+                }
+                else if (NumberOfPopcornsCurrent >= NumberOfPopcornsLimit / 3)
+                {
+                    _rawImageBucket.texture = Images[1];
+                    return;
+                }
+                break;
+            }
+        }
+    }
+
+    private void FillWithoutPhysic()
+    {
+        for (int i = PopcornMachine.PopcornList.Count - 1; i >= 0; i--)
+        {
+            Popcorn popcorn = PopcornMachine.PopcornList[i].GetComponent<Popcorn>();
+            if (popcorn.BounceCount > 1)
+            {
+                //Supprimer le popcorn de la liste burncollider
+                if (_burnPopcorn.BadPopcorns.Contains(popcorn.gameObject))
+                {
+                    _burnPopcorn.BadPopcorns.Remove(popcorn.gameObject);
+                }
                 //Anim bucket
                 Transform visualShadow = _rawImageShadow.GetComponent<Transform>();
                 Transform visualBucket = _rawImageBucket.GetComponent<Transform>();
