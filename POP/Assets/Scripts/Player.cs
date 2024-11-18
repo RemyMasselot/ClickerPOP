@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     Controls controls;
     public InputAction Click;
 
+    public bool WaitCoroutine = false;
     public bool UsePhysic = false;
 
     private PopcornMachine _popcornMachine;
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Color _mousePressCantBuy;
     [SerializeField] private List<Image> _MainButtons = new List<Image>();
     [SerializeField] private List<Image> _BucketButtons = new List<Image>();
+
+    public AudioClip SoundBuyUpgrade;
+    public AudioClip SoundCantBuyUpgrade;
 
     // Start is called before the first frame update
     void Awake()
@@ -121,17 +125,7 @@ public class Player : MonoBehaviour
     */
     public void UpdateMoney(bool fromUpgrade)
     {
-        string money = Money.ToString();
-        StringBuilder resultat = new StringBuilder();
-        for (int i = 0; i < money.Length; i++)
-        {
-            if (i > 0 && i % 3 == 0)
-            {
-                resultat.Insert(0, '.');
-            }
-            resultat.Insert(0, money[money.Length - 1 - i]);
-        }
-        TextMoney.text = "$" + resultat;
+        UpdateText(Money, TextMoney);
         if (fromUpgrade == true)
         {
             RectTransform rect = TextMoney.gameObject.GetComponent<RectTransform>();
@@ -144,6 +138,21 @@ public class Player : MonoBehaviour
             rect.transform.DOKill(true);
             rect.transform.DOPunchScale(rect.transform.localScale * -0.1f, 0.5f, 6);
         }
+    }
+
+    public void UpdateText(int Value, TextMeshProUGUI text)
+    {
+        string money = Value.ToString();
+        StringBuilder resultat = new StringBuilder();
+        for (int i = 0; i < money.Length; i++)
+        {
+            if (i > 0 && i % 3 == 0)
+            {
+                resultat.Insert(0, '.');
+            }
+            resultat.Insert(0, money[money.Length - 1 - i]);
+        }
+        text.text = resultat.ToString();
     }
 
     public void CheckBucketLimits()
@@ -225,5 +234,13 @@ public class Player : MonoBehaviour
         text = image.gameObject.gameObject.GetComponentInChildren<TextMeshProUGUI>();
         text.DOColor(_selected, 0.2f);
         image.gameObject.transform.DOPunchScale(image.gameObject.transform.localScale * -0.1f, 0.5f, 10, 0);
+    }
+
+    public void CoroutinePreparation()
+    {
+        DOVirtual.DelayedCall(2, () =>
+        {
+            WaitCoroutine = false;
+        });
     }
 }

@@ -9,11 +9,13 @@ public class ShowInfo : MonoBehaviour
     private Button button;
     [SerializeField] private CanvasGroup _toolTip;
     private bool _selected = false;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(ShowMore);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void ShowMore()
@@ -34,5 +36,6 @@ public class ShowInfo : MonoBehaviour
             transform.DOKill();
             transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
         }
+        _audioSource.Play();
     }
 }

@@ -24,6 +24,9 @@ public class PopcornMachine : MonoBehaviour
     [SerializeField] private float _popcornForce = 3;
     [SerializeField] public Transform Pan;
 
+    private AudioSource _audioSource;
+    [SerializeField] private List<AudioClip> _audioClips = new List<AudioClip>();
+
     public List<GameObject> PopcornList;
 
     private void Awake()
@@ -31,6 +34,7 @@ public class PopcornMachine : MonoBehaviour
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _player = FindObjectOfType<Player>();
         _stats = FindObjectOfType<Stats>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void CickOnMachine()
@@ -66,6 +70,12 @@ public class PopcornMachine : MonoBehaviour
         _popcornAngle = new Vector2(_x, _y);
         _rb.AddForce(_popcornAngle * _popcornForce, ForceMode2D.Impulse);
         //Debug.Log("POPCORN");
+
+        //Play son
+        int randomIndex = Random.Range(0, _audioClips.Count);
+        _audioSource.clip = _audioClips[randomIndex];
+
+        _audioSource.Play();
 
         _stats.TotalPopcorn++;
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class BurnPopcorn : MonoBehaviour
 {
@@ -18,12 +19,14 @@ public class BurnPopcorn : MonoBehaviour
     [SerializeField] private int _badPopcornLimit = 5;
     [SerializeField] private int _timeRebuild;
     [SerializeField] private CanvasGroup _canvaGroupCollider;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _popcornMachine = FindObjectOfType<PopcornMachine>();
         _player = FindObjectOfType<Player>();
         _popAnims = FindObjectOfType<PopAnims>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -110,10 +113,10 @@ public class BurnPopcorn : MonoBehaviour
         {
             
             SpriteRenderer spriteRenderer = popcorn.GetComponent<SpriteRenderer>();
-            spriteRenderer.DOColor(Color.black, 1.5f)
+            spriteRenderer.DOColor(Color.black, 0.5f)
                 .OnComplete(() =>
                 {
-                    _flame.DOFade(1, 1f);
+                    _flame.DOFade(1, 0.5f);
                     //Anim Blow
                     _popAnims.UpdateAnim("IsBlowing", "IsSaving", "HaveBoue");
                     spriteRenderer.DOFade(0, 0.3f)
@@ -124,6 +127,7 @@ public class BurnPopcorn : MonoBehaviour
                 });
             return true;
         });
+        _audioSource.Play();
         _canvaGroupCollider.DOFade(0, 0.5f);
         StartCoroutine(BurnOff());
     }
@@ -133,6 +137,9 @@ public class BurnPopcorn : MonoBehaviour
         yield return new WaitForSeconds(_timeRebuild);
         BadPopcorns.Clear();
         IsBurning = false;
+        DOTween.To(() => _audioSource.volume, x => _audioSource.volume = x, 0, 0.5f)
+            .OnComplete(() => _audioSource.Stop());
+        
         _flame.DOFade(0, 0.5f)
             .OnComplete(() =>
             {

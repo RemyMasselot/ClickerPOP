@@ -9,26 +9,32 @@ public class BtnBuckets : MonoBehaviour
     [SerializeField] private int _contentBucketsIndex;
     [SerializeField] private Image _imageBtn;
     private Player _player;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _player = FindAnyObjectByType<Player>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void BtnBucket()
     {
-        for (int i = 0; i < _contentBuckets.Count; i++)
+        if (_player.WaitCoroutine == false)
         {
-            if (i == _contentBucketsIndex)
+            for (int i = 0; i < _contentBuckets.Count; i++)
             {
-                _contentBuckets[i].SetActive(true);
-                _player.CheckBucketLimits();
+                if (i == _contentBucketsIndex)
+                {
+                    _contentBuckets[i].SetActive(true);
+                    _player.CheckBucketLimits();
+                }
+                else
+                {
+                    _contentBuckets[i].SetActive(false);
+                }
             }
-            else
-            {
-                _contentBuckets[i].SetActive(false);
-            }
+            _audioSource.Play();
+            _player.UpdateVisualBucketButtons(_imageBtn);
         }
-        _player.UpdateVisualBucketButtons(_imageBtn);
     }
 }

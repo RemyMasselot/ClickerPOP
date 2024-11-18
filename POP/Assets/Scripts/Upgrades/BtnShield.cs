@@ -16,6 +16,7 @@ public class BtnShield : MonoBehaviour
     //[SerializeField] private SpriteRenderer _pop;
     //[SerializeField] private Sprite _popBoue;
     private Button button;
+    [SerializeField] private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -32,12 +33,19 @@ public class BtnShield : MonoBehaviour
         if (_player.Money >= Price)
         {
             //Anim Boue
+            _audioSource.clip = _player.SoundBuyUpgrade;
+            _audioSource.Play();
             _popAnims.UpdateAnim("HaveBoue", "IsSaving", "IsBlowing");
             _showInfo.ShowMore();
             _btnShield.SetActive(false);
             _player.ShieldActivated = true;
             _player.Money -= Price;
             _player.UpdateMoney(true);
+        }
+        else
+        {
+            _audioSource.clip = _player.SoundCantBuyUpgrade;
+            _audioSource.Play();
         }
     }
 }

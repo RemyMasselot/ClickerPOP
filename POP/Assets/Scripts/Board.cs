@@ -26,6 +26,9 @@ public class Board : MonoBehaviour
     private Vector2 _machineColliderOffsetStart;
     private Vector2 _machineColliderSizeStart;
 
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _open;
+    [SerializeField] private AudioClip _close;
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class Board : MonoBehaviour
         _machineColliderOffsetStart = _machineCollider.offset;
         _machineColliderSizeStart = _machineCollider.size;
 
+        _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
         button.onClick.AddListener(BtnBoard);
 
@@ -52,11 +56,15 @@ public class Board : MonoBehaviour
         {
             _IsExpend = true;
             BoardExpenssion();
+            _audioSource.clip = _open;
+            _audioSource.Play();
         }
         else
         {
             _IsExpend = false;
             BoardContraction();
+            _audioSource.clip = _close;
+            _audioSource.Play();
         }
     }
     public void BoardExpenssion()

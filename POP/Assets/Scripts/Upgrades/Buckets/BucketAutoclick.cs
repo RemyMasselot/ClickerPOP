@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BucketAutoclick : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class BucketAutoclick : MonoBehaviour
     [SerializeField] private string _txNextUpgrades;
     private Button button;
     [SerializeField] private Image _imageBtn;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
+        _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
         button.onClick.AddListener(UnlockAutoclick);
         _txDesc.text = _txFirstUpgrade;
@@ -35,6 +38,8 @@ public class BucketAutoclick : MonoBehaviour
     {
         if (_player.Money >= _price)
         {
+            _player.WaitCoroutine = true;
+            _player.CoroutinePreparation();
             StartCoroutine(_popcornBucket.StartAutoclickBucket());
             _level++;
             _txLevel.text = "Nv " + _level.ToString();
@@ -43,15 +48,21 @@ public class BucketAutoclick : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(IncreaseAutoclick);
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = "$" + _price.ToString();
+            _player.UpdateText(_price, _txPrice);
+            _txPrice.text = "$" + _txPrice.text;
             _txDesc.text = _txNextUpgrades;
-            
+
             //Visual
             _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+
+            _audioSource.clip = _player.SoundBuyUpgrade;
+            _audioSource.Play();
         }
         else
         {
             _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
+            _audioSource.clip = _player.SoundCantBuyUpgrade;
+            _audioSource.Play();
         }
     }
 
@@ -65,14 +76,20 @@ public class BucketAutoclick : MonoBehaviour
             _player.Money -= _price;
             _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = "$" + _price.ToString();
-            
+            _player.UpdateText(_price, _txPrice);
+            _txPrice.text = "$" + _txPrice.text;
+
             //Visual
             _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+
+            _audioSource.clip = _player.SoundBuyUpgrade;
+            _audioSource.Play();
         }
         else
         {
             _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
+            _audioSource.clip = _player.SoundCantBuyUpgrade;
+            _audioSource.Play();
         }
     }
 }

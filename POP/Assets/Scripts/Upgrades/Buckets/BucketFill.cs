@@ -15,12 +15,14 @@ public class BucketFill : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _txLevel;
     private Button button;
     [SerializeField] private Image _imageBtn;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
+        _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
         button.onClick.AddListener(FillBucket);
     }
@@ -36,14 +38,20 @@ public class BucketFill : MonoBehaviour
             _player.Money -= _price;
             _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);
-            _txPrice.text = "$" + _price.ToString();
-            
+            _player.UpdateText(_price, _txPrice);
+            _txPrice.text = "$" + _txPrice.text;
+
             //Visual
             _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+
+            _audioSource.clip = _player.SoundBuyUpgrade;
+            _audioSource.Play();
         }
         else
         {
             _player.UpdateVisualCantBuy(gameObject.transform, _imageBtn);
+            _audioSource.clip = _player.SoundCantBuyUpgrade;
+            _audioSource.Play();
         }
     }
 }

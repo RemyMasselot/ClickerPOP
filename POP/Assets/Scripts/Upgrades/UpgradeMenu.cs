@@ -10,24 +10,34 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private GameObject _contentUpgradesBucket;
     [SerializeField] private Image _imageBtn;
     private Player _player;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _player = FindAnyObjectByType<Player>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void BtnBucket()
     {
-        _contentUpgradesMachine.SetActive(false);
-        _contentUpgradesBucket.SetActive(true);
-        _player.CheckBucketLimits();
-        _player.UpdateVisualMainButtons(_imageBtn);
+        if (_player.WaitCoroutine == false)
+        {
+            _contentUpgradesMachine.SetActive(false);
+            _contentUpgradesBucket.SetActive(true);
+            _player.CheckBucketLimits();
+            _player.UpdateVisualMainButtons(_imageBtn);
+            _audioSource.Play();
+        }
     }
     public void BtnMachine()
     {
-        _contentUpgradesMachine.SetActive(true);
-        _contentUpgradesBucket.SetActive(false);
-        _player.CheckBucketLimits();
-        _player.UpdateVisualMainButtons(_imageBtn);
+        if (_player.WaitCoroutine == false)
+        {
+            _contentUpgradesMachine.SetActive(true);
+            _contentUpgradesBucket.SetActive(false);
+            _player.CheckBucketLimits();
+            _player.UpdateVisualMainButtons(_imageBtn);
+            _audioSource.Play();
+        }
     }
 }

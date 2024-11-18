@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Runtime.CompilerServices;
 
 public class PopcornBucket : MonoBehaviour
 {
@@ -38,9 +37,16 @@ public class PopcornBucket : MonoBehaviour
     public int FillNumber = 1;
     [SerializeField] private CanvasGroup _toolTipBucket;
 
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _MissPopcorn;
+    [SerializeField] private AudioClip _PutPopcorn;
+    [SerializeField] private List<AudioClip> _ClientHappy = new List<AudioClip>();
+    [SerializeField] private AudioClip _GainMoney;
+
     private void Awake()
     {
         _button = GetComponent<Button>();
+        _audioSource = GetComponent<AudioSource>();
         _button.onClick.AddListener(CickOnBucket);
         _player = FindObjectOfType<Player>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
@@ -57,27 +63,34 @@ public class PopcornBucket : MonoBehaviour
     {
         if (_burnPopcorn.IsBurning == false)
         {
-            if (PopcornMachine.PopcornList.Count > 0)
+            if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
             {
-                RepeatFillTheBucket(FillNumber);
-            }
-            else
-            {
-                _toolTipBucket.gameObject.SetActive(true);
-                _toolTipBucket.DOKill();
-                _toolTipBucket.DOFade(1, 0.5f)
-                    .OnComplete(() =>
-                    {
-                        _toolTipBucket.DOKill();
-                        DOVirtual.DelayedCall(2, () =>
+                if (PopcornMachine.PopcornList.Count > 0)
+                {
+                    _audioSource.clip = _PutPopcorn;
+                    _audioSource.Play();
+                    RepeatFillTheBucket(FillNumber);
+                }
+                else
+                {
+                    _audioSource.clip = _MissPopcorn;
+                    _audioSource.Play();
+                    _toolTipBucket.gameObject.SetActive(true);
+                    _toolTipBucket.DOKill();
+                    _toolTipBucket.DOFade(1, 0.5f)
+                        .OnComplete(() =>
                         {
-                            _toolTipBucket.DOFade(0, 0.5f)
-                            .OnComplete(() =>
+                            _toolTipBucket.DOKill();
+                            DOVirtual.DelayedCall(2, () =>
                             {
-                                _toolTipBucket.gameObject.SetActive(false);
+                                _toolTipBucket.DOFade(0, 0.5f)
+                                .OnComplete(() =>
+                                {
+                                    _toolTipBucket.gameObject.SetActive(false);
+                                });
                             });
                         });
-                    });
+                }
             }
         }
     }
@@ -140,6 +153,7 @@ public class PopcornBucket : MonoBehaviour
                 // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
                 if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
                 {
+                    PlaySound();
                     _rawImageBucket.texture = Images[3];
                     ChangeTheBucket();
                     _player.BucketsSold++;
@@ -196,6 +210,7 @@ public class PopcornBucket : MonoBehaviour
                 // Mettre a jour le sprite du bucket selon le nombre de popcorns contenus
                 if (NumberOfPopcornsCurrent == NumberOfPopcornsLimit)
                 {
+                    PlaySound();
                     _rawImageBucket.texture = Images[3];
                     ChangeTheBucket();
                     _player.BucketsSold++;
@@ -217,9 +232,24 @@ public class PopcornBucket : MonoBehaviour
                     _rawImageBucket.texture = Images[1];
                     return;
                 }
+
                 break;
             }
         }
+    }
+
+    public void PlaySound()
+    {
+        int randomIndex = Random.Range(0, _ClientHappy.Count-1);
+        _audioSource.clip = _ClientHappy[randomIndex];
+        _audioSource.Play();
+        //Debug.Log(_audioSource.clip.name);
+        float timer = _ClientHappy[randomIndex].length;
+        DOVirtual.DelayedCall(timer, () =>
+        {
+            _audioSource.clip = _GainMoney;
+            _audioSource.Play();
+        });
     }
 
     public void SliderUpdate()
@@ -229,6 +259,15 @@ public class PopcornBucket : MonoBehaviour
 
     public void BucketLeave()
     {
+        /*int randomIndex = Random.Range(0, _ClientHappy.Count);
+        _audioSource.clip = _ClientHappy[randomIndex];
+        _audioSource.Play();
+        float timer = _ClientHappy[randomIndex].length;
+        DOVirtual.DelayedCall(timer, () =>
+        {
+            _audioSource.clip = _GainMoney;
+            _audioSource.Play();
+        });*/
         DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, _alphaSpeed)
             .OnComplete(() =>
             {
@@ -244,6 +283,7 @@ public class PopcornBucket : MonoBehaviour
                          {
                              ReplaceBucket();
                              Reload();
+                             
                          });
                     });
                     _rawImageShadow.DOFade(0, 0.2f);
@@ -265,6 +305,7 @@ public class PopcornBucket : MonoBehaviour
 
     private void ChangeTheBucket()
     {
+        
         handLeft.GoToTarget3();
         handRight.GoToTarget3();
         BucketLeave();
@@ -310,6 +351,8 @@ public class PopcornBucket : MonoBehaviour
         {
             if (NumberOfPopcornsCurrent < NumberOfPopcornsLimit)
             {
+                _audioSource.clip = _PutPopcorn;
+                _audioSource.Play();
                 FillTheBucket();
             }
         }

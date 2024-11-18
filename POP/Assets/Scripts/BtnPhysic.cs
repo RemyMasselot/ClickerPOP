@@ -12,12 +12,14 @@ public class BtnPhysic : MonoBehaviour
 
     [SerializeField] private Sprite _used;
     [SerializeField] private Sprite _notUsed;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _machine = FindObjectOfType<PopcornMachine>();
         _image = GetComponent<Image>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void UsePhysic()
@@ -49,6 +51,7 @@ public class BtnPhysic : MonoBehaviour
             }
             _image.sprite = _notUsed;
         }
+        _audioSource.Play();
         transform.DOKill(true);
         transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
     }

@@ -12,6 +12,7 @@ public class NewBucket : MonoBehaviour
     private Button _button;
     [SerializeField] private Button _btnUpgrade;
     [SerializeField] PopcornBucket _popcornBucket;
+    [SerializeField] private AudioSource _audioSource;
 
     private void Start()
     {
@@ -31,6 +32,13 @@ public class NewBucket : MonoBehaviour
             gameObject.SetActive(false);
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();
+            _audioSource.clip = _player.SoundBuyUpgrade;
+            _audioSource.Play();
+        }
+        else
+        {
+            _audioSource.clip = _player.SoundCantBuyUpgrade;
+            _audioSource.Play();
         }
     }
 }
