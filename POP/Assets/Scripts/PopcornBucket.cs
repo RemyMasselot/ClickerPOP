@@ -10,6 +10,7 @@ public class PopcornBucket : MonoBehaviour
     private Button _button;
     private Player _player;
     private BurnPopcorn _burnPopcorn;
+    private Stats _stats;
     private Vector3 _startPos;
     public PopcornMachine PopcornMachine;
 
@@ -41,13 +42,14 @@ public class PopcornBucket : MonoBehaviour
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(CickOnBucket);
+        _player = FindObjectOfType<Player>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
+        _stats = FindObjectOfType<Stats>();
 
         _startPos = transform.localPosition;
         _slider = GetComponentInChildren<Slider>();
         SliderUpdate();
         canvasGroup = GetComponentInChildren<CanvasGroup>();
-        _player = FindAnyObjectByType<Player>();
         BucketPrice = (int)(NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
     }
 
@@ -249,6 +251,8 @@ public class PopcornBucket : MonoBehaviour
                     _player.UpdateMoney(false);
                     TextMoney.gameObject.SetActive(true);
                     TextMoney.Appeared();
+                    _stats.TotalMoney += BucketPrice;
+                    _stats.TotalBucketSold++;
                 });
             });
     }

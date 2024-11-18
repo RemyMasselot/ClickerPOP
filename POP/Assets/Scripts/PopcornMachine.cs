@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class PopcornMachine : MonoBehaviour
 {
-    private Button _button;
     private Player _player;
     private BurnPopcorn _burnPopcorn;
+    private Stats _stats;
 
     [SerializeField] private GameObject _popcorn;
     [SerializeField] private Transform _popcornSpawnTarget1;
@@ -28,10 +28,9 @@ public class PopcornMachine : MonoBehaviour
 
     private void Awake()
     {
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(CickOnMachine);
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _player = FindObjectOfType<Player>();
+        _stats = FindObjectOfType<Stats>();
     }
 
     public void CickOnMachine()
@@ -67,5 +66,7 @@ public class PopcornMachine : MonoBehaviour
         _popcornAngle = new Vector2(_x, _y);
         _rb.AddForce(_popcornAngle * _popcornForce, ForceMode2D.Impulse);
         //Debug.Log("POPCORN");
+
+        _stats.TotalPopcorn++;
     }
 }
