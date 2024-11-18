@@ -27,6 +27,8 @@ public class NewBucket : MonoBehaviour
         if (_player.Money >= _price)
         {
             _popcornBucket.gameObject.SetActive(true);
+            _popcornBucket.BucketPrice = (int)(_popcornBucket.NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
+            _popcornBucket.TextMoney.UpdateText();
             _btnUpgrade.interactable = true;
             _btnUpgrade.GetComponent<Image>().color = _player.Default;
             gameObject.SetActive(false);

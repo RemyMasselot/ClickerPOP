@@ -8,6 +8,10 @@ public class BtnBuckets : MonoBehaviour
     [SerializeField] private List<GameObject> _contentBuckets = new List<GameObject>();
     [SerializeField] private int _contentBucketsIndex;
     [SerializeField] private Image _imageBtn;
+
+    private List<Scrollbar> _scrollbars = new List<Scrollbar>();
+    private float _currentValue;
+
     private Player _player;
     private AudioSource _audioSource;
 
@@ -15,6 +19,10 @@ public class BtnBuckets : MonoBehaviour
     {
         _player = FindAnyObjectByType<Player>();
         _audioSource = GetComponent<AudioSource>();
+        foreach (var item in _contentBuckets)
+        {
+            _scrollbars.Add(item.GetComponentInChildren<Scrollbar>());
+        }
     }
 
     public void BtnBucket()
@@ -23,9 +31,18 @@ public class BtnBuckets : MonoBehaviour
         {
             for (int i = 0; i < _contentBuckets.Count; i++)
             {
+                if (_contentBuckets[i].activeSelf == true)
+                {
+                    _currentValue = _scrollbars[i].value;
+                }
+            }
+
+            for (int i = 0; i < _contentBuckets.Count; i++)
+            {
                 if (i == _contentBucketsIndex)
                 {
                     _contentBuckets[i].SetActive(true);
+                    _scrollbars[i].value = _currentValue;
                     _player.CheckBucketLimits();
                 }
                 else

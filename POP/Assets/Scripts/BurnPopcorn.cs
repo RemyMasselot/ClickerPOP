@@ -15,8 +15,10 @@ public class BurnPopcorn : MonoBehaviour
     [SerializeField] private GameObject _btnShield;
     [SerializeField] private CanvasGroup _toolTip;
     public List<GameObject> BadPopcorns = new List<GameObject>();
+    public List<GameObject> DevilPopcorns = new List<GameObject>();
     [SerializeField] private SpriteRenderer _flame;
     [SerializeField] private int _badPopcornLimit = 5;
+    public int DevilPopcornLimit = 20;
     [SerializeField] private int _timeRebuild;
     [SerializeField] private CanvasGroup _canvaGroupCollider;
     private AudioSource _audioSource;
@@ -46,7 +48,22 @@ public class BurnPopcorn : MonoBehaviour
                             _btnShield.SetActive(false);
                             _toolTip.DOFade(0, 0.5f);
                             CheckShield();
+                            return;
                         }
+                    }
+                }
+            }
+            if (DevilPopcorns.Contains(collision.gameObject) == false)
+            {
+                DevilPopcorns.Add(collision.gameObject);
+                if (DevilPopcorns.Count >= DevilPopcornLimit)
+                {
+                    if (IsBurning == false)
+                    {
+                        IsBurning = true;
+                        _btnShield.SetActive(false);
+                        _toolTip.DOFade(0, 0.5f);
+                        CheckShield();
                     }
                 }
             }
@@ -65,6 +82,13 @@ public class BurnPopcorn : MonoBehaviour
                     {
                         BadPopcorns.Remove(collision.gameObject);
                     }
+                }
+            }
+            if (DevilPopcorns.Contains(collision.gameObject) == true)
+            {
+                if (IsBurning == false)
+                {
+                    DevilPopcorns.Remove(collision.gameObject);
                 }
             }
         }
@@ -105,6 +129,7 @@ public class BurnPopcorn : MonoBehaviour
 
     private void BurnAllPopcorn()
     {
+        _audioSource.Play();
         if (_player.ShieldActivated == true)
         {
             SaveSomePopcorns();
@@ -127,7 +152,6 @@ public class BurnPopcorn : MonoBehaviour
                 });
             return true;
         });
-        _audioSource.Play();
         _canvaGroupCollider.DOFade(0, 0.5f);
         StartCoroutine(BurnOff());
     }
@@ -136,9 +160,14 @@ public class BurnPopcorn : MonoBehaviour
     {
         yield return new WaitForSeconds(_timeRebuild);
         BadPopcorns.Clear();
+        DevilPopcorns.Clear();
         IsBurning = false;
         DOTween.To(() => _audioSource.volume, x => _audioSource.volume = x, 0, 0.5f)
-            .OnComplete(() => _audioSource.Stop());
+            .OnComplete(() =>
+            {
+                _audioSource.Stop();
+                _audioSource.volume = 1;
+            });
         
         _flame.DOFade(0, 0.5f)
             .OnComplete(() =>

@@ -8,8 +8,9 @@ using DG.Tweening;
 public class MachineAutoClick : MonoBehaviour
 {
     private Player _player;
+    private BurnPopcorn _burnPopcorn;
     private Button button;
-    private int _level = 0;
+    public int _level = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private float _divider = 2;
@@ -26,6 +27,7 @@ public class MachineAutoClick : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _txLevel.text = "Nv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
@@ -86,6 +88,11 @@ public class MachineAutoClick : MonoBehaviour
             _player.UpdateText(_price, _txPrice);
             _txPrice.text = "$" + _txPrice.text;
             _txPrice.gameObject.transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0);
+
+            if (_level >= 8)
+            {
+                _burnPopcorn.DevilPopcornLimit = _level * 10;
+            }
 
             //Visual
             _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);

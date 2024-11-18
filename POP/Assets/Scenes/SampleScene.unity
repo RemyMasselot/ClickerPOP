@@ -837,8 +837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popcornBucket: {fileID: 978251470}
   _price: 1
-  _priceMultiplyer: 10
-  _divider: 2
+  _priceMultiplyer: 5
+  _divider: 1.5
   _txTitle: {fileID: 25061440}
   _txDesc: {fileID: 25061439}
   _txPrice: {fileID: 25061438}
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 60
+  m_ScrollSensitivity: 8
   m_Viewport: {fileID: 913583914}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 750652313}
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 60
+  m_ScrollSensitivity: 9
   m_Viewport: {fileID: 2064455284}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1864711090}
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 60
+  m_ScrollSensitivity: 8
   m_Viewport: {fileID: 110958636}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1466200214}
@@ -4988,6 +4988,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &706733384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706733385}
+  - component: {fileID: 706733386}
+  m_Layer: 3
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &706733385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706733384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1463052331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &706733386
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706733384}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: e3b73a2e97428444d9f7016049bd53bb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 11.5, y: 15.71}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!114 &723325236 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4182703670160344006, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
@@ -5785,7 +5869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
-      value: Augmente la capacite de stockage du pot.
+      value: Augmente la capacite de stockage du pot et son prix !
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5954,7 +6038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _storageIncrease: 10
-  _priceMultiplyer: 1.5
+  _priceMultiplyer: 4
   _price: 10
   _txPrice: {fileID: 743652082}
   _txLevel: {fileID: 1203591360}
@@ -6569,7 +6653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 276.58777, y: 162}
+  m_AnchoredPosition: {x: 276.58777, y: 160}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814554307
@@ -6679,6 +6763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentUpgradesMachine: {fileID: 1573415242}
+  _MachineScrollbar: {fileID: 0}
   _contentUpgradesBucket: {fileID: 784307061}
   _imageBtn: {fileID: 814554308}
 --- !u!61 &814554312
@@ -9405,9 +9490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b7c74ee501c8c45ad4368d84c61e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _level: 0
   _price: 1
-  _priceMultiplyer: 10
-  _divider: 2
+  _priceMultiplyer: 3
+  _divider: 1.5
   _txTitle: {fileID: 1113881111}
   _txDesc: {fileID: 1113881110}
   _txPrice: {fileID: 1113881109}
@@ -10682,7 +10768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
-      value: Augmente la capacite de stockage du pot.
+      value: Augmente la capacite de stockage du pot et son prix !
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -10851,7 +10937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 2
   _storageIncrease: 10
-  _priceMultiplyer: 1.5
+  _priceMultiplyer: 4
   _price: 10
   _txPrice: {fileID: 1251790309}
   _txLevel: {fileID: 723325236}
@@ -11095,6 +11181,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1312905102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2413915503576534852, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+  m_PrefabInstance: {fileID: 1747312028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1313872776
 GameObject:
   m_ObjectHideFlags: 0
@@ -11134,7 +11225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.09999, y: 155.1}
+  m_AnchoredPosition: {x: -30, y: 153.9}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313872778
@@ -11244,6 +11335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentUpgradesMachine: {fileID: 1573415242}
+  _MachineScrollbar: {fileID: 1864711090}
   _contentUpgradesBucket: {fileID: 784307061}
   _imageBtn: {fileID: 1313872779}
 --- !u!61 &1313872783
@@ -12606,7 +12698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_text
-      value: Augmente la capacite de stockage du pot.
+      value: Augmente la capacite de stockage du pot et son prix !
       objectReference: {fileID: 0}
     - target: {fileID: 2327012561203884820, guid: 3607b118107ed104585d3e1e7ac28d68, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -12775,7 +12867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   _storageIncrease: 10
-  _priceMultiplyer: 1.5
+  _priceMultiplyer: 4
   _price: 10
   _txPrice: {fileID: 1422828395}
   _txLevel: {fileID: 1038707555}
@@ -14869,7 +14961,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 60
+  m_ScrollSensitivity: 8
   m_Viewport: {fileID: 988152339}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 2120576009}
@@ -15463,9 +15555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736353be61ba3d4e8746b6ced1746bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _increaseClientTips: 1.5
-  _price: 4
-  _priceMultiplyer: 5
+  _increaseClientTips: 1.4
+  _price: 5
+  _priceMultiplyer: 3
   _txPrice: {fileID: 1948565997}
   _txLevel: {fileID: 1588672509}
   _popcornBuckets:
@@ -15618,7 +15710,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Enabled
@@ -15705,6 +15797,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2076342152}
     - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: _visual
+      value: 
+      objectReference: {fileID: 706733385}
+    - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: _background
+      value: 
+      objectReference: {fileID: 1312905102}
+    - target: {fileID: 6732580190498446326, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: _audioClips.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -15727,6 +15827,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 706733385}
     - targetCorrespondingSourceObject: {fileID: 6357071874999993046, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526390606}
@@ -16431,8 +16534,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popcornBucket: {fileID: 1864270415}
   _price: 1
-  _priceMultiplyer: 10
-  _divider: 2
+  _priceMultiplyer: 5
+  _divider: 1.5
   _txTitle: {fileID: 1830408052}
   _txDesc: {fileID: 1830408051}
   _txPrice: {fileID: 1830408050}
@@ -16839,7 +16942,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
   m_Value: 0.99999976
-  m_Size: 0.305821
+  m_Size: 0.6116416
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19314,6 +19417,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurnCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 6835724966798891881, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_Size.y
+      value: 59.034683
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835724966798891881, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
+      propertyPath: m_Offset.y
+      value: 42.267143
+      objectReference: {fileID: 0}
     - target: {fileID: 8857649357049581658, guid: d2c75e259f823a0458eb55123d71c481, type: 3}
       propertyPath: m_SizeDelta.x
       value: 3.8
@@ -19680,8 +19791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popcornBucket: {fileID: 1288018788}
   _price: 1
-  _priceMultiplyer: 10
-  _divider: 2
+  _priceMultiplyer: 5
+  _divider: 1.5
   _txTitle: {fileID: 7880978193248724528}
   _txDesc: {fileID: 7880978193248724527}
   _txPrice: {fileID: 7880978193248724526}

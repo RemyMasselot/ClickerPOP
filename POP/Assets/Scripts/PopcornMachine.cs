@@ -23,6 +23,8 @@ public class PopcornMachine : MonoBehaviour
     private Vector2 _popcornAngle;
     [SerializeField] private float _popcornForce = 3;
     [SerializeField] public Transform Pan;
+    [SerializeField] private Transform _visual;
+    [SerializeField] private Transform _background;
 
     private AudioSource _audioSource;
     [SerializeField] private List<AudioClip> _audioClips = new List<AudioClip>();
@@ -47,8 +49,10 @@ public class PopcornMachine : MonoBehaviour
                 PopAPopcorn();
                 Pan.DOKill(true);
                 Pan.DOPunchScale(Pan.localScale * 0.15f, 0.5f, 10, 0.8f);
-                transform.DOKill(true);
-                transform.DOPunchScale(transform.localScale * 0.03f, 0.5f, 10, 0.4f);
+                _visual.DOKill(true);
+                _visual.DOPunchScale(_visual.localScale * 0.03f, 0.5f, 10, 0.4f);
+                _background.DOKill(true);
+                _background.DOPunchScale(_background.localScale * 0.03f, 0.5f, 10, 0.4f);
             }
         }
     }

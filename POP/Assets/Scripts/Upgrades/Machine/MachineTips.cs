@@ -34,7 +34,7 @@ public class MachineTips : MonoBehaviour
         if (_player.Money >= _price)
         {
             _player.ClientTips *= _increaseClientTips;
-            for (int i = 0; i < _popcornBuckets.Count - 1; i++)
+            for (int i = 0; i < _popcornBuckets.Count; i++)
             {
                 _popcornBuckets[i].BucketPrice = (int)(_popcornBuckets[i].NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
                 _popcornBuckets[i].TextMoney.UpdateText();

@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
     public void UpdateMoney(bool fromUpgrade)
     {
         UpdateText(Money, TextMoney);
-        TextMoney.text = "$" + Money.ToString();
+        TextMoney.text = "$" + TextMoney.text;
         if (fromUpgrade == true)
         {
             RectTransform rect = TextMoney.gameObject.GetComponent<RectTransform>();

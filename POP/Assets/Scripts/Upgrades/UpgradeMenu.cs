@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UpgradeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _contentUpgradesMachine;
+    [SerializeField] private Scrollbar _MachineScrollbar;
     [SerializeField] private GameObject _contentUpgradesBucket;
     [SerializeField] private Image _imageBtn;
     private Player _player;
@@ -34,6 +35,7 @@ public class UpgradeMenu : MonoBehaviour
         if (_player.WaitCoroutine == false)
         {
             _contentUpgradesMachine.SetActive(true);
+            _MachineScrollbar.value = 1;
             _contentUpgradesBucket.SetActive(false);
             _player.CheckBucketLimits();
             _player.UpdateVisualMainButtons(_imageBtn);

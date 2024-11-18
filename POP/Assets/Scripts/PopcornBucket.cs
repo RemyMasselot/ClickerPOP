@@ -38,7 +38,7 @@ public class PopcornBucket : MonoBehaviour
     [SerializeField] private CanvasGroup _toolTipBucket;
 
     private AudioSource _audioSource;
-    [SerializeField] private AudioClip _MissPopcorn;
+    [SerializeField] private AudioClip _missPopcorn;
     [SerializeField] private AudioClip _PutPopcorn;
     [SerializeField] private List<AudioClip> _ClientHappy = new List<AudioClip>();
     [SerializeField] private AudioClip _GainMoney;
@@ -73,7 +73,7 @@ public class PopcornBucket : MonoBehaviour
                 }
                 else
                 {
-                    _audioSource.clip = _MissPopcorn;
+                    _audioSource.clip = _missPopcorn;
                     _audioSource.Play();
                     _toolTipBucket.gameObject.SetActive(true);
                     _toolTipBucket.DOKill();

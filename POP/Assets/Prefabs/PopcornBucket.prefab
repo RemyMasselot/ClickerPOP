@@ -328,6 +328,7 @@ MonoBehaviour:
   TextMoney: {fileID: 0}
   FillNumber: 1
   _toolTipBucket: {fileID: 0}
+  _missPopcorn: {fileID: 8300000, guid: 78583566cb7660a488ee14a7d9cac054, type: 3}
   _PutPopcorn: {fileID: 8300000, guid: bc311f08a58118546a5362d779676e30, type: 3}
   _ClientHappy:
   - {fileID: 8300000, guid: 6ba554979a82a854db1cf8e7e699b682, type: 3}
