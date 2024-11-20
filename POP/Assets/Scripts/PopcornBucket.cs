@@ -11,6 +11,7 @@ public class PopcornBucket : MonoBehaviour
     private BurnPopcorn _burnPopcorn;
     private Stats _stats;
     private Vector3 _startPos;
+    private Tuto _tuto;
     public PopcornMachine PopcornMachine;
 
     [SerializeField] private List<Texture> Images = new List<Texture>();
@@ -51,6 +52,7 @@ public class PopcornBucket : MonoBehaviour
         _player = FindObjectOfType<Player>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _stats = FindObjectOfType<Stats>();
+        _tuto = FindObjectOfType<Tuto>();
 
         _startPos = transform.localPosition;
         _slider = GetComponentInChildren<Slider>();
@@ -259,15 +261,10 @@ public class PopcornBucket : MonoBehaviour
 
     public void BucketLeave()
     {
-        /*int randomIndex = Random.Range(0, _ClientHappy.Count);
-        _audioSource.clip = _ClientHappy[randomIndex];
-        _audioSource.Play();
-        float timer = _ClientHappy[randomIndex].length;
-        DOVirtual.DelayedCall(timer, () =>
+        if (_tuto.TutoIsDone == false)
         {
-            _audioSource.clip = _GainMoney;
-            _audioSource.Play();
-        });*/
+            _tuto.ObjBucketDone();
+        }
         DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, _alphaSpeed)
             .OnComplete(() =>
             {

@@ -43,7 +43,7 @@ public class MachineBurn : MonoBehaviour
             {
                 _burnLimit.transform.DOMoveY(_burnTargets[_indexTarget].transform.position.y, _timeMove);
                 _btnShield.Price *= _priceShieldMultiplyer;
-                _priceTextShield.text = _btnShield.Price.ToString();
+                _priceTextShield.text = "$" + _btnShield.Price.ToString();
                 _indexTarget++;
                 _level++;
                 _txLevel.text = "Nv " + _level.ToString();

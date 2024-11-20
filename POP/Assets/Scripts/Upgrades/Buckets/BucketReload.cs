@@ -8,7 +8,7 @@ public class BucketReload : MonoBehaviour
 {
     private Player _player;
     [SerializeField] private int _index = 0;
-    [SerializeField] private int _timeDivider = 2;
+    [SerializeField] private float _timeDivider = 2;
     [SerializeField] private float _priceMultiplyer = 3;
     [SerializeField] private int _price = 10;
     [SerializeField] private TextMeshProUGUI _txPrice;

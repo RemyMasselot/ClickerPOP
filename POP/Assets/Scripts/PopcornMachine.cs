@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
+using TMPro;
 
 public class PopcornMachine : MonoBehaviour
 {
     private Player _player;
     private BurnPopcorn _burnPopcorn;
     private Stats _stats;
+    private Tuto _tuto;
 
+    [SerializeField] private TextMeshProUGUI _tutoCount;
     [SerializeField] private GameObject _popcorn;
     [SerializeField] private Transform _popcornSpawnTarget1;
     [SerializeField] private Transform _popcornSpawnTarget2;
@@ -36,6 +38,7 @@ public class PopcornMachine : MonoBehaviour
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _player = FindObjectOfType<Player>();
         _stats = FindObjectOfType<Stats>();
+        _tuto = FindObjectOfType<Tuto>();
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -82,5 +85,17 @@ public class PopcornMachine : MonoBehaviour
         _audioSource.Play();
 
         _stats.TotalPopcorn++;
+
+        //Tuto
+        if(_tuto.TutoIsDone == false)
+        {
+            _tutoCount.text = PopcornList.Count.ToString();
+            _tuto.transform.DOPunchScale(_tuto.transform.localScale * 0.05f, 0.5f, 8, 1f);
+
+            if (PopcornList.Count == 10)
+            {
+                _tuto.ObjMachineDone();
+            }
+        }
     }
 }
