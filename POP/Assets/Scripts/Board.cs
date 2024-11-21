@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     private Button button;
     private bool _IsExpend = false;
     private BoxCollider2D _machineCollider;
+    private Stats _stats;
     
     [SerializeField] private List<RectTransform> _rects = new List<RectTransform>();
 
@@ -33,6 +34,7 @@ public class Board : MonoBehaviour
     private void Awake()
     {
         PopcornMachine popcornMachine = FindObjectOfType<PopcornMachine>();
+        _stats = FindObjectOfType<Stats>();
         _machineCollider = popcornMachine.GetComponent<BoxCollider2D>();
         _machineColliderOffsetStart = _machineCollider.offset;
         _machineColliderSizeStart = _machineCollider.size;
@@ -54,14 +56,12 @@ public class Board : MonoBehaviour
     {
         if (_IsExpend == false)
         {
-            _IsExpend = true;
             BoardExpenssion();
             _audioSource.clip = _open;
             _audioSource.Play();
         }
         else
         {
-            _IsExpend = false;
             BoardContraction();
             _audioSource.clip = _close;
             _audioSource.Play();
@@ -69,7 +69,8 @@ public class Board : MonoBehaviour
     }
     public void BoardExpenssion()
     {
-        transform.DOKill(true); 
+        _IsExpend = true;
+        transform.DOKill(true);
         transform.DOPunchScale(transform.localScale * 0.2f, 0.3f, 10, 0);
         transform.DOLocalMoveY(transform.localPosition.y - 8, 0.2f)
             .OnComplete(() =>
@@ -89,11 +90,16 @@ public class Board : MonoBehaviour
                 DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetEnd, 0.4f);
                 DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeEnd, 0.4f);
                 transform.DOLocalMoveY(transform.localPosition.y + 8, 0.05f);
+                if (_stats.OnBtnStats == true)
+                {
+                    _stats.ShowStatsContent();
+                }
             });
     }
 
     public void BoardContraction()
     {
+        _IsExpend = false;
         transform.DOKill(true);
         transform.DOPunchScale(transform.localScale * 0.2f, 0.3f, 10, 0);
         transform.DOLocalMoveY(transform.localPosition.y - 10, 0.2f)
@@ -127,6 +133,11 @@ public class Board : MonoBehaviour
                 DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetStart, 0.5f);
                 DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeStart, 0.5f);
                 transform.DOLocalMoveY(transform.localPosition.y + 10, 0.05f);
+                if (_stats.OnBtnStats == true)
+                {
+                    _stats.OnBtnStats = false;
+                    _stats.HideStatsContent();
+                }
             });
     }
 }

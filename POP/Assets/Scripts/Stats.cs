@@ -4,13 +4,14 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using System.Text;
 
 public class Stats : MonoBehaviour
 {
     private Player _player;
     private bool _isShowing = false;
+    public bool OnBtnStats = false;
     private Image _image;
+    private Board _board;
 
     public int TotalMoney;
     public int TotalPopcorn;
@@ -35,6 +36,7 @@ public class Stats : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _board = FindObjectOfType<Board>();
         _image = GetComponent<Image>();
         _audioSource = GetComponent<AudioSource>();
     }
@@ -43,34 +45,59 @@ public class Stats : MonoBehaviour
     {
         if (_player.WaitCoroutine == false)
         {
+            OnBtnStats = true;
             if (_isShowing == false)
             {
-                _isShowing = true;
-                _player.UpdateText(TotalMoney, MeshTotalMoney);
-                _player.UpdateText(TotalPopcorn, MeshTotalPopcorn);
-                //MeshTotalPopcornBurned.text = TotalPopcornBurned.ToString();
-                _player.UpdateText(TotalBucketSold, MeshTotalBucketSold);
-                _statsContent.SetActive(true);
-                _btnMachine.SetActive(false);
-                _btnBucket.SetActive(false);
-                _Upgrades.SetActive(false);
-                _fade.SetActive(false);
-                _image.sprite = _goOut;
+                _board.BoardExpenssion();
             }
             else
             {
-                _isShowing = false;
-                _statsContent.SetActive(false);
-                _btnMachine.SetActive(true);
-                _btnBucket.SetActive(true);
-                _Upgrades.SetActive(true);
-                _fade.SetActive(true);
-                _image.sprite = _goOn;
+                _board.BoardContraction();
             }
             transform.DOKill(true);
             transform.DOPunchScale(transform.localScale * 0.2f, 0.5f);
 
             _audioSource.Play();
         }
+    }
+
+    public void ShowStatsContent()
+    {
+        _isShowing = true;
+        _player.UpdateText(TotalMoney, MeshTotalMoney);
+        _player.UpdateText(TotalPopcorn, MeshTotalPopcorn);
+        //MeshTotalPopcornBurned.text = TotalPopcornBurned.ToString();
+        _player.UpdateText(TotalBucketSold, MeshTotalBucketSold);
+        _statsContent.SetActive(true);
+        _statsContent.GetComponent<CanvasGroup>().DOFade(1, 0.6f);
+        _btnMachine.GetComponentInParent<CanvasGroup>().DOFade(0, 0.2f);
+        _fade.GetComponent<SpriteRenderer>().DOFade(0, 0.2f);
+        _Upgrades.GetComponent<CanvasGroup>().DOFade(0, 0.2f)
+            .OnComplete(() =>
+            {
+                _Upgrades.SetActive(false);
+                _btnMachine.SetActive(false);
+                _btnBucket.SetActive(false);
+                _fade.SetActive(false);
+            });
+        _image.sprite = _goOut;
+    }
+
+    public void HideStatsContent()
+    {
+        _isShowing = false;
+        _statsContent.GetComponent<CanvasGroup>().DOFade(0, 0.2f)
+            .OnComplete(() =>
+            {
+                _statsContent.SetActive(false);
+            });
+        _Upgrades.SetActive(true);
+        _btnMachine.SetActive(true);
+        _btnBucket.SetActive(true);
+        _fade.SetActive(true);
+        _btnMachine.GetComponentInParent<CanvasGroup>().DOFade(1, 0.6f);
+        _fade.GetComponent<SpriteRenderer>().DOFade(1, 0.6f);
+        _Upgrades.GetComponent<CanvasGroup>().DOFade(1, 0.6f);
+        _image.sprite = _goOn;
     }
 }

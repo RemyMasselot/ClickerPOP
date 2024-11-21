@@ -90,6 +90,7 @@ public class PopcornMachine : MonoBehaviour
         if(_tuto.TutoIsDone == false)
         {
             _tutoCount.text = PopcornList.Count.ToString();
+            _tuto.transform.DOKill(true);
             _tuto.transform.DOPunchScale(_tuto.transform.localScale * 0.05f, 0.5f, 8, 1f);
 
             if (PopcornList.Count == 10)
