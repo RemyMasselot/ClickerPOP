@@ -10,6 +10,7 @@ public class MachineAutoClick : MonoBehaviour
     private Player _player;
     private BurnPopcorn _burnPopcorn;
     private Button button;
+    private Sentences _sentences;
     public int _level = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
@@ -24,45 +25,59 @@ public class MachineAutoClick : MonoBehaviour
     [SerializeField] private Image _imageBtn;
     private AudioSource _audioSource;
 
+    public int Part = 0;
+
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
-        _txLevel.text = "Nv " + _level.ToString();
+        _sentences = FindObjectOfType<Sentences>();
+        _txLevel.text = "Lv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
         button.onClick.AddListener(UnlockAutoclick);
-        _txDesc.text = _txFirstUpgrade;
+        //_txDesc.text = _sentences.MachineAutoclickTextsEN[Part];
     }
 
     public void UnlockAutoclick()
     {
         if (_player.Money >= _price)
         {
-            //Effect
-            _player.WaitCoroutine = true;
-            _player.CoroutinePreparation();
-            StartCoroutine(_player.StartAutoclickMachine());
+            if (Part == 0)
+            {
+                //Effect
+                _player.WaitCoroutine = true;
+                _player.CoroutinePreparation();
+                StartCoroutine(_player.StartAutoclickMachine());
 
-            //Next buy
-            _level++;
-            _txLevel.text = "Nv " + _level.ToString();
-            _player.Money -= _price;
-            _player.UpdateMoney(true);
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(IncreaseAutoclick);
-            _price = (int)(_price * _priceMultiplyer);
-            _player.UpdateText(_price, _txPrice);
-            _txPrice.text = "$" + _txPrice.text;
-            _txDesc.text = _txNextUpgrades;
-            _txPrice.gameObject.transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0);
+                //Next buy
+                _level++;
+                _txLevel.text = "Lv " + _level.ToString();
+                _player.Money -= _price;
+                _player.UpdateMoney(true);
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(IncreaseAutoclick);
+                _price = (int)(_price * _priceMultiplyer);
+                _player.UpdateText(_price, _txPrice);
+                _txPrice.text = "$" + _txPrice.text;
+                Part++;
+                if (_sentences.IsFrench == true)
+                {
+                    _txDesc.text = _sentences.MachineAutoclickTextsFR[Part];
+                }
+                else
+                {
+                    _txDesc.text = _sentences.MachineAutoclickTextsEN[Part];
+                }
+                _txPrice.gameObject.transform.DOPunchScale(transform.localScale * -0.1f, 0.5f, 10, 0);
 
-            //Visual
-            _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
+                //Visual
+                _player.UpdateVisualCanBuy(gameObject.transform, _imageBtn);
 
-            _audioSource.clip = _player.SoundBuyUpgrade;
-            _audioSource.Play();
+                _audioSource.clip = _player.SoundBuyUpgrade;
+                _audioSource.Play();
+            }
         }
         else
         {
@@ -81,7 +96,7 @@ public class MachineAutoClick : MonoBehaviour
 
             //Next Buy
             _level++;
-            _txLevel.text = "Nv " + _level.ToString();
+            _txLevel.text = "Lv " + _level.ToString();
             _player.Money -= _price;
             _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);

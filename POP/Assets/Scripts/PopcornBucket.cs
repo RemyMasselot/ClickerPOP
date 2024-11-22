@@ -11,7 +11,7 @@ public class PopcornBucket : MonoBehaviour
     private BurnPopcorn _burnPopcorn;
     private Stats _stats;
     private Vector3 _startPos;
-    private Tuto _tuto;
+    [SerializeField] private Tuto _tuto;
     public PopcornMachine PopcornMachine;
 
     [SerializeField] private List<Texture> Images = new List<Texture>();
@@ -52,7 +52,7 @@ public class PopcornBucket : MonoBehaviour
         _player = FindObjectOfType<Player>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
         _stats = FindObjectOfType<Stats>();
-        _tuto = FindObjectOfType<Tuto>();
+        //_tuto = FindObjectOfType<Tuto>();
 
         _startPos = transform.localPosition;
         _slider = GetComponentInChildren<Slider>();

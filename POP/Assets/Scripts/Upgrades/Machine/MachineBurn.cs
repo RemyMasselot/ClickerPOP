@@ -28,7 +28,7 @@ public class MachineBurn : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txLevel.text = "Nv " + _level.ToString();
+        _txLevel.text = "Lv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
@@ -46,12 +46,12 @@ public class MachineBurn : MonoBehaviour
                 _priceTextShield.text = "$" + _btnShield.Price.ToString();
                 _indexTarget++;
                 _level++;
-                _txLevel.text = "Nv " + _level.ToString();
+                _txLevel.text = "Lv " + _level.ToString();
                 _player.Money -= _price;
                 _player.UpdateMoney(true);
                 if (_indexTarget == _burnTargets.Count)
                 {
-                    _txLevel.text = "Nv " + _level.ToString();
+                    _txLevel.text = "Lv " + _level.ToString();
                     _txPrice.text = "MAX";
                     button.onClick.RemoveListener(MoreTips);
                     button.interactable = false;

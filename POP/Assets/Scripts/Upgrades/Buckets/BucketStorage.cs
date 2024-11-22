@@ -21,7 +21,7 @@ public class BucketStorage : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txLevel.text = "Nv " + _level.ToString();
+        _txLevel.text = "Lv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
@@ -38,7 +38,7 @@ public class BucketStorage : MonoBehaviour
             _bucket.BucketPrice = (int)(_bucket.NumberOfPopcornsLimit / _player.BucketPriceDivider * _player.ClientTips);
             _bucket.TextMoney.UpdateText();
             _level++;
-            _txLevel.text = "Nv " + _level.ToString();
+            _txLevel.text = "Lv " + _level.ToString();
             _player.Money -= _price;
             _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);

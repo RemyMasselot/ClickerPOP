@@ -20,7 +20,7 @@ public class BucketFill : MonoBehaviour
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
-        _txLevel.text = "Nv " + _level.ToString();
+        _txLevel.text = "Lv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
@@ -34,7 +34,7 @@ public class BucketFill : MonoBehaviour
             PopcornBucket _bucket = _player.PopcornBuckets[_index].GetComponent<PopcornBucket>();
             _bucket.FillNumber ++;
             _level++;
-            _txLevel.text = "Nv " + _level.ToString();
+            _txLevel.text = "Lv " + _level.ToString();
             _player.Money -= _price;
             _player.UpdateMoney(true);
             _price = (int)(_price * _priceMultiplyer);
