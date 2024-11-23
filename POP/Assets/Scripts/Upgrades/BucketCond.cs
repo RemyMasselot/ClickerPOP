@@ -11,12 +11,15 @@ public class BucketCond : MonoBehaviour
     private Button _button;
     private Player _player;
     private TextMeshProUGUI _text;
+    private Image _image;
+    [SerializeField] private GameObject _childContent;
     [SerializeField] private GameObject _content;
     [SerializeField] private Image _btnRenderer;
 
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
+        _image = GetComponent<Image>();
         _button = GetComponentInParent<Button>();
         _button.interactable = false;
         _text = GetComponentInChildren<TextMeshProUGUI>();
@@ -34,8 +37,17 @@ public class BucketCond : MonoBehaviour
             {
                 _content.SetActive(true);
             }
-            _btnRenderer.DOFade(1, 0.5f);
-            gameObject.SetActive(false);
+            if (_childContent != null)
+            {
+                _childContent.SetActive(false);
+            }
+            _player.UpdateVisualCanBuy(gameObject.transform, _image);
+            _image.DOFade(0, 0.5f);
+            _btnRenderer.DOFade(1, 0.5f)
+                .OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
+                });
         }
     }
 }
