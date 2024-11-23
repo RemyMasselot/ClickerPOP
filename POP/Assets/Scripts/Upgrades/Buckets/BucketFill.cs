@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class BucketFill : MonoBehaviour
 {
     private Player _player;
+    private CanvasGroup _canvasGroup;
+    private BucketCond _bucketCond;
     [SerializeField] private int _index = 0;
     [SerializeField] private int _price = 10;
     [SerializeField] private float _priceMultiplyer = 3;
@@ -23,8 +25,25 @@ public class BucketFill : MonoBehaviour
         _txLevel.text = "Lv " + _level.ToString();
         _txPrice.text = "$" + _price.ToString();
         _audioSource = GetComponent<AudioSource>();
+        _canvasGroup = GetComponent<CanvasGroup>();
+        _bucketCond = GetComponentInChildren<BucketCond>();
         button = GetComponent<Button>();
         button.onClick.AddListener(FillBucket);
+    }
+
+    private void Update()
+    {
+        if (_bucketCond.gameObject.activeSelf == false)
+        {
+            if (_player.Money >= _price)
+            {
+                _canvasGroup.alpha = 1;
+            }
+            else
+            {
+                _canvasGroup.alpha = 0.7f;
+            }
+        }
     }
 
     public void FillBucket()

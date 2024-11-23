@@ -42,6 +42,7 @@ public class NewBucket : MonoBehaviour
             }
             _btnUpgrade.interactable = true;
             _btnUpgrade.GetComponent<Image>().color = _player.Default;
+            _btnUpgrade.GetComponentInChildren<TextMeshProUGUI>().color = _player.Default;
             gameObject.SetActive(false);
             _player.Money -= _price;
             _player.TextMoney.text = "$" + _player.Money.ToString();

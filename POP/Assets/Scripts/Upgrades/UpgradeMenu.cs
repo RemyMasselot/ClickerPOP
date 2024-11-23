@@ -8,6 +8,7 @@ public class UpgradeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _contentUpgradesMachine;
     [SerializeField] private Scrollbar _MachineScrollbar;
+    [SerializeField] private List<Scrollbar> _bucektScrollbars = new List<Scrollbar>();
     [SerializeField] private GameObject _contentUpgradesBucket;
     [SerializeField] private Image _imageBtn;
     private Player _player;
@@ -26,6 +27,10 @@ public class UpgradeMenu : MonoBehaviour
         {
             _contentUpgradesMachine.SetActive(false);
             _contentUpgradesBucket.SetActive(true);
+            for (int i = 0; i < _bucektScrollbars.Count; i++)
+            {
+                _bucektScrollbars[i].value = 1;
+            }
             _player.CheckBucketLimits();
             _player.UpdateVisualMainButtons(_imageBtn);
             _audioSource.clip = _audioDefault;
