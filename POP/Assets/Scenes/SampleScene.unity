@@ -4014,27 +4014,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsFrench: 0
-  FRTutoMachine: Appuie sur la machine pour cuisiner un popcorn
+  FRTutoMachine: Appuie sur la machine pour faire eclater du popcorn
   FRTutoBucket: Appuie sur le pot disponible pour le remplir
   FRBravo: Bravo ! Tu as vendu ton premier pot !
   FRYourTurn: C'est toi le chef maintenant !
-  FRToolTipBucket: Cuisine plus de popcorns !!!
+  FRToolTipBucket: Cuisine plus de popcorn !!!
   FRBtnMachine: Machine
   FRBtnBucket: Pot
   FRBtnBucket1: Pot 1
   FRBtnBucket2: Pot 2
   FRBtnBucket3: Pot 3
   FRMachineAutoclickTitle: Autoclick
-  FRMachineAutoclick1: Les popcorns se cuisinent tout seuls !
-  FRMachineAutoclick2: Les popcorns se cuisinent plus vite !
+  FRMachineAutoclick1: Le popcorn eclate tout seul !
+  FRMachineAutoclick2: Le popcorn eclate plus vite !
   FRTipsTitle: Tips
   FRTips: Les clients donnent des tips plus eleves !
-  FRPopcornCreationTitle: Cuisine
-  FRPopcornCreation: Cuisine un popcorn de plus par clique !
+  FRPopcornCreationTitle: Pop
+  FRPopcornCreation: Eclate un popcorn de plus par clique !
   FRBurnTitle: Surchauffe
   FRBurn: Augmente la limite de surchauffe de la machine !
   FRShieldDescTitle: Bouee de sauvetage
-  FRShieldDesc: Permet de sauver les popcorns du feu
+  FRShieldDesc: Permet de sauver le popcorn du feu
   FRBucketAutoclickTitle: Autoclick
   FRBucketAutoclick1: Le pot se rempli tout seul !
   FRBucketAutoclick2: Le pot se rempli seul plus vite !
@@ -4045,43 +4045,43 @@ MonoBehaviour:
   FRReloadTitle: Recharge
   FRReload: Diminue le temps d'arrive d'un nouveau pot
   FRStatMoney: 'Argents cumules :'
-  FRStatPopcorn: 'Popcorns cuisines :'
+  FRStatPopcorn: 'Grains de popcorn cuisines :'
   FRStatBucket: 'Pots vendus :'
   FRBtnPhysic: 'Activer la physique :'
   FRLanguage: 'Langue :'
   FRBtnQuit: Quitter
-  ENTutoMachine: Press the machine to cook a popcorn
+  ENTutoMachine: Press the machine to pop a kernel
   ENTutoBucket: Press the available bucket to fill it
   ENBravo: Congratulations! You've sold your first bucket!
   ENYourTurn: You're the chef now!
-  ENToolTipBucket: Cook more popcorns!!!
+  ENToolTipBucket: Cook more popcorn!!!
   ENBtnMachine: Machine
   ENBtnBucket: Bucket
   ENBtnBucket1: Bucket 1
   ENBtnBucket2: Bucket 2
   ENBtnBucket3: Bucket 3
   ENMachineAutoclickTitle: Autoclick
-  ENMachineAutoclick1: Popcorns cook themselves!
-  ENMachineAutoclick2: Popcorns cook themselves faster!
+  ENMachineAutoclick1: Kernels pop themselves!
+  ENMachineAutoclick2: Kernels pop themselves faster!
   ENTipsTitle: Tips
   ENTips: Customers give higher tips!
-  ENPopcornCreationTitle: Kitchen
-  ENPopcornCreation: Cook one more popcorn per click!
+  ENPopcornCreationTitle: Pop
+  ENPopcornCreation: Pop one more kernel per click!
   ENBurnTitle: Overheating
   ENBurn: Increases the machine's overheating limit!
   ENShieldDescTitle: Lifebuoy
-  ENShieldDesc: Saves popcorn from the fire
+  ENShieldDesc: Allowed to rescue the popcorn from the fire
   ENBucketAutoclickTitle: Autoclick
   ENBucketAutoclick1: The bucket fills itself!
   ENBucketAutoclick2: The bucket fills up faster on its own!
   ENFillTitle: Filling
-  ENFill: Add one more popcorn per click!
+  ENFill: Add one more kernel per click!
   ENStorageTitle: Storage
   ENStorage: Increases the bucket's storage capacity and its price!
   ENReloadTitle: Reload
   ENReload: Reduces the time it takes for a new bucket to arrive
   ENStatMoney: 'Cumulative earnings :'
-  ENStatPopcorn: 'Popcorns cooked :'
+  ENStatPopcorn: 'Kernels cooked :'
   ENStatBucket: 'Bucket sold :'
   ENBtnPhysic: 'Activate physics :'
   ENLanguage: 'Language :'
@@ -5836,7 +5836,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: e3b73a2e97428444d9f7016049bd53bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9902,7 +9902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -339.49988, y: 180.00003}
+  m_AnchoredPosition: {x: -339.49988, y: 408.58005}
   m_SizeDelta: {x: 668.49, y: 588.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1036601980
@@ -13183,8 +13183,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 234.88342, y: -3.6294632}
-  m_SizeDelta: {x: 300, y: 36.5}
+  m_AnchoredPosition: {x: 380.82, y: -3.6294632}
+  m_SizeDelta: {x: 488.36, y: 36.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292194362
 MonoBehaviour:
@@ -15885,8 +15885,12 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635354450096575222, guid: 8b1b48828faefa64db13fef6d8065a85, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18565,6 +18569,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1100989087142173701, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
+      propertyPath: m_SortingOrder
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 1471334145678683457, guid: a5f384cbd020da940a7b17f8cb039c58, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -19889,8 +19897,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388622364}
   m_HandleRect: {fileID: 1388622363}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.305821
+  m_Value: -0.00000013350939
+  m_Size: 0.30582103
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21602,7 +21610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Appuie sur la machine pour cuisiner un popcorn
+  m_text: Appuie sur la machine pour faire eclater du popcorn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e4eb4d31ed6628439067cc2a6c14f32, type: 2}
   m_sharedMaterial: {fileID: 5165390958694680419, guid: 8e4eb4d31ed6628439067cc2a6c14f32, type: 2}
