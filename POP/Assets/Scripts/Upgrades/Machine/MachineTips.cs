@@ -18,6 +18,7 @@ public class MachineTips : MonoBehaviour
     private Button button;
     [SerializeField] private Image _imageBtn;
     private AudioSource _audioSource;
+    [SerializeField] private List<ParticleSystem> _particles = new List<ParticleSystem>();
 
     private void Awake()
     {
@@ -40,6 +41,10 @@ public class MachineTips : MonoBehaviour
                 _popcornBuckets[i].TextMoney.UpdateText();
             }
             _level++;
+            for (int i = 0; i < _particles.Count; i++)
+            {
+                _particles[i].maxParticles ++;
+            }
             _txLevel.text = "Lv " + _level.ToString();
             _player.Money -= _price;
             _player.UpdateMoney(true);

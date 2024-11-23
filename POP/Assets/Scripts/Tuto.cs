@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class Tuto : MonoBehaviour
 {
     private CanvasGroup _canvaGroup;
     private Sentences _sentences;
     public bool TutoIsDone = false;
+    private AudioSource _audioSource;
     [SerializeField] private Vector3 _endPosition;
     [SerializeField] private GameObject _buckets;
     [SerializeField] private GameObject _textCount1;
     [SerializeField] private GameObject _textCount2;
-
     [SerializeField] private TextMeshProUGUI _tutoDesc;
+    [SerializeField] private Color _finish;
+    [SerializeField] private RawImage _box;
 
     public int Part = 0;
 
     private void Awake()
     {
         _canvaGroup = GetComponent<CanvasGroup>();
+        _audioSource = GetComponent<AudioSource>();
         _sentences = FindObjectOfType<Sentences>();
         _tutoDesc.text = _sentences.TutoTextsEN[Part];
     }
@@ -29,8 +33,9 @@ public class Tuto : MonoBehaviour
     {
         if (Part == 0)
         {
+            _audioSource.Play();
             transform.DOKill(true);
-            transform.DOPunchScale(transform.localScale * 0.1f, 0.5f, 8, 0.8f);
+            transform.DOPunchScale(transform.localScale * 0.25f, 0.5f, 8, 0.8f);
             _canvaGroup.DOFade(0, 1f)
                 .OnComplete(() =>
                 {
@@ -71,9 +76,11 @@ public class Tuto : MonoBehaviour
             {
                 _tutoDesc.text = _sentences.TutoTextsEN[Part];
             }
-            //_tutoDesc.text = "Bravo ! Tu as vendu ton premier pot !";
+            _tutoDesc.color = _finish;
+            _box.color = _finish;
+            _audioSource.Play();
             transform.DOKill(true);
-            transform.DOPunchScale(transform.localScale * 0.1f, 0.5f, 8, 0.8f);
+            transform.DOPunchScale(transform.localScale * 0.25f, 0.5f, 8, 0.8f);
             DOVirtual.DelayedCall(3f, () =>
             {
                 Part++;
@@ -85,7 +92,6 @@ public class Tuto : MonoBehaviour
                 {
                     _tutoDesc.text = _sentences.TutoTextsEN[Part];
                 }
-                //_tutoDesc.text = "C'est toi le chef maintenant !";
                 transform.DOKill(true);
                 transform.DOPunchScale(transform.localScale * 0.1f, 0.5f, 6, 1f);
                 DOVirtual.DelayedCall(2f, () =>

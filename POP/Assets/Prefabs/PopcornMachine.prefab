@@ -242,7 +242,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e3b73a2e97428444d9f7016049bd53bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6ce089e3df72c42a0227dba474e25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tutoCount: {fileID: 0}
   _popcorn: {fileID: 4492031730845322681, guid: 69a56d3d35dcfb3418f3ac90f1889f41, type: 3}
   _popcornSpawnTarget1: {fileID: 2374968403406167047}
   _popcornSpawnTarget2: {fileID: 3365659319293287039}
@@ -319,6 +320,10 @@ MonoBehaviour:
   _popcornAngleYmin: 0.7
   _popcornAngleYmax: 1
   _popcornForce: 3
+  Pan: {fileID: 0}
+  _visual: {fileID: 0}
+  _background: {fileID: 0}
+  _audioClips: []
   PopcornList: []
 --- !u!1 &2872605909923196181
 GameObject:

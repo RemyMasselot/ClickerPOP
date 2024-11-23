@@ -56,6 +56,8 @@ public class PopcornMachine : MonoBehaviour
                 _visual.DOPunchScale(_visual.localScale * 0.03f, 0.5f, 10, 0.4f);
                 _background.DOKill(true);
                 _background.DOPunchScale(_background.localScale * 0.03f, 0.5f, 10, 0.4f);
+                _burnPopcorn.transform.DOKill(true);
+                _burnPopcorn.transform.DOPunchScale(_burnPopcorn.transform.localScale * 0.03f, 0.5f, 10, 0.4f);
             }
         }
     }

@@ -24,13 +24,13 @@ public class TextMoneyGained : MonoBehaviour
 
     public void Appeared()
     {
+        transform.DOMoveY(transform.position.y + 0.7f, _alphaSpeed);
         _textMoney.alpha = 1;
-        DOTween.To(() => _textMoney.alpha, x => _textMoney.alpha = x, 0, _alphaSpeed).SetDelay(0.5f)
+        DOTween.To(() => _textMoney.alpha, x => _textMoney.alpha = x, 0, _alphaSpeed).SetDelay(0.7f)
             .OnComplete(() =>
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y - 0.7f, transform.position.z);
                 gameObject.SetActive(false);
             });
-        transform.DOMoveY(transform.position.y + 0.5f, _alphaSpeed);
     }
 }

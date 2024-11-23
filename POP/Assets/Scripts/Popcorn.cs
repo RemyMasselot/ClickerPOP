@@ -19,6 +19,14 @@ public class Popcorn : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        if (_spriteRenderer.sortingOrder != _spriteRendererMachine.sortingOrder - 1 && Rb.velocity.y < 0)
+        {
+            _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         BounceCount++;
@@ -43,7 +51,7 @@ public class Popcorn : MonoBehaviour
                 }
                 else if (Rb.velocity.y < 0)
                 {
-                    _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
+                    //_spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
                     //Debug.Log(spriteRenderer.sortingOrder);
                 }
             }
@@ -64,7 +72,7 @@ public class Popcorn : MonoBehaviour
                 }
                 else if (Rb.velocity.y < 0)
                 {
-                    _spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
+                    //_spriteRenderer.sortingOrder = _spriteRendererMachine.sortingOrder - 1;
                 }
             }
         }

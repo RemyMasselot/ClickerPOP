@@ -43,6 +43,7 @@ public class PopcornBucket : MonoBehaviour
     [SerializeField] private AudioClip _PutPopcorn;
     [SerializeField] private List<AudioClip> _ClientHappy = new List<AudioClip>();
     [SerializeField] private AudioClip _GainMoney;
+    [SerializeField] private ParticleSystem _particleMoney;
 
     private void Awake()
     {
@@ -115,6 +116,11 @@ public class PopcornBucket : MonoBehaviour
 
     public void FillTheBucket()
     {
+        if (_tuto.TutoIsDone == false)
+        {
+            _tuto.transform.DOKill(true);
+            _tuto.transform.DOPunchScale(_tuto.transform.localScale * 0.05f, 0.5f, 8, 1f);
+        }
         if (_player.UsePhysic == true)
         {
             FillWithPhysic();
@@ -288,6 +294,7 @@ public class PopcornBucket : MonoBehaviour
                     _player.UpdateMoney(false);
                     TextMoney.gameObject.SetActive(true);
                     TextMoney.Appeared();
+                    _particleMoney.Play();
                     _stats.TotalMoney += BucketPrice;
                     _stats.TotalBucketSold++;
                 });
