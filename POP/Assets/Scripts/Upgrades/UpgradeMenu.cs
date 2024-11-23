@@ -12,6 +12,7 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private Image _imageBtn;
     private Player _player;
     private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioDefault;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class UpgradeMenu : MonoBehaviour
             _contentUpgradesBucket.SetActive(true);
             _player.CheckBucketLimits();
             _player.UpdateVisualMainButtons(_imageBtn);
+            _audioSource.clip = _audioDefault;
             _audioSource.Play();
         }
     }

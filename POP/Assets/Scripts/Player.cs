@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
 
     public void UpdateVisualMainButtons(Image image)
     {
-        TextMeshProUGUI text = new();
+        TextMeshProUGUI text = null;
         foreach (var item in _MainButtons)
         {
             if (item.gameObject.GetComponent<Button>().interactable == true)
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
 
     public void UpdateVisualBucketButtons(Image image)
     {
-        TextMeshProUGUI text = new();
+        TextMeshProUGUI text = null;
         foreach (var item in _BucketButtons)
         {
             if (item.gameObject.GetComponent<Button>().interactable == true)

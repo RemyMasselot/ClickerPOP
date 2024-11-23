@@ -12,9 +12,11 @@ public class BucketCond : MonoBehaviour
     private Player _player;
     private TextMeshProUGUI _text;
     private Image _image;
+    private AudioSource _audioSource;
     [SerializeField] private GameObject _childContent;
     [SerializeField] private GameObject _content;
     [SerializeField] private Image _btnRenderer;
+    [SerializeField] private AudioClip _audioUnlock;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class BucketCond : MonoBehaviour
         _image = GetComponent<Image>();
         _button = GetComponentInParent<Button>();
         _button.interactable = false;
+        _audioSource = _button.GetComponent<AudioSource>();
         _text = GetComponentInChildren<TextMeshProUGUI>();
         _text.text = _player.BucketsSold + "/" + NumBucketsToSell.ToString();
     }
@@ -41,6 +44,8 @@ public class BucketCond : MonoBehaviour
             {
                 _childContent.SetActive(false);
             }
+            _audioSource.clip = _audioUnlock;
+            _audioSource.Play();
             _player.UpdateVisualCanBuy(gameObject.transform, _image);
             _image.DOFade(0, 0.5f);
             _btnRenderer.DOFade(1, 0.5f)

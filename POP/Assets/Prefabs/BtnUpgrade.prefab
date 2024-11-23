@@ -229,6 +229,7 @@ MonoBehaviour:
   _childContent: {fileID: 278164996685761763}
   _content: {fileID: 9102186872005768705}
   _btnRenderer: {fileID: 3840785547707312763}
+  _audioUnlock: {fileID: 8300000, guid: aed698b1281650547b064e1d15061cbd, type: 3}
 --- !u!1 &1189865026606500463
 GameObject:
   m_ObjectHideFlags: 0
