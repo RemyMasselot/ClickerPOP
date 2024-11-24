@@ -26,7 +26,7 @@ public class TextMoneyGained : MonoBehaviour
     {
         transform.DOMoveY(transform.position.y + 0.7f, _alphaSpeed);
         _textMoney.alpha = 1;
-        DOTween.To(() => _textMoney.alpha, x => _textMoney.alpha = x, 0, _alphaSpeed).SetDelay(0.7f)
+        DOTween.To(() => _textMoney.alpha, x => _textMoney.alpha = x, 0, _alphaSpeed).SetDelay(1)
             .OnComplete(() =>
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - 0.7f, transform.position.z);

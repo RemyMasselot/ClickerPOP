@@ -57,14 +57,10 @@ public class Board : MonoBehaviour
         if (_IsExpend == false)
         {
             BoardExpenssion();
-            _audioSource.clip = _open;
-            _audioSource.Play();
         }
         else
         {
             BoardContraction();
-            _audioSource.clip = _close;
-            _audioSource.Play();
         }
     }
     public void BoardExpenssion()
@@ -94,6 +90,8 @@ public class Board : MonoBehaviour
                 {
                     _stats.ShowStatsContent();
                 }
+                _audioSource.clip = _open;
+                _audioSource.Play();
             });
     }
 
@@ -138,6 +136,8 @@ public class Board : MonoBehaviour
                     _stats.OnBtnStats = false;
                     _stats.HideStatsContent();
                 }
+                _audioSource.clip = _close;
+                _audioSource.Play();
             });
     }
 }

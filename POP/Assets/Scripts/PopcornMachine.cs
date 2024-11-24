@@ -89,7 +89,7 @@ public class PopcornMachine : MonoBehaviour
         _stats.TotalPopcorn++;
 
         //Tuto
-        if(_tuto.TutoIsDone == false)
+        if(_tuto.TutoIsDone == false && _tuto.Part == 0)
         {
             _tutoCount.text = PopcornList.Count.ToString();
             _tuto.transform.DOKill(true);
