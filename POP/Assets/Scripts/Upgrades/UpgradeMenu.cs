@@ -12,8 +12,11 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private GameObject _contentUpgradesBucket;
     [SerializeField] private Image _imageBtn;
     private Player _player;
+    [SerializeField] private BtnBuckets _btnBucket;
     private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioDefault;
+    [SerializeField] private List<TextMeshProUGUI> _bucketNums = new List<TextMeshProUGUI>();
+    [SerializeField] private List<GameObject> _buckets = new List<GameObject>();
 
     private void Awake()
     {
@@ -30,6 +33,16 @@ public class UpgradeMenu : MonoBehaviour
             for (int i = 0; i < _bucektScrollbars.Count; i++)
             {
                 _bucektScrollbars[i].value = 1;
+                if (_buckets[i].activeSelf == true)
+                {
+                    _bucketNums[i].fontSize = 30;
+                    _bucketNums[i].color = _btnBucket.SelectedNumColor;
+                }
+                else
+                {
+                    _bucketNums[i].fontSize = 22;
+                    _bucketNums[i].color = _btnBucket.DefaultNumColor;
+                }
             }
             _player.CheckBucketLimits();
             _player.UpdateVisualMainButtons(_imageBtn);
@@ -43,6 +56,11 @@ public class UpgradeMenu : MonoBehaviour
         {
             _contentUpgradesMachine.SetActive(true);
             _MachineScrollbar.value = 1;
+            for (int i = 0; i < _btnBucket.BucketNums.Count; i++)
+            {
+                _bucketNums[i].fontSize = 22;
+                _bucketNums[i].color = _btnBucket.DefaultNumColor;
+            }
             _contentUpgradesBucket.SetActive(false);
             _player.CheckBucketLimits();
             _player.UpdateVisualMainButtons(_imageBtn);

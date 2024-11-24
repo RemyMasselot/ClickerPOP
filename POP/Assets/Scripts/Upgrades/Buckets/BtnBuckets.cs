@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,11 @@ public class BtnBuckets : MonoBehaviour
     [SerializeField] private List<GameObject> _contentBuckets = new List<GameObject>();
     [SerializeField] private int _contentBucketsIndex;
     [SerializeField] private Image _imageBtn;
+    public Color DefaultNumColor;
+    public Color SelectedNumColor;
 
     private List<Scrollbar> _scrollbars = new List<Scrollbar>();
+    public List<TextMeshProUGUI> BucketNums = new List<TextMeshProUGUI>();
     private float _currentValue;
 
     private Player _player;
@@ -25,7 +29,7 @@ public class BtnBuckets : MonoBehaviour
         }
     }
 
-    public void BtnBucket()
+    public void OnBtnBucket()
     {
         if (_player.WaitCoroutine == false)
         {
@@ -44,10 +48,14 @@ public class BtnBuckets : MonoBehaviour
                     _contentBuckets[i].SetActive(true);
                     _scrollbars[i].value = _currentValue;
                     _player.CheckBucketLimits();
+                    BucketNums[i].fontSize = 30;
+                    BucketNums[i].color = SelectedNumColor;
                 }
                 else
                 {
                     _contentBuckets[i].SetActive(false);
+                    BucketNums[i].fontSize = 22;
+                    BucketNums[i].color = DefaultNumColor;
                 }
             }
             _audioSource.Play();

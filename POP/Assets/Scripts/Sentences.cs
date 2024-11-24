@@ -65,6 +65,12 @@ public class Sentences : MonoBehaviour
     public string FRLanguage;
     public string FRBtnQuit;
 
+    [Space(10)]
+
+    [Header("FR Credits")]
+    public string FRCreditsRemy;
+    public string FRCreditsChloe;
+
     [Space(20)]
 
     [Header("ANGLAIS")]
@@ -121,6 +127,12 @@ public class Sentences : MonoBehaviour
     public string ENBtnPhysic;
     public string ENLanguage;
     public string ENBtnQuit;
+
+    [Space(10)]
+
+    [Header("FR Credits")]
+    public string ENCreditsRemy;
+    public string ENCreditsChloe;
 
     [Space(20)]
     #endregion
@@ -213,6 +225,12 @@ public class Sentences : MonoBehaviour
     public TextMeshProUGUI BtnPhysic;
     public TextMeshProUGUI Language;
     public TextMeshProUGUI BtnQuit;
+
+    [Space(10)]
+
+    [Header("Credits")]
+    public TextMeshProUGUI CreditsRemy;
+    public TextMeshProUGUI CreditsChloe;
     #endregion
 
 
@@ -310,6 +328,10 @@ public class Sentences : MonoBehaviour
         BtnPhysic.text = FRBtnPhysic;
         Language.text = FRLanguage;
         BtnQuit.text = FRBtnQuit;
+
+        // CREDITS
+        CreditsRemy.text = FRCreditsRemy;
+        CreditsChloe.text = FRCreditsChloe;
     }
 
     public void SetEnglish()
@@ -376,5 +398,9 @@ public class Sentences : MonoBehaviour
         BtnPhysic.text = ENBtnPhysic;
         Language.text = ENLanguage;
         BtnQuit.text = ENBtnQuit;
+
+        // CREDITS
+        CreditsRemy.text = ENCreditsRemy;
+        CreditsChloe.text = ENCreditsChloe;
     }
 }
