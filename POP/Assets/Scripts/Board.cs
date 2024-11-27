@@ -18,6 +18,7 @@ public class Board : MonoBehaviour
     [SerializeField] private int _boardEndPosY;
     [SerializeField] private Vector2 _machineColliderOffsetEnd;
     [SerializeField] private Vector2 _machineColliderSizeEnd;
+    [SerializeField] private GameObject _fade;
 
     private float _boardStartPosY;
     private Vector2 _machineStartSize;
@@ -86,10 +87,12 @@ public class Board : MonoBehaviour
                 DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetEnd, 0.4f);
                 DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeEnd, 0.4f);
                 transform.DOLocalMoveY(transform.localPosition.y + 8, 0.05f);
+                _fade.GetComponent<SpriteRenderer>().DOFade(0, 0.2f);
                 if (_stats.OnBtnStats == true)
                 {
                     _stats.ShowStatsContent();
                 }
+                _fade.SetActive(false);
                 _audioSource.clip = _open;
                 _audioSource.Play();
             });
@@ -131,6 +134,8 @@ public class Board : MonoBehaviour
                 DOTween.To(() => _machineCollider.offset, x => _machineCollider.offset = x, _machineColliderOffsetStart, 0.5f);
                 DOTween.To(() => _machineCollider.size, x => _machineCollider.size = x, _machineColliderSizeStart, 0.5f);
                 transform.DOLocalMoveY(transform.localPosition.y + 10, 0.05f);
+                _fade.SetActive(true);
+                _fade.GetComponent<SpriteRenderer>().DOFade(1, 0.2f);
                 if (_stats.OnBtnStats == true)
                 {
                     _stats.OnBtnStats = false;

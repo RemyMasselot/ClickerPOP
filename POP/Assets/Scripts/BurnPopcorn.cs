@@ -174,7 +174,7 @@ public class BurnPopcorn : MonoBehaviour
             {
                 //Anim Default
                 _popAnims.UpdateAnim("IsSaving", "IsBlowing", "HaveBoue");
-                DOVirtual.DelayedCall(1, () =>
+                DOVirtual.DelayedCall(0.5f, () =>
                 {
                     _canvaGroupCollider.DOFade(1, 0.5f);
                     _btnShield.SetActive(true);

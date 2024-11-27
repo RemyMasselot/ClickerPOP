@@ -41,6 +41,17 @@ public class Stats : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (_isShowing == true)
+        {
+            _player.UpdateText(TotalMoney, MeshTotalMoney);
+            _player.UpdateText(TotalPopcorn, MeshTotalPopcorn);
+            //MeshTotalPopcornBurned.text = TotalPopcornBurned.ToString();
+            _player.UpdateText(TotalBucketSold, MeshTotalBucketSold);
+        }
+    }
+
     public void ShowStats()
     {
         if (_player.WaitCoroutine == false)
@@ -64,10 +75,10 @@ public class Stats : MonoBehaviour
     public void ShowStatsContent()
     {
         _isShowing = true;
-        _player.UpdateText(TotalMoney, MeshTotalMoney);
-        _player.UpdateText(TotalPopcorn, MeshTotalPopcorn);
-        //MeshTotalPopcornBurned.text = TotalPopcornBurned.ToString();
-        _player.UpdateText(TotalBucketSold, MeshTotalBucketSold);
+        //_player.UpdateText(TotalMoney, MeshTotalMoney);
+        //_player.UpdateText(TotalPopcorn, MeshTotalPopcorn);
+        ////MeshTotalPopcornBurned.text = TotalPopcornBurned.ToString();
+        //_player.UpdateText(TotalBucketSold, MeshTotalBucketSold);
         _statsContent.SetActive(true);
         _statsContent.GetComponent<CanvasGroup>().DOFade(1, 0.6f);
         _btnMachine.GetComponentInParent<CanvasGroup>().DOFade(0, 0.2f);

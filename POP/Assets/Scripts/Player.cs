@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public AudioClip SoundBuyUpgrade;
     public AudioClip SoundCantBuyUpgrade;
+    public List<AudioSource> audioSources = new List<AudioSource>();
 
     // Start is called before the first frame update
     void Awake()
@@ -50,6 +51,19 @@ public class Player : MonoBehaviour
 
         _popcornMachine = FindObjectOfType<PopcornMachine>();
         _burnPopcorn = FindObjectOfType<BurnPopcorn>();
+
+        // Récupère tous les AudioSources dans la scène, même ceux des objets désactivés
+        AudioSource[] foundAudioSources = Resources.FindObjectsOfTypeAll<AudioSource>();
+
+        // Ajouter les AudioSources à la liste
+        foreach (AudioSource source in foundAudioSources)
+        {
+            // Vérifie que l'objet appartient à la scène actuelle (et pas à un prefab éditable dans le projet)
+            if (source.gameObject.scene.IsValid())
+            {
+                audioSources.Add(source);
+            }
+        }
     }
 
     // Update is called once per frame
